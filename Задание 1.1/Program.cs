@@ -20,6 +20,7 @@ namespace Задание_1._1
             Console.WriteLine("Умножение: {0}", umn(sum, diff));
         }
 
+        // Функция перемножения двух чисел
         public static double umn(double a, double b)
         {
             double c = a * b;
