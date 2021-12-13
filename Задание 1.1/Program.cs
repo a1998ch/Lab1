@@ -15,6 +15,8 @@ namespace Задание_1._1
             sum = x + y;
             diff = x - y;
             Console.WriteLine("Угол: {0}", c); // Вывод результата
+            Console.WriteLine("Сумма: {0}", sum, diff);
+            Console.WriteLine("Разность: {0}", diff);
             Console.WriteLine("Умножение: {0}", umn(sum, diff));
         }
 
