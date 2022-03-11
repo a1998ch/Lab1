@@ -51,6 +51,8 @@ namespace ViewLaba1
             person6.age = 18;
             person6.genderPublic = Gender.Мужской;
 
+            personList.Add(person1);
+
             string[] people1 = new string[3];
             string[] people2 = new string[3];
             people1[0] = person1.name + ", " + person1.surname + ", " + person1.age + ", " + person1.genderPublic;

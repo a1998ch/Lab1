@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//TODO:
 using static System.Console;
 using System.Text.RegularExpressions;
 
 namespace ModelLaba1
 {
+    //TODO: RSDN
     public class Person
     {
         private Gender gender;
@@ -15,6 +17,7 @@ namespace ModelLaba1
         private string Surname;
         private int Age;
 
+        //TODO: RSDN
         bool flag1 = false;
         bool flag2 = false;
         bool flag3 = false;
@@ -24,6 +27,7 @@ namespace ModelLaba1
         {
             set
             {
+                //TODO: duplication
                 Name = value;
                 Regex rusAlphabet = new Regex("[а-я]");
                 Regex engAlphabet = new Regex("[a-z]");

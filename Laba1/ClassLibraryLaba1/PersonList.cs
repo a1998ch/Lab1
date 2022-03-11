@@ -3,12 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+//TODO:
 using static System.Console;
 
 namespace ModelLaba1
 {
     public class PersonList
     {
+        private Person[] _personList = new Person[0];
+
+        public void Add(Person person)
+        {
+            Array.Resize(ref _personList, _personList.Length + 1);
+            _personList[_personList.Length - 1] = person;
+        }
+
         public Gender genderMetod()
         {
             Person person = new Person();
