@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelLaba1
 {
-    public enum Gender
+    public enum GenderType
     {
         Мужской,
         Женский

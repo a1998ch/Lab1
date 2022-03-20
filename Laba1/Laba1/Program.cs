@@ -12,76 +12,49 @@ namespace ViewLaba1
     {
         static void Main(string[] args)
         {
-            Person person = new Person();
-
             OutputEncoding = Encoding.Unicode;
             InputEncoding = Encoding.Unicode;
 
+            Program program = new Program();
+            //Person person = new Person();
             PersonList personList = new PersonList();
 
-            Person person1 = new Person();
-            Person person2 = new Person();
-            Person person3 = new Person();
-            Person person4 = new Person();
-            Person person5 = new Person();
-            Person person6 = new Person();
+            Person person1x = new Person("Сергей", "Пащенко", 23, GenderType.Мужской);
+            Person person2x = new Person("Дмитрий", "Питомец", 55, GenderType.Мужской);
+            Person person3x = new Person("Дарья", "Ивасенко", 60, GenderType.Женский);
+            Person person1y = new Person("Екатерина", "Бозырева", 28, GenderType.Женский);
+            Person person2y = new Person("Галина", "Павловская", 77, GenderType.Женский);
+            Person person3y = new Person("Вадим", "Азеев", 18, GenderType.Мужской);
 
-            person1.name = "Сергей";
-            person1.surname = "Пащенко";
-            person1.age = 23;
-            person1.genderPublic = Gender.Мужской;
-            person2.name = "Дмитрий";
-            person2.surname = "Питомец";
-            person2.age = 55;
-            person2.genderPublic = Gender.Мужской;
-            person3.name = "Дарья";
-            person3.surname = "Ивасенко";
-            person3.age = 60;
-            person3.genderPublic = Gender.Женский;
-            person4.name = "Екатерина";
-            person4.surname = "Бозырева";
-            person4.age = 28;
-            person4.genderPublic = Gender.Женский;
-            person5.name = "Галина";
-            person5.surname = "Павловская";
-            person5.age = 77;
-            person5.genderPublic = Gender.Женский;
-            person6.name = "Вадим";
-            person6.surname = "Азеев";
-            person6.age = 18;
-            person6.genderPublic = Gender.Мужской;
-
-            personList.Add(person1);
-
-            string[] people1 = new string[3];
-            string[] people2 = new string[3];
-            people1[0] = person1.name + ", " + person1.surname + ", " + person1.age + ", " + person1.genderPublic;
-            people1[1] = person2.name + ", " + person2.surname + ", " + person2.age + ", " + person2.genderPublic;
-            people1[2] = person3.name + ", " + person3.surname + ", " + person3.age + ", " + person3.genderPublic;
-            people2[0] = person4.name + ", " + person4.surname + ", " + person4.age + ", " + person4.genderPublic;
-            people2[1] = person5.name + ", " + person5.surname + ", " + person5.age + ", " + person5.genderPublic;
-            people2[2] = person6.name + ", " + person6.surname + ", " + person6.age + ", " + person6.genderPublic;
+            Person[] people1 = new Person[3];
+            Person[] people2 = new Person[3];
+            people1[0] = person1x;
+            people1[1] = person2x;
+            people1[2] = person3x;
+            people2[0] = person1y;
+            people2[1] = person2y;
+            people2[2] = person3y;
 
 
             WriteLine("Чтобы вывести содержимое каждого списка на экран нажмите любую кнопку");
             ReadLine();
             WriteLine("Первый список персон:");
-            person.Print(people1);
+            program.Print(people1);
             WriteLine("\nВторой список персон:");
-            person.Print(people2);
+            program.Print(people2);
             
             
 
 
-            WriteLine("\nЧтобы добавить человека в первый список нажмите любую кнопку");
+            /*WriteLine("\nЧтобы добавить человека в первый список нажмите любую кнопку");
             ReadLine();
-            string newPeople = "Олег" + ", " + "Николашкин" + ", " + 23 + ", " + Gender.Мужской;
+            string newPeople = "Олег" + ", " + "Николашкин" + ", " + 23 + ", " + GenderType.Мужской;
             people1 = personList.MyAdd(people1, newPeople);
             WriteLine("Первый список персон:");
-            person.Print(people1);
+            program.Print(people1);*/
 
 
-            WriteLine("\nЧтобы скопировать второго человека из первого списка в конец второго списка нажмите любую кнопку");
+            /*WriteLine("\nЧтобы скопировать второго человека из первого списка в конец второго списка нажмите любую кнопку");
             ReadLine();
             string secondPeople = personList.SearchPeopleIndex(people1, 1);
             people2 = personList.MyAdd(people2, secondPeople);
@@ -130,7 +103,7 @@ namespace ViewLaba1
             WriteLine("Список отчищен");
 
 
-            string[] people = personList.spisok(people1, people2);
+            string[] people = personList.SpisokChoice(people1, people2);
 
             while (true)
             {
@@ -164,7 +137,7 @@ namespace ViewLaba1
                     else if (choice == "2")
                     {
                         person.Read();
-                        string peopleComplex = person.name + ", " + person.surname + ", " + person.age + ", " + person.genderPublic;
+                        string peopleComplex = person.Name + ", " + person.Surname + ", " + person.Age + ", " + person.Gender;
                         people = personList.MyAdd(people, peopleComplex);
                         WriteLine();
                         person.Print(people);
@@ -178,7 +151,7 @@ namespace ViewLaba1
                 else if (command == command2)
                 {
                     person.Read();
-                    string peopleComplex = person.name + ", " + person.surname + ", " + person.age + ", " + person.genderPublic;
+                    string peopleComplex = person.Name + ", " + person.Surname + ", " + person.Age + ", " + person.Gender;
                     if (people.Contains(peopleComplex))
                     {
                         people = personList.Del(people, peopleComplex);
@@ -234,10 +207,10 @@ namespace ViewLaba1
                 else if (command == command5)
                 {
                     person.Read();
-                    string peopleComplex = person.name + ", " + person.surname + ", " + person.age + ", " + person.genderPublic;
+                    string peopleComplex = person.Name + ", " + person.Surname + ", " + person.Age + ", " + person.Gender;
                     if (people.Contains(peopleComplex))
                     {
-                        WriteLine("\n{0}", personList.SearchIndex(people, peopleComplex));
+                        WriteLine("\n{0}", personList.SearchIndexPeople(people, peopleComplex));
                     }
                     else
                     {
@@ -265,7 +238,7 @@ namespace ViewLaba1
 
                 else if (command == command8)
                 {
-                    people = personList.spisok(people1, people2);
+                    people = personList.SpisokChoice(people1, people2);
                 }
 
                 else if (command.ToLower() == exit)
@@ -273,8 +246,13 @@ namespace ViewLaba1
                     WriteLine("\nПока");
                     break;
                 }
-            }
+            }*/
             ReadLine();
+        }
+
+        public void Print(Person[] listPerson)
+        {
+            WriteLine(String.Join("\n", Convert.ToString(listPerson)));
         }
     }
 }

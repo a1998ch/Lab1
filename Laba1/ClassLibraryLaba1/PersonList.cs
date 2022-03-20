@@ -12,29 +12,30 @@ namespace ModelLaba1
     {
         private Person[] _personList = new Person[0];
 
-        public void Add(Person person)
+        public Person[] MyAdd(Person person)
         {
             Array.Resize(ref _personList, _personList.Length + 1);
             _personList[_personList.Length - 1] = person;
+            return _personList;
         }
 
-        public Gender genderMetod()
+        /*public GenderType GenderMetod()
         {
             Person person = new Person();
-            string genderr;
+            string gender;
             while (true)
             {
-                WriteLine($"\nВведите пол: {Gender.Мужской} = \"М\" или {Gender.Женский} = \"Ж\" ");
-                genderr = ReadLine();
+                WriteLine($"\nВведите пол: {GenderType.Мужской} = \"М\" или {GenderType.Женский} = \"Ж\" ");
+                gender = ReadLine();
                 try
                 {
-                    if (genderr.ToLower() == "М".ToLower())
+                    if (gender.ToLower() == "М".ToLower())
                     {
-                        return person.genderPublic = Gender.Мужской;
+                        return person.Gender = GenderType.Мужской;
                     }
-                    else if (genderr.ToLower() == "Ж".ToLower())
+                    else if (gender.ToLower() == "Ж".ToLower())
                     {
-                        return person.genderPublic = Gender.Женский;
+                        return person.Gender = GenderType.Женский;
                     }
                     else
                     {
@@ -46,10 +47,10 @@ namespace ModelLaba1
                     WriteLine($"\nОшибка: {ex.Message}");
                 }
             }
-        }
+        }*/
 
 
-        public string[] spisok(string[] people1, string[] people2)
+        public string[] SpisokChoice(string[] people1, string[] people2)
         {
             string spisok;
             while (true)
@@ -79,20 +80,12 @@ namespace ModelLaba1
         }
 
 
-        public string[] MyAdd(string[] spisokPeople, string people)
-        {
-            Array.Resize(ref spisokPeople, spisokPeople.Length + 1);
-            spisokPeople[spisokPeople.Length - 1] = people;
-            return spisokPeople;
-        }
-
-
-        public string[] Del(string[] array, string personDel)
+        public string[] Del(string[] personArray, string person)
         {
             int remove = 0, count = 0;
-            for (int i = 0; i < array.Length; ++i)
+            for (int i = 0; i < personArray.Length; ++i)
             {
-                if (array[i] == personDel)
+                if (personArray[i] == person)
                 {
                     remove = i;
                     count++;
@@ -102,7 +95,7 @@ namespace ModelLaba1
 
             if (count > 0)
             {
-                string[] people = new string[array.Length - 1];
+                string[] people = new string[personArray.Length - 1];
 
                 for (int i = 0, j = 0; i < people.Length; ++i, ++j)
                 {
@@ -110,63 +103,63 @@ namespace ModelLaba1
                     {
                         ++j;
                     }
-                    people[i] = array[j];
+                    people[i] = personArray[j];
                 }
                 return people;
             }
             else
             {
-                string[] people = array;
+                string[] people = personArray;
                 return people;
             }
         }
 
 
-        public string[] DelIndex(string[] array, int personDel)
+        public string[] DelIndex(string[] personArray, int personIndex)
         {
-            int remove = 0, count = 0;
-            for (int i = 0; i < array.Length; ++i)
-            {
-                if (i == personDel)
-                {
-                    remove = i;
-                    count++;
-                    break;
-                }
-            }
-
-            if (count > 0)
-            {
-                string[] people = new string[array.Length - 1];
-
-                for (int i = 0, j = 0; i < people.Length; ++i, ++j)
-                {
-                    if (j == remove)
-                    {
-                        ++j;
-                    }
-                    people[i] = array[j];
-                }
-                return people;
-            }
-            else
-            {
-                string[] people = array;
-                return people;
-            }
-        }
-
-
-        public string SearchPeopleIndex(string[] array, int personIndex)
-        {
-            string person = "";
-            int search = 0;
-            for (int i = 0; i < array.Length; ++i)
+            int indexRemove = 0, count = 0;
+            for (int i = 0; i < personArray.Length; ++i)
             {
                 if (i == personIndex)
                 {
-                    search = i;
-                    person = array[i];
+                    indexRemove = i;
+                    count++;
+                    break;
+                }
+            }
+
+            if (count > 0)
+            {
+                string[] people = new string[personArray.Length - 1];
+
+                for (int i = 0, j = 0; i < people.Length; ++i, ++j)
+                {
+                    if (j == indexRemove)
+                    {
+                        ++j;
+                    }
+                    people[i] = personArray[j];
+                }
+                return people;
+            }
+            else
+            {
+                string[] people = personArray;
+                return people;
+            }
+        }
+
+
+        public string SearchPeopleIndex(string[] personArray, int personIndex)
+        {
+            string person = "";
+            int index = 0;
+            for (int i = 0; i < personArray.Length; ++i)
+            {
+                if (i == personIndex)
+                {
+                    index = i;
+                    person = personArray[i];
                     break;
                 }
             }
@@ -174,35 +167,35 @@ namespace ModelLaba1
         }
 
 
-        public string SearchIndex(string[] array, string person)
+        public string SearchIndexPeople(string[] personArray, string person)
         {
-            string search = "";
-            for (int i = 0; i < array.Length; ++i)
+            string index = "";
+            for (int i = 0; i < personArray.Length; ++i)
             {
-                if (array[i] == person)
+                if (personArray[i] == person)
                 {
-                    search = Convert.ToString(i);
+                    index = Convert.ToString(i);
                     break;
                 }
                 else
                 {
-                    search = "Нет такого человека";
+                    index = "Нет такого человека";
                 }
             }
-            return search;
+            return index;
         }
 
 
-        public string[] Clean(string[] array)
+        public string[] Clean(string[] personArray)
         {
-            string [] peopleClean = new string[0];
-            return array = peopleClean;
+            string [] emptyArray = new string[0];
+            return personArray = emptyArray;
         }
 
 
-        public int MyLength(string[] array)
+        public int MyLength(string[] personArray)
         {
-            return array.Length;
+            return personArray.Length;
         }
     }
 }

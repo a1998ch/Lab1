@@ -12,10 +12,10 @@ namespace ModelLaba1
     //TODO: RSDN
     public class Person
     {
-        private Gender gender;
-        private string Name;
-        private string Surname;
-        private int Age;
+        private GenderType _gender;
+        private string _name;
+        private string _surname;
+        private int _age;
 
         //TODO: RSDN
         bool flag1 = false;
@@ -23,17 +23,17 @@ namespace ModelLaba1
         bool flag3 = false;
         bool flag4 = false;
 
-        public string name
+        public string Name
         {
             set
             {
                 //TODO: duplication
-                Name = value;
+                _name = value;
                 Regex rusAlphabet = new Regex("[а-я]");
                 Regex engAlphabet = new Regex("[a-z]");
                 while (true)
                 {
-                    if (rusAlphabet.IsMatch(Name) & engAlphabet.IsMatch(Name))
+                    if (rusAlphabet.IsMatch(_name) & engAlphabet.IsMatch(_name))
                     {
                         WriteLine("\nИмя должно содержать только русские или только английские символы");
                     }
@@ -42,10 +42,10 @@ namespace ModelLaba1
                         break;
                     }
                     Write("\nВведите имя: ");
-                    name = ReadLine();
+                    Name = ReadLine();
                 }
 
-                if (rusAlphabet.IsMatch(Name))
+                if (rusAlphabet.IsMatch(_name))
                 {
                     flag1 = true;
                 }
@@ -54,28 +54,28 @@ namespace ModelLaba1
                     flag2 = true;
                 }
 
-                if (Name[0].ToString() != Name[0].ToString().ToUpper())
+                if (_name[0].ToString() != _name[0].ToString().ToUpper())
                 {
                     WriteLine("Имена необходимо писать с большой буквы");
                 }
-                string capitalName = Name.ToString().Substring(1);
-                Name = Name[0].ToString().ToUpper() + capitalName;
+                string capitalName = _name.ToString().Substring(1);
+                _name = _name[0].ToString().ToUpper() + capitalName;
             }
             get
             {
-                return Name;
+                return _name;
             }
         }
 
-        public string surname
+        public string Surname
         {
             set
             {
-                Surname = value;
+                _surname = value;
                 Regex rusAlphabet = new Regex("[а-я]");
                 Regex engAlphabet = new Regex("[a-z]");
 
-                if (rusAlphabet.IsMatch(Surname))
+                if (rusAlphabet.IsMatch(_surname))
                 {
                     flag3 = true;
                 }
@@ -86,7 +86,7 @@ namespace ModelLaba1
 
                 while (true)
                 {
-                    if (rusAlphabet.IsMatch(Surname) & engAlphabet.IsMatch(Surname))
+                    if (rusAlphabet.IsMatch(_surname) & engAlphabet.IsMatch(_surname))
                     {
                         WriteLine("\nФамилия должна содержать только русские или только английские символы");
                     }
@@ -103,44 +103,52 @@ namespace ModelLaba1
                         break;
                     }
                     Write("\nВведите фамилию: ");
-                    surname = ReadLine();
+                    Surname = ReadLine();
                 }
 
-                if (Surname[0].ToString() != Surname[0].ToString().ToUpper())
+                if (_surname[0].ToString() != _surname[0].ToString().ToUpper())
                 {
                     WriteLine("Фамилии необходимо писать с большой буквы");
                 }
-                string capitalSurname = Surname.ToString().Substring(1);
-                Surname = Surname[0].ToString().ToUpper() + capitalSurname;
+                string capitalSurname = _surname.ToString().Substring(1);
+                _surname = _surname[0].ToString().ToUpper() + capitalSurname;
             }
             get
             {
-                return Surname;
+                return _surname;
             }
         }
 
-        public int age
+        public int Age
         {
             set
             {
-                Age = value;
+                _age = value;
             }
             get
             {
-                return Age;
+                return _age;
             }
         }
 
-        public Gender genderPublic
+        public GenderType Gender
         {
             set
             {
-                gender = value;
+                _gender = value;
             }
             get
             {
-                return gender;
+                return _gender;
             }
+        }
+
+        public Person(string name, string surname, int age, GenderType gender)
+        {
+            Name = name;
+            Surname = surname;
+            Age = age;
+            Gender = gender;
         }
 
         public void Print(string[] array)
@@ -148,15 +156,15 @@ namespace ModelLaba1
             WriteLine(String.Join("\n", array));
         }
 
-        public void Read()
+        /*public void Read()
         {
             int n;
             string g;
             PersonList personList = new PersonList();
             Write("\nВведите имя: ");
-            name = ReadLine();
+            Name = ReadLine();
             Write("\nВведите фамилию: ");
-            surname = ReadLine();
+            Surname = ReadLine();
             while (true)
             {
                 Write("\nВведите возраст: ");
@@ -166,12 +174,12 @@ namespace ModelLaba1
                 }
                 else
                 {
-                    age = Convert.ToInt32(g);
+                    Age = Convert.ToInt32(g);
                     break;
                 }
             }
-            genderPublic = personList.genderMetod();
-        }
+            Gender = personList.GenderMetod();
+        }*/
         
         public static string GetRandomPerson()
         {
