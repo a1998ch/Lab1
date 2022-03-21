@@ -10,6 +10,36 @@ namespace ViewLaba1
 {
     class Program
     {
+        //TODO: static
+        public GenderType ReadGenderFromConsole()
+        {
+            string gender;
+            while (true)
+            {
+                WriteLine($"\nВведите пол: {GenderType.Мужской} = \"М\" или {GenderType.Женский} = \"Ж\" ");
+                gender = ReadLine();
+                try
+                {
+                    if (gender.ToLower() == "М".ToLower())
+                    {
+                        return GenderType.Мужской;
+                    }
+                    else if (gender.ToLower() == "Ж".ToLower())
+                    {
+                        return GenderType.Женский;
+                    }
+                    else
+                    {
+                        throw new Exception("Неправильный пол");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    WriteLine($"\nОшибка: {ex.Message}");
+                }
+            }
+        }
+
         static void Main(string[] args)
         {
             OutputEncoding = Encoding.Unicode;
@@ -19,18 +49,33 @@ namespace ViewLaba1
             //Person person = new Person();
             PersonList personList = new PersonList();
 
-            Person person1x = new Person("Сергей", "Пащенко", 23, GenderType.Мужской);
-            Person person2x = new Person("Дмитрий", "Питомец", 55, GenderType.Мужской);
-            Person person3x = new Person("Дарья", "Ивасенко", 60, GenderType.Женский);
+            personList.MyAdd(new Person("Сергей", "Пащенко", 23, GenderType.Мужской));
+            personList.MyAdd(new Person("Дмитрий", "Питомец", 55, GenderType.Мужской));
+            personList.MyAdd(new Person("Дарья", "Ивасенко", 60, GenderType.Женский));
+
+            //Person[] people1 = 
+            //{
+            //    new Person("Сергей", "Пащенко", 23, GenderType.Мужской),
+            //    new Person("Дмитрий", "Питомец", 55, GenderType.Мужской),
+            //    new Person("Дарья", "Ивасенко", 60, GenderType.Женский)
+            //};
+            //foreach (var person in people1)
+            //{
+            //    personList.MyAdd(person);
+            //}
+
+            var personTmp = personList.SearchByIndex(1);
+            Console.WriteLine(personTmp.Info());
+            /*
             Person person1y = new Person("Екатерина", "Бозырева", 28, GenderType.Женский);
             Person person2y = new Person("Галина", "Павловская", 77, GenderType.Женский);
             Person person3y = new Person("Вадим", "Азеев", 18, GenderType.Мужской);
-
-            Person[] people1 = new Person[3];
+            
             Person[] people2 = new Person[3];
             people1[0] = person1x;
             people1[1] = person2x;
             people1[2] = person3x;
+
             people2[0] = person1y;
             people2[1] = person2y;
             people2[2] = person3y;

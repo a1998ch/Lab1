@@ -150,20 +150,14 @@ namespace ModelLaba1
         }
 
 
-        public string SearchPeopleIndex(string[] personArray, int personIndex)
+        public Person SearchByIndex(int personIndex)
         {
-            string person = "";
-            int index = 0;
-            for (int i = 0; i < personArray.Length; ++i)
+            if (personIndex < 0 || personIndex > _personList.Length - 1)
             {
-                if (i == personIndex)
-                {
-                    index = i;
-                    person = personArray[i];
-                    break;
-                }
+                //TODO: реализовать обработку выхода за границы массива
             }
-            return person;
+
+            return _personList[personIndex];
         }
 
 

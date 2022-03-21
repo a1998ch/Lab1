@@ -151,6 +151,11 @@ namespace ModelLaba1
             Gender = gender;
         }
 
+        public string Info()
+        {
+            return $"Name: {Name}, Surname: {Surname}, Age: {Age}, Gender: {Gender}";
+        }
+
         public void Print(string[] array)
         {
             WriteLine(String.Join("\n", array));
