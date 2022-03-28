@@ -38,7 +38,6 @@ namespace ModelLaba1
             {
                 _surname = value;
                 _surname = ValidationNameAndSurname(_surname);
-                NameAndSurnameOnlyRusOrEng();
             }
             get
             {
@@ -117,6 +116,11 @@ namespace ModelLaba1
             else
             {
                 throw new Exception("Возможно неправильный ввод данных");
+            }
+
+            if (Surname != null)
+            {
+                NameAndSurnameOnlyRusOrEng();
             }
             return nameOrSurname;
         }
