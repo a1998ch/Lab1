@@ -37,8 +37,8 @@ namespace ModelLaba1
             set
             {
                 _surname = value;
-                NameAndSurnameOnlyRusOrEng();
                 _surname = ValidationNameAndSurname(_surname);
+                NameAndSurnameOnlyRusOrEng();
             }
             get
             {
@@ -93,11 +93,11 @@ namespace ModelLaba1
                 if (Convert.ToString(nameOrSurnameChar[0])[0].ToString() !=
                     Convert.ToString(nameOrSurnameChar[0])[0].ToString().ToUpper())
                 {
-                    string capitalName = Convert.ToString(nameOrSurnameChar[0]).Substring(1);
-                    nameOrSurname = Convert.ToString(nameOrSurnameChar[0])[0].ToString().ToUpper() + capitalName;
-                    SpellingNameAndSurname(nameOrSurname);
                     _capitalLetter = true;
                 }
+                string capitalName = Convert.ToString(nameOrSurnameChar[0]).Substring(1).ToLower();
+                nameOrSurname = Convert.ToString(nameOrSurnameChar[0])[0].ToString().ToUpper() + capitalName;
+                SpellingNameAndSurname(nameOrSurname);
             }
             else if (nameOrSurnameChar.Length == 2)
             {
@@ -106,13 +106,13 @@ namespace ModelLaba1
                     Convert.ToString(nameOrSurnameChar[1])[0].ToString() !=
                     Convert.ToString(nameOrSurnameChar[1])[0].ToString().ToUpper())
                 {
-                    string capitalName1 = Convert.ToString(nameOrSurnameChar[0]).Substring(1);
-                    string capitalName2 = Convert.ToString(nameOrSurnameChar[1]).Substring(1);
-                    nameOrSurname = Convert.ToString(nameOrSurnameChar[0])[0].ToString().ToUpper() + capitalName1 +
-                           "-" + Convert.ToString(nameOrSurnameChar[1])[0].ToString().ToUpper() + capitalName2;
-                    SpellingNameAndSurname(nameOrSurname);
                     _capitalLetter = true;
                 }
+                string capitalName1 = Convert.ToString(nameOrSurnameChar[0]).Substring(1).ToLower();
+                string capitalName2 = Convert.ToString(nameOrSurnameChar[1]).Substring(1).ToLower();
+                nameOrSurname = Convert.ToString(nameOrSurnameChar[0])[0].ToString().ToUpper() + capitalName1 +
+                       "-" + Convert.ToString(nameOrSurnameChar[1])[0].ToString().ToUpper() + capitalName2;
+                SpellingNameAndSurname(nameOrSurname);
             }
             else
             {
