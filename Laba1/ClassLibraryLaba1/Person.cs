@@ -120,7 +120,7 @@ namespace ModelLaba1
 
             if (Surname != null)
             {
-                NameAndSurnameOnlyRusOrEng();
+                NameAndSurnameOnlyRusOrEng(nameOrSurname);
             }
             return nameOrSurname;
         }
@@ -138,11 +138,11 @@ namespace ModelLaba1
             }
         }
 
-        public string NameAndSurnameOnlyRusOrEng()
+        public string NameAndSurnameOnlyRusOrEng(string surname)
         {
             Regex rusAlphabet = new Regex("^[а-я]");
-            if (!rusAlphabet.IsMatch(Name.ToLower()) & rusAlphabet.IsMatch(Surname.ToLower()) ||
-                rusAlphabet.IsMatch(Name.ToLower()) & !rusAlphabet.IsMatch(Surname.ToLower()))
+            if (!rusAlphabet.IsMatch(Name.ToLower()) & rusAlphabet.IsMatch(surname.ToLower()) ||
+                rusAlphabet.IsMatch(Name.ToLower()) & !rusAlphabet.IsMatch(surname.ToLower()))
             {
                 throw new Exception("Фамилия и имя должны быть написаны на одном языке");
             }
