@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ModelLaba1
 {
+    /// <summary>
+    /// Перечисление пола персоны
+    /// </summary>
     public enum GenderType
     {
         Мужской,

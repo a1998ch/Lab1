@@ -8,17 +8,35 @@ using System.Text.RegularExpressions;
 namespace ModelLaba1
 {
     //TODO: RSDN
+    /// <summary>
+    /// Класс Person 
+    /// </summary>
     public class Person
     {
-        private GenderType _gender;
+        /// <summary>
+        /// Имя
+        /// </summary>
         private string _name;
-        private string _surname;
-        private int _age;
-        private bool _capitalLetter = false;
 
-        public bool CapitalLetter => _capitalLetter;
+        /// <summary>
+        /// Фамилия
+        /// </summary>
+        private string _surname;
+
+        /// <summary>
+        /// Возраст 
+        /// </summary>
+        private int _age;
+
+        /// <summary>
+        /// Пол
+        /// </summary>
+        private GenderType _gender;
 
         //TODO: RSDN
+        /// <summary>
+        /// Метод для работы с именем 
+        /// </summary>
         public string Name
         {
             set
@@ -31,13 +49,15 @@ namespace ModelLaba1
             }
         }
 
+        /// <summary>
+        /// Метод для работы с фамилией 
+        /// </summary>
         public string Surname
         {
             set
             {
                 //TODO:
-                _surname = value;
-                _surname = ValidationNameAndSurname(_surname);
+                _surname = ValidationNameAndSurname(value);
             }
             get
             {
@@ -45,13 +65,15 @@ namespace ModelLaba1
             }
         }
 
+        /// <summary>
+        /// Метод для работы с возрастом 
+        /// </summary>
         public int Age
         {
             set
             {
                 //TODO:
-                _age = value;
-                AgeEntryRule();
+                _age = AgeEntryRule(value);
             }
             get
             {
@@ -59,12 +81,22 @@ namespace ModelLaba1
             }
         }
 
+        /// <summary>
+        /// Метод для работы с полом 
+        /// </summary>
         public GenderType Gender
         {
             set => _gender = value;
             get => _gender;
         }
 
+        /// <summary>
+        /// Констукрутор класса
+        /// </summary>
+        /// <param name="name">Имя персоны</param>
+        /// <param name="surname">Фамилия персоны</param>
+        /// <param name="age">Возраст персоны</param>
+        /// <param name="gender">Пол персоны</param>
         public Person(string name, string surname, int age, GenderType gender)
         {
             Name = name;
@@ -73,37 +105,33 @@ namespace ModelLaba1
             Gender = gender;
         }
 
+        /// <summary>
+        /// Конструктор по умолчанию
+        /// </summary>
         public Person(GenderType gender)
         {
             Gender = gender;
         }
 
         //TODO: Разобраться с модификаторами доступа с точки зрения инкапсуляции
-        public string ValidationNameAndSurname(string nameOrSurname)
+        /// <summary>
+        /// Проверка правильности ввода имени и фамилии персоны
+        /// </summary>
+        /// <param name="nameOrSurname">Имя или фамилия для проверки</param>
+        /// <returns>Корректное имя или фамилию</returns>
+        private string ValidationNameAndSurname(string nameOrSurname)
         {
             char[] doubleNameOrSurname = { ' ', '-', ',' };
             string[] nameOrSurnameChar = nameOrSurname.Split(doubleNameOrSurname, 
                 StringSplitOptions.RemoveEmptyEntries);
             if (nameOrSurnameChar.Length == 1)
             {
-                if (Convert.ToString(nameOrSurnameChar[0])[0].ToString() !=
-                    Convert.ToString(nameOrSurnameChar[0])[0].ToString().ToUpper())
-                {
-                    _capitalLetter = true;
-                }
                 string capitalName = Convert.ToString(nameOrSurnameChar[0]).Substring(1).ToLower();
                 nameOrSurname = Convert.ToString(nameOrSurnameChar[0])[0].ToString().ToUpper() + capitalName;
                 SpellingNameAndSurname(nameOrSurname);
             }
             else if (nameOrSurnameChar.Length == 2)
             {
-                if (Convert.ToString(nameOrSurnameChar[0])[0].ToString() !=
-                    Convert.ToString(nameOrSurnameChar[0])[0].ToString().ToUpper() ||
-                    Convert.ToString(nameOrSurnameChar[1])[0].ToString() !=
-                    Convert.ToString(nameOrSurnameChar[1])[0].ToString().ToUpper())
-                {
-                    _capitalLetter = true;
-                }
                 string capitalName1 = Convert.ToString(nameOrSurnameChar[0]).Substring(1).ToLower();
                 string capitalName2 = Convert.ToString(nameOrSurnameChar[1]).Substring(1).ToLower();
                 nameOrSurname = Convert.ToString(nameOrSurnameChar[0])[0].ToString().ToUpper() + capitalName1 +
@@ -113,32 +141,39 @@ namespace ModelLaba1
             else
             {
                 //TODO:
-                throw new Exception("Возможно неправильный ввод данных");
+                throw new Exception("Неправильный ввод данных");
             }
 
-            if (Surname != null)
+            if (Name != null)
             {
                 NameAndSurnameOnlyRusOrEng(nameOrSurname);
             }
+
             return nameOrSurname;
         }
 
-        public string SpellingNameAndSurname(string nameOrSurname)
+        /// <summary>
+        /// Проверка имени или фамилии персоны на соответствие одному языку
+        /// </summary>
+        /// <param name="nameOrSurname">Имя или фамилия для проверки</param>
+        private void SpellingNameAndSurname(string nameOrSurname)
         {
             //TODO: RSDN
-            Regex errorAlphabet = new Regex("([a-z])([а-я])|([а-я])([a-z])|([a-z])-([а-я])|([а-я])-([a-z])");     
+            Regex errorAlphabet = new Regex(
+                "([a-z])([а-я])|([а-я])([a-z])|([a-z])-([а-я])|([а-я])-([a-z])");     
             if (errorAlphabet.IsMatch(nameOrSurname.ToLower()))
             {
                 //TODO: RSDN
-                throw new Exception("Имя и Фамилия должны содержать только русские или только английские символы");
-            }
-            else
-            {
-                return nameOrSurname;
+                throw new Exception("Имя и Фамилия должны содержать " +
+                    "только русские или только английские символы");
             }
         }
 
-        public string NameAndSurnameOnlyRusOrEng(string surname)
+        /// <summary>
+        /// Проверка фамилии персоны на соответствие языку, введеного имени
+        /// </summary>
+        /// <param name="surname">Фамилия для проверки</param>
+        private void NameAndSurnameOnlyRusOrEng(string surname)
         {
             Regex rusAlphabet = new Regex("^[а-я]");
             if (!rusAlphabet.IsMatch(Name.ToLower()) & rusAlphabet.IsMatch(surname.ToLower()) ||
@@ -146,37 +181,37 @@ namespace ModelLaba1
             {
                 throw new Exception("Фамилия и имя должны быть написаны на одном языке");
             }
-            else
-            {
-                return Surname;
-            }
         }
 
-        public void NameAndSurnameCapitalLetterMessage()
+        /// <summary>
+        /// Проверка правильности ввода возраста персоны
+        /// </summary>
+        /// <param name="age">Возраст для проверки</param>
+        /// <returns>Корректный возраст</returns>
+        private int AgeEntryRule(int age)
         {
-            if (_capitalLetter)
-            {
-                throw new Exception("Имя и Фамилию необходимо писать с большой буквы");
-            }
-        }
-
-        public int AgeEntryRule()
-        {
-            if (Age > 120 || Age < 0)
+            if (age > 120 || age < 0)
             {
                 throw new Exception("Необходимо вводить числа от \"0\" до \"120\"");
             }
             else
             {
-                return Age;
+                return age;
             }
         }
 
+        /// <summary>
+        /// Вывод информации о персоне
+        /// </summary>
         public string Info()
         {
             return $"Имя: {Name}, Фамилия: {Surname}, Возраст: {Age}, Пол: {Gender}";
         }
-        
+
+        /// <summary>
+        /// Генерирует случайную персону
+        /// </summary>
+        /// <returns>Случайная персона</returns>
         public static Person GetRandomPerson()
         {
             Random person = new Random(DateTime.Now.Millisecond);
@@ -185,10 +220,12 @@ namespace ModelLaba1
                                                 "Ярослав", "Илья", "Пётр", "Олег", "Сергей" };
             string[] woomenName = new string[10] { "Ольга", "Светлана", "Марина", "Олеся", "Анна", 
                                                    "Галина", "Алиса", "Вероника", "Вера", "Лариса" };
-            string[] menSurname = new string[10] { "Иванов", "Петров", "Сидоров", "Какауров", "Ермолаев", 
-                                                   "Еремеев", "Раздобреев", "Пляскин", "Загибалов", "Сергеев" };
-            string[] woomenSurname = new string[10] { "Бардакова", "Филатова", "Попова", "Золотухина", "Сорокина", 
-                                                     "Вычугжанина", "Стремилова", "Лопаницына", "Жеребцова", "Лосякова" };
+            string[] menSurname = new string[10] { "Иванов", "Петров", "Сидоров", "Какауров", 
+                                                    "Ермолаев", "Еремеев", "Раздобреев", "Пляскин", 
+                                                                            "Загибалов", "Сергеев" };
+            string[] woomenSurname = new string[10] { "Бардакова", "Филатова", "Попова", "Золотухина", 
+                                                      "Сорокина", "Вычугжанина", "Стремилова", 
+                                                             "Лопаницына", "Жеребцова", "Лосякова" };
             string[] gender = new string[2] { "Мужской", "Женский" };
  
             string MenName = menName[person.Next(menName.Length)];

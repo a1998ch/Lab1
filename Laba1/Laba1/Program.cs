@@ -41,7 +41,8 @@ namespace ViewLaba1
             WriteLine(personList1.PrintPersonList());
 
 
-            WriteLine("\nЧтобы скопировать второго человека из первого списка в конец второго списка нажмите любую кнопку");
+            WriteLine("\nЧтобы скопировать второго человека из первого списка в конец второго " +
+                                                                   "списка нажмите любую кнопку");
             ReadLine();
             var personTmp = personList1.SearchByIndex(1);
             personList2.Add(personTmp);
@@ -75,20 +76,11 @@ namespace ViewLaba1
                          "\n\"Количество элементов в списке\" = 7, \n\"Выбрать другой список\" = 8, " +
                          "\n\"Выход\" чтобы выйти\n");
                 //TODO:
-                string command = "";
-                string command1 = "1";
-                string command2 = "2";
-                string command3 = "3";
-                string command4 = "4";
-                string command5 = "5";
-                string command6 = "6";
-                string command7 = "7";
-                string command8 = "8";
-                string exit = "Выход".ToLower();
-                command = ReadLine();
-                if (command == command1)
+                string command = ReadLine();
+                if (command == "1")
                 {
-                    WriteLine("\nДля добавления случайного человека нажмите \"1\" или \"2\" чтобы добавить человека вручную: ");
+                    WriteLine("\nДля добавления случайного человека нажмите \"1\" или \"2\" " +
+                                                            "чтобы добавить человека вручную: ");
                     string choice = ReadLine();
                     if (choice == "1")
                     {
@@ -106,7 +98,7 @@ namespace ViewLaba1
                     }
                 }
 
-                else if (command == command2)
+                else if (command == "2")
                 {
                     try
                     {
@@ -119,7 +111,7 @@ namespace ViewLaba1
                     WriteLine("\n{0}", personList.PrintPersonList());
                 }
 
-                else if (command == command3)
+                else if (command == "3")
                 {
                     try
                     {
@@ -133,7 +125,7 @@ namespace ViewLaba1
                     WriteLine("\n{0}", personList.PrintPersonList());
                 }
 
-                else if (command == command4)
+                else if (command == "4")
                 {
                     try
                     {
@@ -146,12 +138,13 @@ namespace ViewLaba1
                     }
                 }
 
-                else if (command == command5)
+                else if (command == "5")
                 {
                     try
                     {
                         //TODO: RSDN
-                        WriteLine("\nИндекс введённого человека: {0}", personList.SearchIndexByPeople(Read()));
+                        WriteLine("\nИндекс введённого человека: {0}", 
+                                            personList.SearchIndexByPeople(Read()));
                     }
                     catch (Exception ex)
                     {
@@ -159,23 +152,23 @@ namespace ViewLaba1
                     }
                 }
 
-                else if (command == command6)
+                else if (command == "6")
                 {
                     personList.CleanList();
                     WriteLine("\nСписок отчищен");
                 }
 
-                else if (command == command7)
+                else if (command == "7")
                 {
                     WriteLine("\nДлина списка: {0}", personList.LengthList());
                 }
 
-                else if (command == command8)
+                else if (command == "8")
                 {
                     personList = ListChoice(personList1, personList2);
                 }
 
-                else if (command.ToLower() == exit)
+                else if (command.ToLower() == "выход")
                 {
                     WriteLine("\nПока");
                     break;
@@ -184,7 +177,12 @@ namespace ViewLaba1
             ReadLine();
         }
 
-        public static PersonList ListChoice(PersonList people1, PersonList people2)
+        /// <summary>
+        /// Выбор списка персон
+        /// </summary>
+        /// <param name="people1">Экземпляр класса PersonList</param>
+        /// <param name="people2">Экземпляр класса PersonList</param>
+        private static PersonList ListChoice(PersonList people1, PersonList people2)
         {
             while (true)
             {
@@ -204,21 +202,26 @@ namespace ViewLaba1
         }
 
         //TODO: static
-        public static GenderType ReadGenderFromConsole()
+        /// <summary>
+        /// Выбор пола персоны
+        /// </summary>
+        /// <returns>Пол персоны</returns>
+        private static GenderType ReadGenderFromConsole()
         {
             string gender;
             while (true)
             {
-                WriteLine($"\nВведите пол: {GenderType.Мужской} = \"М\" или {GenderType.Женский} = \"Ж\" ");
+                WriteLine($"\nВведите пол: {GenderType.Мужской} = \"М\"" +
+                                    $" или {GenderType.Женский} = \"Ж\" ");
                 gender = ReadLine();
                 try
                 {
                     //TODO:
-                    if (gender.ToLower() == "М".ToLower())
+                    if (gender.ToLower() == "м")
                     {
                         return GenderType.Мужской;
                     }
-                    else if (gender.ToLower() == "Ж".ToLower())
+                    else if (gender.ToLower() == "ж")
                     {
                         return GenderType.Женский;
                     }
@@ -234,16 +237,21 @@ namespace ViewLaba1
             }
         }
 
-        public static Person Read()
+        /// <summary>
+        /// Ввод информации о персоне в консоль
+        /// </summary>
+        /// <returns>Полная информация о персоне</returns>
+        private static Person Read()
         {
             var partPerson = new Person(GenderType.Мужской);
-
             Write("\nВведите имя: ");
+            string testName;
             while (true)
             {
+                testName = ReadLine();
                 try
                 {
-                    partPerson.Name = ReadLine();
+                    partPerson.Name = testName;
                     break;
                 }
                 catch (Exception ex)
@@ -253,12 +261,21 @@ namespace ViewLaba1
                 Write("\nВведите имя повторно: ");
             }
 
+            if (testName[0].ToString() != testName[0].ToString().ToUpper())
+            {
+                ForegroundColor = ConsoleColor.Green;
+                WriteLine("\nПредупреждение: \"Имя необходимо писать с большой буквы\"");
+                ResetColor();
+            }
+
             Write("\nВведите фамилию: ");
+            string testSurname;
             while (true)
             {
+                testSurname = ReadLine();
                 try
                 {
-                    partPerson.Surname = ReadLine();
+                    partPerson.Surname = testSurname;
                     break;
                 }
                 catch (Exception ex)
@@ -268,10 +285,10 @@ namespace ViewLaba1
                 Write("\nВведите фамилию повторно: ");
             }
 
-            if (partPerson.CapitalLetter)
+            if (testSurname[0].ToString() != testSurname[0].ToString().ToUpper())
             {
                 ForegroundColor = ConsoleColor.Green;
-                Write($"\nПредупреждение: \"Имя и Фамилию необходимо писать с большой буквы\"\n");
+                WriteLine("\nПредупреждение: \"Фамилию необходимо писать с большой буквы\"");
                 ResetColor();
             }
 
@@ -293,7 +310,11 @@ namespace ViewLaba1
             return new Person(partPerson.Name, partPerson.Surname, partPerson.Age, Gender);
         }
 
-        public static void ExceptionMessage(Exception ex)
+        /// <summary>
+        /// Выводит в консоль текст при срабатывании исключения
+        /// </summary>
+        /// <param name="ex">представляет из себя сообщение об ошибке</param>
+        private static void ExceptionMessage(Exception ex)
         {
             ForegroundColor = ConsoleColor.Red;
             Write($"\nОшибка: { ex.Message}\n");
