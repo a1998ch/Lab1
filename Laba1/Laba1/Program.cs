@@ -15,7 +15,6 @@ namespace ViewLaba1
             OutputEncoding = Encoding.Unicode;
             InputEncoding = Encoding.Unicode;
 
-            PersonList personList = new PersonList();
             PersonList personList1 = new PersonList();
             PersonList personList2 = new PersonList();
 
@@ -66,8 +65,7 @@ namespace ViewLaba1
             personList2.CleanList();
             WriteLine("Список отчищен");
 
-            
-            personList = ListChoice(personList1, personList2);
+            PersonList personList = ListChoice(personList1, personList2);
 
             while (true)
             {
@@ -76,6 +74,7 @@ namespace ViewLaba1
                          "\n\"Поиск индекса по человеку\" = 5, \n\"Очистить список\" = 6," +
                          "\n\"Количество элементов в списке\" = 7, \n\"Выбрать другой список\" = 8, " +
                          "\n\"Выход\" чтобы выйти\n");
+                //TODO:
                 string command = "";
                 string command1 = "1";
                 string command2 = "2";
@@ -151,6 +150,7 @@ namespace ViewLaba1
                 {
                     try
                     {
+                        //TODO: RSDN
                         WriteLine("\nИндекс введённого человека: {0}", personList.SearchIndexByPeople(Read()));
                     }
                     catch (Exception ex)
@@ -213,6 +213,7 @@ namespace ViewLaba1
                 gender = ReadLine();
                 try
                 {
+                    //TODO:
                     if (gender.ToLower() == "М".ToLower())
                     {
                         return GenderType.Мужской;
@@ -267,14 +268,10 @@ namespace ViewLaba1
                 Write("\nВведите фамилию повторно: ");
             }
 
-            try
-            {
-                partPerson.NameAndSurnameCapitalLetterMessage();
-            }
-            catch (Exception ex)
+            if (partPerson.CapitalLetter)
             {
                 ForegroundColor = ConsoleColor.Green;
-                Write($"\nПредупреждение: { ex.Message}\n");
+                Write($"\nПредупреждение: \"Имя и Фамилию необходимо писать с большой буквы\"\n");
                 ResetColor();
             }
 

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-//TODO:
 using System.Text.RegularExpressions;
 
 namespace ModelLaba1
@@ -17,14 +16,14 @@ namespace ModelLaba1
         private int _age;
         private bool _capitalLetter = false;
 
+        public bool CapitalLetter => _capitalLetter;
+
         //TODO: RSDN
         public string Name
         {
             set
             {
-                //TODO: duplication
-                _name = value;
-                _name = ValidationNameAndSurname(_name);
+                _name = ValidationNameAndSurname(value);
             }
             get
             {
@@ -36,6 +35,7 @@ namespace ModelLaba1
         {
             set
             {
+                //TODO:
                 _surname = value;
                 _surname = ValidationNameAndSurname(_surname);
             }
@@ -49,6 +49,7 @@ namespace ModelLaba1
         {
             set
             {
+                //TODO:
                 _age = value;
                 AgeEntryRule();
             }
@@ -60,14 +61,8 @@ namespace ModelLaba1
 
         public GenderType Gender
         {
-            set
-            {
-                _gender = value;
-            }
-            get
-            {
-                return _gender;
-            }
+            set => _gender = value;
+            get => _gender;
         }
 
         public Person(string name, string surname, int age, GenderType gender)
@@ -83,10 +78,12 @@ namespace ModelLaba1
             Gender = gender;
         }
 
+        //TODO: Разобраться с модификаторами доступа с точки зрения инкапсуляции
         public string ValidationNameAndSurname(string nameOrSurname)
         {
             char[] doubleNameOrSurname = { ' ', '-', ',' };
-            string[] nameOrSurnameChar = nameOrSurname.Split(doubleNameOrSurname, StringSplitOptions.RemoveEmptyEntries);
+            string[] nameOrSurnameChar = nameOrSurname.Split(doubleNameOrSurname, 
+                StringSplitOptions.RemoveEmptyEntries);
             if (nameOrSurnameChar.Length == 1)
             {
                 if (Convert.ToString(nameOrSurnameChar[0])[0].ToString() !=
@@ -115,6 +112,7 @@ namespace ModelLaba1
             }
             else
             {
+                //TODO:
                 throw new Exception("Возможно неправильный ввод данных");
             }
 
@@ -127,9 +125,11 @@ namespace ModelLaba1
 
         public string SpellingNameAndSurname(string nameOrSurname)
         {
+            //TODO: RSDN
             Regex errorAlphabet = new Regex("([a-z])([а-я])|([а-я])([a-z])|([a-z])-([а-я])|([а-я])-([a-z])");     
             if (errorAlphabet.IsMatch(nameOrSurname.ToLower()))
             {
+                //TODO: RSDN
                 throw new Exception("Имя и Фамилия должны содержать только русские или только английские символы");
             }
             else
@@ -154,7 +154,7 @@ namespace ModelLaba1
 
         public void NameAndSurnameCapitalLetterMessage()
         {
-            if (_capitalLetter == true)
+            if (_capitalLetter)
             {
                 throw new Exception("Имя и Фамилию необходимо писать с большой буквы");
             }
