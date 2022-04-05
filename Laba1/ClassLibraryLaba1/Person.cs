@@ -121,14 +121,32 @@ namespace ModelLaba1
         /// <returns>Корректное имя или фамилию</returns>
         private string ValidationNameAndSurname(string nameOrSurname)
         {
+            string nameOrSurnameCorrect = CorrectCaseNameAndSurname(nameOrSurname);
+            SpellingNameAndSurname(nameOrSurnameCorrect);
+
+            if (Name != null)
+            {
+                NameAndSurnameOnlyRusOrEng(nameOrSurnameCorrect);
+            }
+
+            return nameOrSurnameCorrect;
+        }
+
+        /// <summary>
+        /// Преобразование имени или фамилии персоны в правильные регистры
+        /// </summary>
+        /// <param name="nameOrSurname">Имя или фамилия персоны</param>
+        /// <returns>Корректное имя или фамилию с точки зрения правильности регистра</returns>
+        private string CorrectCaseNameAndSurname(string nameOrSurname)
+        {
             char[] doubleNameOrSurname = { ' ', '-', ',' };
-            string[] nameOrSurnameChar = nameOrSurname.Split(doubleNameOrSurname, 
+            string[] nameOrSurnameChar = nameOrSurname.Split(doubleNameOrSurname,
                 StringSplitOptions.RemoveEmptyEntries);
             if (nameOrSurnameChar.Length == 1)
             {
                 string capitalName = Convert.ToString(nameOrSurnameChar[0]).Substring(1).ToLower();
                 nameOrSurname = Convert.ToString(nameOrSurnameChar[0])[0].ToString().ToUpper() + capitalName;
-                SpellingNameAndSurname(nameOrSurname);
+                return nameOrSurname;
             }
             else if (nameOrSurnameChar.Length == 2)
             {
@@ -136,20 +154,13 @@ namespace ModelLaba1
                 string capitalName2 = Convert.ToString(nameOrSurnameChar[1]).Substring(1).ToLower();
                 nameOrSurname = Convert.ToString(nameOrSurnameChar[0])[0].ToString().ToUpper() + capitalName1 +
                        "-" + Convert.ToString(nameOrSurnameChar[1])[0].ToString().ToUpper() + capitalName2;
-                SpellingNameAndSurname(nameOrSurname);
+                return nameOrSurname;
             }
             else
             {
                 //TODO:
                 throw new Exception("Неправильный ввод данных");
             }
-
-            if (Name != null)
-            {
-                NameAndSurnameOnlyRusOrEng(nameOrSurname);
-            }
-
-            return nameOrSurname;
         }
 
         /// <summary>
