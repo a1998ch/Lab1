@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using ModelLaba1;
 using static System.Console;
 
 namespace ViewLaba1
 {
+    //TODO: RSDN
     class Program
     {
         static void Main(string[] args)
@@ -16,12 +14,11 @@ namespace ViewLaba1
             InputEncoding = Encoding.Unicode;
 
             PersonList personList1 = new PersonList();
-            PersonList personList2 = new PersonList();
-
             personList1.Add(new Person("Сергей", "Пащенко", 23, GenderType.Мужской));
             personList1.Add(new Person("Дмитрий", "Питомец", 55, GenderType.Мужской));
             personList1.Add(new Person("Дарья", "Ивасенко", 60, GenderType.Женский));
 
+            PersonList personList2 = new PersonList();
             personList2.Add(new Person("Екатерина", "Бозырева", 28, GenderType.Женский));
             personList2.Add(new Person("Галина", "Павловская", 77, GenderType.Женский));
             personList2.Add(new Person("Вадим", "Азеев", 18, GenderType.Мужской));
@@ -70,34 +67,39 @@ namespace ViewLaba1
 
             while (true)
             {
-                WriteLine("\nВведите команду: \n\"Добавить человека\" = 1, \n\"Удалить человека\" = 2, " +
-                         "\n\"Удалить человека по индексу\" = 3, \n\"Поиск человека по индексу\" = 4, " +
+                WriteLine("\nВведите команду: \n" +
+                          "\"Добавить человека\" = 1, \n" +
+                          "\"Удалить человека\" = 2, \n" +
+                          "\"Удалить человека по индексу\" = 3, \n" +
+                          "\"Поиск человека по индексу\" = 4, " +
                          "\n\"Поиск индекса по человеку\" = 5, \n\"Очистить список\" = 6," +
                          "\n\"Количество элементов в списке\" = 7, \n\"Выбрать другой список\" = 8, " +
                          "\n\"Выход\" чтобы выйти\n");
                 //TODO:
                 string command = ReadLine();
+
+                //TODO: switch-case
                 if (command == "1")
                 {
                     WriteLine("\nДля добавления случайного человека нажмите \"1\" или \"2\" " +
                                                             "чтобы добавить человека вручную: ");
+                    
                     string choice = ReadLine();
-                    if (choice == "1")
+                    switch (choice)
                     {
-                        personList.Add(Person.GetRandomPerson());
-                        WriteLine("\n{0}", personList.PrintPersonList());
-                    }
-                    else if (choice == "2")
-                    {
-                        personList.Add(Read());
-                        WriteLine("\n{0}", personList.PrintPersonList());
-                    }
-                    else
-                    {
-                        WriteLine("Нужно выбрать \"1\" или \"2\"");
+                        case "1":
+                            personList.Add(Person.GetRandomPerson());
+                            WriteLine("\n{0}", personList.PrintPersonList());
+                            break;
+                        case "2":
+                            personList.Add(Read());
+                            WriteLine("\n{0}", personList.PrintPersonList());
+                            break;
+                        default:
+                            WriteLine("Нужно выбрать \"1\" или \"2\"");
+                            break;
                     }
                 }
-
                 else if (command == "2")
                 {
                     try
@@ -110,7 +112,6 @@ namespace ViewLaba1
                     }
                     WriteLine("\n{0}", personList.PrintPersonList());
                 }
-
                 else if (command == "3")
                 {
                     try
@@ -124,7 +125,6 @@ namespace ViewLaba1
                     }
                     WriteLine("\n{0}", personList.PrintPersonList());
                 }
-
                 else if (command == "4")
                 {
                     try
@@ -137,7 +137,6 @@ namespace ViewLaba1
                         ExceptionMessage(ex);
                     }
                 }
-
                 else if (command == "5")
                 {
                     try
@@ -151,24 +150,20 @@ namespace ViewLaba1
                         ExceptionMessage(ex);
                     }
                 }
-
                 else if (command == "6")
                 {
                     personList.CleanList();
                     WriteLine("\nСписок отчищен");
                 }
-
                 else if (command == "7")
                 {
                     WriteLine("\nДлина списка: {0}", personList.LengthList());
                 }
-
                 else if (command == "8")
                 {
                     personList = ListChoice(personList1, personList2);
                 }
-
-                else if (command.ToLower() == "выход")
+                else if (command == "выход")
                 {
                     WriteLine("\nПока");
                     break;
@@ -208,26 +203,21 @@ namespace ViewLaba1
         /// <returns>Пол персоны</returns>
         private static GenderType ReadGenderFromConsole()
         {
-            string gender;
             while (true)
             {
                 WriteLine($"\nВведите пол: {GenderType.Мужской} = \"М\"" +
                                     $" или {GenderType.Женский} = \"Ж\" ");
-                gender = ReadLine();
+                string gender = ReadLine();
                 try
                 {
-                    //TODO:
-                    if (gender.ToLower() == "м")
+                    switch (gender.ToLower())
                     {
-                        return GenderType.Мужской;
-                    }
-                    else if (gender.ToLower() == "ж")
-                    {
-                        return GenderType.Женский;
-                    }
-                    else
-                    {
-                        throw new Exception("Неправильный пол");
+                        case "м":
+                            return GenderType.Мужской;
+                        case "ж":
+                            return GenderType.Женский;
+                        default:
+                            throw new Exception("Неправильный пол");
                     }
                 }
                 catch (Exception ex)
@@ -244,29 +234,31 @@ namespace ViewLaba1
         private static Person Read()
         {
             var partPerson = new Person(GenderType.Мужской);
-            Write("\nВведите имя: ");
-            string testName;
+            
             while (true)
             {
-                testName = ReadLine();
+                Write("\nВведите имя: ");
+                string testName = ReadLine();
                 try
                 {
                     partPerson.Name = testName;
+                    //TODO: duplication
+                    if (testName[0].ToString() != testName[0].ToString().ToUpper())
+                    {
+
+                        ForegroundColor = ConsoleColor.Green;
+                        WriteLine("\nПредупреждение: \"Имя необходимо писать с большой буквы\"");
+                        ResetColor();
+                    }
                     break;
                 }
                 catch (Exception ex)
                 {
                     ExceptionMessage(ex);
                 }
-                Write("\nВведите имя повторно: ");
             }
 
-            if (testName[0].ToString() != testName[0].ToString().ToUpper())
-            {
-                ForegroundColor = ConsoleColor.Green;
-                WriteLine("\nПредупреждение: \"Имя необходимо писать с большой буквы\"");
-                ResetColor();
-            }
+            
 
             Write("\nВведите фамилию: ");
             string testSurname;
@@ -285,6 +277,7 @@ namespace ViewLaba1
                 Write("\nВведите фамилию повторно: ");
             }
 
+            //TODO: duplication
             if (testSurname[0].ToString() != testSurname[0].ToString().ToUpper())
             {
                 ForegroundColor = ConsoleColor.Green;
@@ -306,7 +299,9 @@ namespace ViewLaba1
                 }
                 Write("\nВведите возраст повторно: ");
             }
+            //TODO: RSDN
             GenderType Gender = ReadGenderFromConsole();
+            //TODO:
             return new Person(partPerson.Name, partPerson.Surname, partPerson.Age, Gender);
         }
 

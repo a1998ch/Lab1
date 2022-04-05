@@ -7,7 +7,6 @@ using System.Text.RegularExpressions;
 
 namespace ModelLaba1
 {
-    //TODO: RSDN
     /// <summary>
     /// Класс Person 
     /// </summary>
@@ -32,8 +31,7 @@ namespace ModelLaba1
         /// Пол
         /// </summary>
         private GenderType _gender;
-
-        //TODO: RSDN
+        
         /// <summary>
         /// Метод для работы с именем 
         /// </summary>
@@ -56,7 +54,6 @@ namespace ModelLaba1
         {
             set
             {
-                //TODO:
                 _surname = ValidationNameAndSurname(value);
             }
             get
@@ -72,7 +69,6 @@ namespace ModelLaba1
         {
             set
             {
-                //TODO:
                 _age = AgeEntryRule(value);
             }
             get
@@ -113,7 +109,6 @@ namespace ModelLaba1
             Gender = gender;
         }
 
-        //TODO: Разобраться с модификаторами доступа с точки зрения инкапсуляции
         /// <summary>
         /// Проверка правильности ввода имени и фамилии персоны
         /// </summary>
@@ -158,7 +153,6 @@ namespace ModelLaba1
             }
             else
             {
-                //TODO:
                 throw new Exception("Неправильный ввод данных");
             }
         }
@@ -169,12 +163,10 @@ namespace ModelLaba1
         /// <param name="nameOrSurname">Имя или фамилия для проверки</param>
         private void SpellingNameAndSurname(string nameOrSurname)
         {
-            //TODO: RSDN
             Regex errorAlphabet = new Regex(
                 "([a-z])([а-я])|([а-я])([a-z])|([a-z])-([а-я])|([а-я])-([a-z])");     
             if (errorAlphabet.IsMatch(nameOrSurname.ToLower()))
             {
-                //TODO: RSDN
                 throw new Exception("Имя и Фамилия должны содержать " +
                     "только русские или только английские символы");
             }
@@ -187,6 +179,8 @@ namespace ModelLaba1
         private void NameAndSurnameOnlyRusOrEng(string surname)
         {
             Regex rusAlphabet = new Regex("^[а-я]");
+            
+            //TODO:
             if (!rusAlphabet.IsMatch(Name.ToLower()) & rusAlphabet.IsMatch(surname.ToLower()) ||
                 rusAlphabet.IsMatch(Name.ToLower()) & !rusAlphabet.IsMatch(surname.ToLower()))
             {
@@ -201,6 +195,7 @@ namespace ModelLaba1
         /// <returns>Корректный возраст</returns>
         private int AgeEntryRule(int age)
         {
+            //TODO: const
             if (age > 120 || age < 0)
             {
                 throw new Exception("Необходимо вводить числа от \"0\" до \"120\"");
@@ -239,6 +234,7 @@ namespace ModelLaba1
                                                              "Лопаницына", "Жеребцова", "Лосякова" };
             string[] gender = new string[2] { "Мужской", "Женский" };
  
+            //TODO: RSDN
             string MenName = menName[person.Next(menName.Length)];
             string MenSurame = menSurname[person.Next(menSurname.Length)];
             string WoomenName = woomenName[person.Next(woomenName.Length)];
@@ -246,14 +242,9 @@ namespace ModelLaba1
             int Age = person.Next(0, 120);
             string Gender = gender[person.Next(gender.Length)];
 
-            if (Gender == Convert.ToString(GenderType.Мужской))
-            {
-                return new Person(MenName, MenSurame, Age, GenderType.Мужской);
-            }
-            else
-            {
-                return new Person(WoomenName, WoomenSurame, Age, GenderType.Женский);
-            }
+            return Gender == Convert.ToString(GenderType.Мужской) 
+                ? new Person(MenName, MenSurame, Age, GenderType.Мужской) 
+                : new Person(WoomenName, WoomenSurame, Age, GenderType.Женский);
         }
     }
 }

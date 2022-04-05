@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-//TODO:
 
 namespace ModelLaba1
 {
@@ -59,6 +54,7 @@ namespace ModelLaba1
                 }
             }
 
+            //TODO: duplication
             if (count > 0)
             {
                 for (int i = 0, j = 0; i < _personList.Length - 1; ++i, ++j)
@@ -94,6 +90,7 @@ namespace ModelLaba1
                 }
             }
 
+            //TODO: duplication
             if (count > 0)
             {
                 for (int i = 0, j = 0; i < _personList.Length - 1; ++i, ++j)
@@ -160,6 +157,7 @@ namespace ModelLaba1
             Array.Resize(ref _personList, 0);
         }
 
+        //TODO: property
         /// <summary>
         /// Количество персон в списке
         /// </summary>
