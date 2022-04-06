@@ -41,61 +41,51 @@ namespace ModelLaba1
         /// Удаление персоны из списка по его данным
         /// </summary>
         /// <param name="person">Экземпляр класса Person</param>
-        public void DelitePerson(Person person)
+        public void DelitePersonByData(Person person)
         {
-            int remove = 0, count = 0;
+            int remove = -1;
             for (int i = 0; i < _personList.Length; ++i)
             {
                 if (_personList[i].Info() == person.Info())
                 {
                     remove = i;
-                    count++;
                     break;
                 }
             }
-
             //TODO: duplication
-            if (count > 0)
-            {
-                for (int i = 0, j = 0; i < _personList.Length - 1; ++i, ++j)
-                {
-                    if (j == remove)
-                    {
-                        ++j;
-                    }
-                    _personList[i] = _personList[j];
-                }
-                Array.Resize(ref _personList, _personList.Length - 1);
-            }
-            else
-            {
-                throw new Exception("Нет такого человека");
-            }
+            DelitePerson(remove);
         }
 
         /// <summary>
         /// Удаление персоны из списка по его индексу
         /// </summary>
         /// <param name="personIndex">Индекс персоны</param>
-        public void DeliteByIndex(int personIndex)
+        public void DelitePersonByIndex(int personIndex)
         {
-            int indexRemove = 0, count = 0;
+            int indexRemove = -1;
             for (int i = 0; i < _personList.Length; ++i)
             {
                 if (i == personIndex)
                 {
                     indexRemove = i;
-                    count++;
                     break;
                 }
             }
-
             //TODO: duplication
-            if (count > 0)
+            DelitePerson(indexRemove);
+        }
+
+        /// <summary>
+        /// Удаление персоны из списка
+        /// </summary>
+        /// <param name="personRemove">Индекс или данные персоны</param>
+        private void DelitePerson(int personRemove)
+        {
+            if (personRemove >= 0)
             {
                 for (int i = 0, j = 0; i < _personList.Length - 1; ++i, ++j)
                 {
-                    if (j == indexRemove)
+                    if (j == personRemove)
                     {
                         ++j;
                     }
@@ -105,7 +95,7 @@ namespace ModelLaba1
             }
             else
             {
-                throw new Exception("Нет такого индекса");
+                throw new Exception("Удаляемый элемент отсутствует в текущем списке персон");
             }
         }
 
@@ -131,7 +121,7 @@ namespace ModelLaba1
         /// </summary>
         /// <param name="person">Экземпляр класса Person</param>
         /// <returns>Индекс персоны</returns>
-        public int SearchIndexByPeople(Person person)
+        public int SearchIndexByPerson(Person person)
         {
             int index = 0;
             for (int i = 0; i < _personList.Length; ++i)
@@ -161,9 +151,12 @@ namespace ModelLaba1
         /// <summary>
         /// Количество персон в списке
         /// </summary>
-        public int LengthList()
+        public int Length
         {
-            return _personList.Length;
+            get
+            {
+                return _personList.Length;
+            }
         }
     }
 }

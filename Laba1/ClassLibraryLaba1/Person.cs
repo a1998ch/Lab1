@@ -28,6 +28,11 @@ namespace ModelLaba1
         private int _age;
 
         /// <summary>
+        /// Максимальный возраст
+        /// </summary>
+        public const int MaxAge = 120;
+
+        /// <summary>
         /// Пол
         /// </summary>
         private GenderType _gender;
@@ -181,8 +186,8 @@ namespace ModelLaba1
             Regex rusAlphabet = new Regex("^[а-я]");
             
             //TODO:
-            if (!rusAlphabet.IsMatch(Name.ToLower()) & rusAlphabet.IsMatch(surname.ToLower()) ||
-                rusAlphabet.IsMatch(Name.ToLower()) & !rusAlphabet.IsMatch(surname.ToLower()))
+            if (!rusAlphabet.IsMatch(Name.ToLower()) && rusAlphabet.IsMatch(surname.ToLower()) ||
+                rusAlphabet.IsMatch(Name.ToLower()) && !rusAlphabet.IsMatch(surname.ToLower()))
             {
                 throw new Exception("Фамилия и имя должны быть написаны на одном языке");
             }
@@ -196,9 +201,9 @@ namespace ModelLaba1
         private int AgeEntryRule(int age)
         {
             //TODO: const
-            if (age > 120 || age < 0)
+            if (age > MaxAge || age < 0)
             {
-                throw new Exception("Необходимо вводить числа от \"0\" до \"120\"");
+                throw new Exception($"Необходимо вводить числа от \"0\" до \"{MaxAge}\"");
             }
             else
             {
@@ -222,29 +227,29 @@ namespace ModelLaba1
         {
             Random person = new Random(DateTime.Now.Millisecond);
 
-            string[] menName = new string[10] { "Павел", "Антон", "Алексей", "Максим", "Александр", 
-                                                "Ярослав", "Илья", "Пётр", "Олег", "Сергей" };
-            string[] woomenName = new string[10] { "Ольга", "Светлана", "Марина", "Олеся", "Анна", 
-                                                   "Галина", "Алиса", "Вероника", "Вера", "Лариса" };
-            string[] menSurname = new string[10] { "Иванов", "Петров", "Сидоров", "Какауров", 
-                                                    "Ермолаев", "Еремеев", "Раздобреев", "Пляскин", 
+            string[] menNameArray = new string[10] { "Павел", "Антон", "Алексей", "Максим", "Александр", 
+                                                     "Ярослав", "Илья", "Пётр", "Олег", "Сергей" };
+            string[] woomenNameArray = new string[10] { "Ольга", "Светлана", "Марина", "Олеся", "Анна", 
+                                                        "Галина", "Алиса", "Вероника", "Вера", "Лариса" };
+            string[] menSurnameArray = new string[10] { "Иванов", "Петров", "Сидоров", "Какауров", 
+                                                        "Ермолаев", "Еремеев", "Раздобреев", "Пляскин", 
                                                                             "Загибалов", "Сергеев" };
-            string[] woomenSurname = new string[10] { "Бардакова", "Филатова", "Попова", "Золотухина", 
-                                                      "Сорокина", "Вычугжанина", "Стремилова", 
+            string[] woomenSurnameArray = new string[10] { "Бардакова", "Филатова", "Попова", "Золотухина", 
+                                                           "Сорокина", "Вычугжанина", "Стремилова", 
                                                              "Лопаницына", "Жеребцова", "Лосякова" };
-            string[] gender = new string[2] { "Мужской", "Женский" };
+            string[] genderArray = new string[2] { "Мужской", "Женский" };
  
             //TODO: RSDN
-            string MenName = menName[person.Next(menName.Length)];
-            string MenSurame = menSurname[person.Next(menSurname.Length)];
-            string WoomenName = woomenName[person.Next(woomenName.Length)];
-            string WoomenSurame = woomenSurname[person.Next(woomenSurname.Length)];
-            int Age = person.Next(0, 120);
-            string Gender = gender[person.Next(gender.Length)];
+            string menName = menNameArray[person.Next(menNameArray.Length)];
+            string menSurame = menSurnameArray[person.Next(menSurnameArray.Length)];
+            string woomenName = woomenNameArray[person.Next(woomenNameArray.Length)];
+            string woomenSurame = woomenSurnameArray[person.Next(woomenSurnameArray.Length)];
+            int age = person.Next(0, 120);
+            string gender = genderArray[person.Next(genderArray.Length)];
 
-            return Gender == Convert.ToString(GenderType.Мужской) 
-                ? new Person(MenName, MenSurame, Age, GenderType.Мужской) 
-                : new Person(WoomenName, WoomenSurame, Age, GenderType.Женский);
+            return gender == Convert.ToString(GenderType.Мужской) 
+                ? new Person(menName, menSurame, age, GenderType.Мужской) 
+                : new Person(woomenName, woomenSurame, age, GenderType.Женский);
         }
     }
 }

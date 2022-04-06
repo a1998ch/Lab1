@@ -6,9 +6,9 @@ using static System.Console;
 namespace ViewLaba1
 {
     //TODO: RSDN
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             OutputEncoding = Encoding.Unicode;
             InputEncoding = Encoding.Unicode;
@@ -51,7 +51,7 @@ namespace ViewLaba1
 
             WriteLine("\nЧтобы удалить второго человека из первого списка нажмите любую кнопку");
             ReadLine();
-            personList1.DeliteByIndex(1);
+            personList1.DelitePersonByIndex(1);
             WriteLine("Первый список персон:");
             WriteLine(personList1.PrintPersonList());
             WriteLine("Второй список персон:");
@@ -71,101 +71,123 @@ namespace ViewLaba1
                           "\"Добавить человека\" = 1, \n" +
                           "\"Удалить человека\" = 2, \n" +
                           "\"Удалить человека по индексу\" = 3, \n" +
-                          "\"Поиск человека по индексу\" = 4, " +
-                         "\n\"Поиск индекса по человеку\" = 5, \n\"Очистить список\" = 6," +
-                         "\n\"Количество элементов в списке\" = 7, \n\"Выбрать другой список\" = 8, " +
-                         "\n\"Выход\" чтобы выйти\n");
-                //TODO:
+                          "\"Поиск человека по индексу\" = 4, \n" +
+                          "\"Поиск индекса по человеку\" = 5, \n" +
+                          "\"Очистить список\" = 6, \n" +
+                          "\"Количество элементов в списке\" = 7, \n" +
+                          "\"Выбрать другой список\" = 8, \n" +
+                          "\"Выход\" чтобы выйти\n");
+                //TODO: const
                 string command = ReadLine();
+                const string addPerson = "1";
+                const string delitePerson = "2";
+                const string delitePersonByIndex = "3";
+                const string searchPersonByIndex = "4";
+                const string searchIndexByPerson = "5";
+                const string cleanPersonList = "6";
+                const string lengthPersonList = "7";
+                const string choicePersonList = "8";
 
                 //TODO: switch-case
-                if (command == "1")
+                switch (command)
                 {
-                    WriteLine("\nДля добавления случайного человека нажмите \"1\" или \"2\" " +
-                                                            "чтобы добавить человека вручную: ");
-                    
-                    string choice = ReadLine();
-                    switch (choice)
-                    {
-                        case "1":
-                            personList.Add(Person.GetRandomPerson());
+                    case addPerson:
+                        {
+                            WriteLine("\nДля добавления случайного человека нажмите \"1\" или \"2\" " +
+                                                                    "чтобы добавить человека вручную: ");
+
+                            string choice = ReadLine();
+                            switch (choice)
+                            {
+                                case "1":
+                                    personList.Add(Person.GetRandomPerson());
+                                    WriteLine("\n{0}", personList.PrintPersonList());
+                                    break;
+                                case "2":
+                                    personList.Add(Read());
+                                    WriteLine("\n{0}", personList.PrintPersonList());
+                                    break;
+                                default:
+                                    WriteLine("Нужно выбрать \"1\" или \"2\"");
+                                    break;
+                            }
+                            break;
+                        }
+                    case delitePerson:
+                        {
+                            try
+                            {
+                                personList.DelitePersonByData(Read());
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionMessage(ex);
+                            }
                             WriteLine("\n{0}", personList.PrintPersonList());
                             break;
-                        case "2":
-                            personList.Add(Read());
+                        }
+                    case delitePersonByIndex:
+                        {
+                            try
+                            {
+                                WriteLine("\nВведите индекс:");
+                                personList.DelitePersonByIndex(int.Parse(ReadLine()));
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionMessage(ex);
+                            }
                             WriteLine("\n{0}", personList.PrintPersonList());
                             break;
-                        default:
-                            WriteLine("Нужно выбрать \"1\" или \"2\"");
+                        }
+                    case searchPersonByIndex:
+                        {
+                            try
+                            {
+                                WriteLine("\nВведите индекс:");
+                                WriteLine("\n{0}", personList.SearchByIndex(int.Parse(ReadLine())).Info());
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionMessage(ex);
+                            }
                             break;
-                    }
+                        }
+                    case searchIndexByPerson:
+                        {
+                            try
+                            {
+                                //TODO: RSDN
+                                WriteLine("\nИндекс введённого человека: {0}",
+                                                    personList.SearchIndexByPerson(Read()));
+                            }
+                            catch (Exception ex)
+                            {
+                                ExceptionMessage(ex);
+                            }
+                            break;
+                        }
+                    case cleanPersonList:
+                        {
+                            personList.CleanList();
+                            WriteLine("\nСписок отчищен");
+                            break;
+                        }
+                    case lengthPersonList:
+                        {
+                            WriteLine("\nДлина списка: {0}", personList.Length);
+                            break;
+                        }
+                    case choicePersonList:
+                        {
+                            personList = ListChoice(personList1, personList2);
+                            break;
+                        }
                 }
-                else if (command == "2")
+                
+                if (command.ToLower() == "выход")
                 {
-                    try
-                    {
-                        personList.DelitePerson(Read());
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionMessage(ex);
-                    }
-                    WriteLine("\n{0}", personList.PrintPersonList());
-                }
-                else if (command == "3")
-                {
-                    try
-                    {
-                        WriteLine("\nВведите индекс:");
-                        personList.DeliteByIndex(int.Parse(ReadLine()));
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionMessage(ex);
-                    }
-                    WriteLine("\n{0}", personList.PrintPersonList());
-                }
-                else if (command == "4")
-                {
-                    try
-                    {
-                        WriteLine("\nВведите индекс:");
-                        WriteLine("\n{0}", personList.SearchByIndex(int.Parse(ReadLine())).Info());
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionMessage(ex);
-                    }
-                }
-                else if (command == "5")
-                {
-                    try
-                    {
-                        //TODO: RSDN
-                        WriteLine("\nИндекс введённого человека: {0}", 
-                                            personList.SearchIndexByPeople(Read()));
-                    }
-                    catch (Exception ex)
-                    {
-                        ExceptionMessage(ex);
-                    }
-                }
-                else if (command == "6")
-                {
-                    personList.CleanList();
-                    WriteLine("\nСписок отчищен");
-                }
-                else if (command == "7")
-                {
-                    WriteLine("\nДлина списка: {0}", personList.LengthList());
-                }
-                else if (command == "8")
-                {
-                    personList = ListChoice(personList1, personList2);
-                }
-                else if (command == "выход")
-                {
-                    WriteLine("\nПока");
+                    WriteLine("\nПрограмма завершена");
                     break;
                 }
             }
@@ -243,13 +265,7 @@ namespace ViewLaba1
                 {
                     partPerson.Name = testName;
                     //TODO: duplication
-                    if (testName[0].ToString() != testName[0].ToString().ToUpper())
-                    {
-
-                        ForegroundColor = ConsoleColor.Green;
-                        WriteLine("\nПредупреждение: \"Имя необходимо писать с большой буквы\"");
-                        ResetColor();
-                    }
+                    WarningMessage(testName);
                     break;
                 }
                 catch (Exception ex)
@@ -258,36 +274,26 @@ namespace ViewLaba1
                 }
             }
 
-            
-
-            Write("\nВведите фамилию: ");
-            string testSurname;
             while (true)
             {
-                testSurname = ReadLine();
+                Write("\nВведите фамилию: ");
+                string testSurname = ReadLine();
                 try
                 {
                     partPerson.Surname = testSurname;
+                    WarningMessage(testSurname);
                     break;
                 }
                 catch (Exception ex)
                 {
                     ExceptionMessage(ex);
                 }
-                Write("\nВведите фамилию повторно: ");
             }
 
             //TODO: duplication
-            if (testSurname[0].ToString() != testSurname[0].ToString().ToUpper())
-            {
-                ForegroundColor = ConsoleColor.Green;
-                WriteLine("\nПредупреждение: \"Фамилию необходимо писать с большой буквы\"");
-                ResetColor();
-            }
-
-            Write("\nВведите возраст: ");
             while (true)
             {
+                Write("\nВведите возраст: ");
                 try
                 {
                     partPerson.Age = int.Parse(ReadLine());
@@ -297,12 +303,11 @@ namespace ViewLaba1
                 {
                     ExceptionMessage(ex);
                 }
-                Write("\nВведите возраст повторно: ");
             }
             //TODO: RSDN
-            GenderType Gender = ReadGenderFromConsole();
+            partPerson.Gender = ReadGenderFromConsole();
             //TODO:
-            return new Person(partPerson.Name, partPerson.Surname, partPerson.Age, Gender);
+            return new Person(partPerson.Name, partPerson.Surname, partPerson.Age, partPerson.Gender);
         }
 
         /// <summary>
@@ -314,6 +319,20 @@ namespace ViewLaba1
             ForegroundColor = ConsoleColor.Red;
             Write($"\nОшибка: { ex.Message}\n");
             ResetColor();
+        }
+
+        /// <summary>
+        /// Выводит в консоль предупреждение при неправильном регистре имени или фамилии
+        /// </summary>
+        /// <param name="nameOrSurname">Имя или фамилия для проверки</param>
+        private static void WarningMessage(string nameOrSurname)
+        {
+            if (nameOrSurname[0].ToString() != nameOrSurname[0].ToString().ToUpper())
+            {
+                ForegroundColor = ConsoleColor.Green;
+                WriteLine("\nПредупреждение: \"Имя и Фамилию необходимо писать с большой буквы\"");
+                ResetColor();
+            }
         }
     }
 }
