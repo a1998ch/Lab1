@@ -307,7 +307,7 @@ namespace ViewLaba1
             //TODO: RSDN
             partPerson.Gender = ReadGenderFromConsole();
             //TODO:
-            return new Person(partPerson.Name, partPerson.Surname, partPerson.Age, partPerson.Gender);
+            return partPerson;
         }
 
         /// <summary>
