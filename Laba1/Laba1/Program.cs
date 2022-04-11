@@ -13,16 +13,23 @@ namespace ViewLaba1
             InputEncoding = Encoding.Unicode;
 
             PersonList personList1 = new PersonList();
-            personList1.Add(new Person("Сергей", "Пащенко", 23, GenderType.Мужской));
-            personList1.Add(new Person("Дмитрий", "Питомец", 55, GenderType.Мужской));
-            personList1.Add(new Person("Дарья", "Ивасенко", 60, GenderType.Женский));
+            personList1.Add(new Person(
+                "Сергей", "Пащенко", 23, GenderType.Мужской));
+            personList1.Add(new Person(
+                "Дмитрий", "Питомец", 55, GenderType.Мужской));
+            personList1.Add(new Person(
+                "Дарья", "Ивасенко", 60, GenderType.Женский));
 
             PersonList personList2 = new PersonList();
-            personList2.Add(new Person("Екатерина", "Бозырева", 28, GenderType.Женский));
-            personList2.Add(new Person("Галина", "Павловская", 77, GenderType.Женский));
-            personList2.Add(new Person("Вадим", "Азеев", 18, GenderType.Мужской));
+            personList2.Add(new Person(
+                "Екатерина", "Бозырева", 28, GenderType.Женский));
+            personList2.Add(new Person(
+                "Галина", "Павловская", 77, GenderType.Женский));
+            personList2.Add(new Person(
+                "Вадим", "Азеев", 18, GenderType.Мужской));
 
-            WriteLine("Чтобы вывести содержимое каждого списка на экран нажмите любую кнопку");
+            WriteLine("Чтобы вывести содержимое " +
+                "каждого списка на экран нажмите любую кнопку");
             ReadLine();
             WriteLine("Первый список персон:");
             WriteLine(personList1.PrintPersonList());
@@ -30,15 +37,17 @@ namespace ViewLaba1
             WriteLine(personList2.PrintPersonList());
 
 
-            WriteLine("\nЧтобы добавить человека в первый список нажмите любую кнопку");
+            WriteLine("\nЧтобы добавить человека в первый список" +
+                " нажмите любую кнопку");
             ReadLine();
-            personList1.Add(new Person("Олег", "Николашкин", 23, GenderType.Мужской));
+            personList1.Add(new Person(
+                "Олег", "Николашкин", 23, GenderType.Мужской));
             WriteLine("Первый список персон:");
             WriteLine(personList1.PrintPersonList());
 
 
-            WriteLine("\nЧтобы скопировать второго человека из первого списка в конец второго " +
-                                                                   "списка нажмите любую кнопку");
+            WriteLine("\nЧтобы скопировать второго человека из первого " +
+                "списка в конец второго списка нажмите любую кнопку");
             ReadLine();
             var personTmp = personList1.SearchByIndex(1);
             personList2.Add(personTmp);
@@ -48,7 +57,8 @@ namespace ViewLaba1
             WriteLine(personList2.PrintPersonList());
 
 
-            WriteLine("\nЧтобы удалить второго человека из первого списка нажмите любую кнопку");
+            WriteLine("\nЧтобы удалить второго человека " +
+                "из первого списка нажмите любую кнопку");
             ReadLine();
             personList1.DelitePersonByIndex(1);
             WriteLine("Первый список персон:");
@@ -91,22 +101,26 @@ namespace ViewLaba1
                 {
                     case addPerson:
                         {
-                            WriteLine("\nДля добавления случайного человека нажмите \"1\" или \"2\" " +
-                                                                    "чтобы добавить человека вручную: ");
+                            WriteLine("\nДля добавления " +
+                                "случайного человека нажмите \"1\" или" +
+                                " \"2\" чтобы добавить человека вручную: ");
 
                             string choice = ReadLine();
                             switch (choice)
                             {
                                 case "1":
                                     personList.Add(Person.GetRandomPerson());
-                                    WriteLine("\n{0}", personList.PrintPersonList());
+                                    WriteLine("\n{0}", 
+                                        personList.PrintPersonList());
                                     break;
                                 case "2":
                                     personList.Add(Read());
-                                    WriteLine("\n{0}", personList.PrintPersonList());
+                                    WriteLine("\n{0}", 
+                                        personList.PrintPersonList());
                                     break;
                                 default:
-                                    WriteLine("Нужно выбрать \"1\" или \"2\"");
+                                    WriteLine(
+                                        "Нужно выбрать \"1\" или \"2\"");
                                     break;
                             }
                             break;
@@ -129,7 +143,8 @@ namespace ViewLaba1
                             try
                             {
                                 WriteLine("\nВведите индекс:");
-                                personList.DelitePersonByIndex(int.Parse(ReadLine()));
+                                personList.DelitePersonByIndex(
+                                    int.Parse(ReadLine()));
                             }
                             catch (Exception ex)
                             {
@@ -143,7 +158,9 @@ namespace ViewLaba1
                             try
                             {
                                 WriteLine("\nВведите индекс:");
-                                WriteLine("\n{0}", personList.SearchByIndex(int.Parse(ReadLine())).Info());
+                                WriteLine("\n{0}", 
+                                    personList.SearchByIndex(
+                                        int.Parse(ReadLine())).Info());
                             }
                             catch (Exception ex)
                             {
@@ -155,8 +172,9 @@ namespace ViewLaba1
                         {
                             try
                             {
-                                WriteLine("\nИндекс введённого человека: {0}",
-                                                    personList.SearchIndexByPerson(Read()));
+                                WriteLine(
+                                    "\nИндекс введённого человека: {0}", 
+                                    personList.SearchIndexByPerson(Read()));
                             }
                             catch (Exception ex)
                             {
@@ -172,7 +190,8 @@ namespace ViewLaba1
                         }
                     case lengthPersonList:
                         {
-                            WriteLine("\nДлина списка: {0}", personList.Length);
+                            WriteLine(
+                                "\nДлина списка: {0}", personList.Length);
                             break;
                         }
                     case choicePersonList:
@@ -196,7 +215,8 @@ namespace ViewLaba1
         /// </summary>
         /// <param name="people1">Экземпляр класса PersonList</param>
         /// <param name="people2">Экземпляр класса PersonList</param>
-        private static PersonList ListChoice(PersonList people1, PersonList people2)
+        private static PersonList ListChoice(
+            PersonList people1, PersonList people2)
         {
             while (true)
             {
@@ -315,15 +335,18 @@ namespace ViewLaba1
         }
 
         /// <summary>
-        /// Выводит в консоль предупреждение при неправильном регистре имени или фамилии
+        /// Выводит в консоль предупреждение при неправильном 
+        /// регистре имени или фамилии
         /// </summary>
         /// <param name="nameOrSurname">Имя или фамилия для проверки</param>
         private static void WarningMessage(string nameOrSurname)
         {
-            if (nameOrSurname[0].ToString() != nameOrSurname[0].ToString().ToUpper())
+            if (nameOrSurname[0].ToString() != 
+                nameOrSurname[0].ToString().ToUpper())
             {
                 ForegroundColor = ConsoleColor.Green;
-                WriteLine("\nПредупреждение: \"Имя и Фамилию необходимо писать с большой буквы\"");
+                WriteLine("\nПредупреждение: \"Имя и Фамилию" +
+                    " необходимо писать с большой буквы\"");
                 ResetColor();
             }
         }

@@ -121,7 +121,8 @@ namespace ModelLaba1
         /// <returns>Корректное имя или фамилию</returns>
         private string ValidationNameAndSurname(string nameOrSurname)
         {
-            string nameOrSurnameCorrect = CorrectCaseNameAndSurname(nameOrSurname);
+            string nameOrSurnameCorrect = CorrectCaseNameAndSurname(
+                nameOrSurname);
             SpellingNameAndSurname(nameOrSurnameCorrect);
 
             if (Name != null)
@@ -136,26 +137,35 @@ namespace ModelLaba1
         /// Преобразование имени или фамилии персоны в правильные регистры
         /// </summary>
         /// <param name="nameOrSurname">Имя или фамилия персоны</param>
-        /// <returns>Корректное имя или фамилию с точки зрения правильности регистра</returns>
+        /// <returns>Корректное имя или фамилию 
+        /// с точки зрения правильности регистра</returns>
         private string CorrectCaseNameAndSurname(string nameOrSurname)
         {
             char[] doubleNameOrSurname = { ' ', '-', ',' };
-            string[] nameOrSurnameChar = nameOrSurname.Split(doubleNameOrSurname,
-                StringSplitOptions.RemoveEmptyEntries);
+            string[] nameOrSurnameChar = nameOrSurname.Split(
+                doubleNameOrSurname, StringSplitOptions.RemoveEmptyEntries);
             if (nameOrSurnameChar.Length == 1)
             {
                 //TODO: RSDN
-                string capitalName = Convert.ToString(nameOrSurnameChar[0]).Substring(1).ToLower();
-                nameOrSurname = Convert.ToString(nameOrSurnameChar[0])[0].ToString().ToUpper() + capitalName;
+                string capitalName = Convert.ToString(
+                    nameOrSurnameChar[0]).Substring(1).ToLower();
+                nameOrSurname = Convert.ToString(
+                    nameOrSurnameChar[0])[0].ToString().ToUpper() 
+                    + capitalName;
                 return nameOrSurname;
             }
             else if (nameOrSurnameChar.Length == 2)
             {
                 //TODO: RSDN
-                string capitalName1 = Convert.ToString(nameOrSurnameChar[0]).Substring(1).ToLower();
-                string capitalName2 = Convert.ToString(nameOrSurnameChar[1]).Substring(1).ToLower();
-                nameOrSurname = Convert.ToString(nameOrSurnameChar[0])[0].ToString().ToUpper() + capitalName1 +
-                       "-" + Convert.ToString(nameOrSurnameChar[1])[0].ToString().ToUpper() + capitalName2;
+                string capitalName1 = Convert.ToString(
+                    nameOrSurnameChar[0]).Substring(1).ToLower();
+                string capitalName2 = Convert.ToString(
+                    nameOrSurnameChar[1]).Substring(1).ToLower();
+                nameOrSurname = Convert.ToString(
+                    nameOrSurnameChar[0])[0].ToString().ToUpper() + 
+                    capitalName1 + "-" + Convert.ToString(
+                        nameOrSurnameChar[1])[0].ToString().ToUpper() + 
+                        capitalName2;
                 return nameOrSurname;
             }
             else
@@ -171,11 +181,13 @@ namespace ModelLaba1
         private void SpellingNameAndSurname(string nameOrSurname)
         {
             Regex errorAlphabet = new Regex(
-                "([a-z])([а-я])|([а-я])([a-z])|([a-z])-([а-я])|([а-я])-([a-z])");     
+                "([a-z])([а-я])|([а-я])([a-z])|" +
+                "([a-z])-([а-я])|([а-я])-([a-z])|([0-9])");
             if (errorAlphabet.IsMatch(nameOrSurname.ToLower()))
             {
-                throw new Exception("Имя и Фамилия должны содержать " +
-                    "только русские или только английские символы");
+                throw new Exception("Имя и Фамилия должны содержать \n" +
+                    "только русские или только английские символы \n" +
+                    "и не должны содержать цифры");
             }
         }
 
@@ -188,10 +200,13 @@ namespace ModelLaba1
             Regex rusAlphabet = new Regex("^[а-я]");
             
             //TODO: RSDN
-            if (!rusAlphabet.IsMatch(Name.ToLower()) && rusAlphabet.IsMatch(surname.ToLower()) ||
-                rusAlphabet.IsMatch(Name.ToLower()) && !rusAlphabet.IsMatch(surname.ToLower()))
+            if (!rusAlphabet.IsMatch(Name.ToLower()) 
+                && rusAlphabet.IsMatch(surname.ToLower()) ||
+                rusAlphabet.IsMatch(Name.ToLower()) 
+                && !rusAlphabet.IsMatch(surname.ToLower()))
             {
-                throw new Exception("Фамилия и имя должны быть написаны на одном языке");
+                throw new Exception("Фамилия и имя " +
+                    "должны быть написаны на одном языке");
             }
         }
 
@@ -204,7 +219,8 @@ namespace ModelLaba1
         {
             if (age > MaxAge || age < 0)
             {
-                throw new Exception($"Необходимо вводить числа от \"0\" до \"{MaxAge}\"");
+                throw new Exception($"Необходимо вводить числа" +
+                    $" от \"0\" до \"{MaxAge}\"");
             }
             else
             {
@@ -217,7 +233,8 @@ namespace ModelLaba1
         /// </summary>
         public string Info()
         {
-            return $"Имя: {Name}, Фамилия: {Surname}, Возраст: {Age}, Пол: {Gender}";
+            return $"Имя: {Name}, Фамилия: {Surname}, " +
+                $"Возраст: {Age}, Пол: {Gender}";
         }
 
         /// <summary>
@@ -229,28 +246,48 @@ namespace ModelLaba1
             Random person = new Random(DateTime.Now.Millisecond);
 
             //TODO: RSDN
-            string[] menNameArray = new string[10] { "Павел", "Антон", "Алексей", "Максим", "Александр", 
-                                                     "Ярослав", "Илья", "Пётр", "Олег", "Сергей" };
-            string[] woomenNameArray = new string[10] { "Ольга", "Светлана", "Марина", "Олеся", "Анна", 
-                                                        "Галина", "Алиса", "Вероника", "Вера", "Лариса" };
-            string[] menSurnameArray = new string[10] { "Иванов", "Петров", "Сидоров", "Какауров", 
-                                                        "Ермолаев", "Еремеев", "Раздобреев", "Пляскин", 
-                                                                            "Загибалов", "Сергеев" };
-            string[] woomenSurnameArray = new string[10] { "Бардакова", "Филатова", "Попова", "Золотухина", 
-                                                           "Сорокина", "Вычугжанина", "Стремилова", 
-                                                             "Лопаницына", "Жеребцова", "Лосякова" };
+            string[] menNameArray = new string[10] { "Павел", "Антон", 
+                                                    "Алексей", "Максим", 
+                                                    "Александр", "Ярослав", 
+                                                        "Илья", "Пётр", 
+                                                        "Олег", "Сергей" };
+            string[] womenNameArray = new string[10] { "Ольга", "Светлана", 
+                                                        "Марина", "Олеся", 
+                                                        "Анна", "Галина", 
+                                                        "Алиса", "Вероника", 
+                                                        "Вера", "Лариса" };
+            string[] menSurnameArray = new string[10] { "Иванов", "Петров", 
+                                                        "Сидоров", "Какауров", 
+                                                        "Ермолаев", "Еремеев", 
+                                                        "Раздобреев", 
+                                                        "Пляскин",
+                                                        "Загибалов", 
+                                                        "Сергеев" };
+            string[] womenSurnameArray = new string[10] { "Бардакова", 
+                                                          "Филатова", 
+                                                          "Попова", 
+                                                          "Золотухина",
+                                                          "Сорокина", 
+                                                          "Вычугжанина", 
+                                                          "Стремилова", 
+                                                          "Лопаницына", 
+                                                          "Жеребцова", 
+                                                          "Лосякова" };
             string[] genderArray = new string[2] { "Мужской", "Женский" };
  
             string menName = menNameArray[person.Next(menNameArray.Length)];
-            string menSurame = menSurnameArray[person.Next(menSurnameArray.Length)];
-            string woomenName = woomenNameArray[person.Next(woomenNameArray.Length)];
-            string woomenSurame = woomenSurnameArray[person.Next(woomenSurnameArray.Length)];
+            string menSurame = menSurnameArray[person.Next(
+                                                    menSurnameArray.Length)];
+            string womenName = womenNameArray[person.Next(
+                                                     womenNameArray.Length)];
+            string womenSurname = womenSurnameArray[person.Next(
+                                                  womenSurnameArray.Length)];
             int age = person.Next(0, 120);
             string gender = genderArray[person.Next(genderArray.Length)];
 
             return gender == Convert.ToString(GenderType.Мужской) 
                 ? new Person(menName, menSurame, age, GenderType.Мужской) 
-                : new Person(woomenName, woomenSurame, age, GenderType.Женский);
+                : new Person(womenName, womenSurname, age, GenderType.Женский);
         }
     }
 }

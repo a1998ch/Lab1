@@ -93,7 +93,8 @@ namespace ModelLaba1
             }
             else
             {
-                throw new Exception("Удаляемый элемент отсутствует в текущем списке персон");
+                throw new Exception("Удаляемый элемент " +
+                    "отсутствует в текущем списке персон");
             }
         }
 
