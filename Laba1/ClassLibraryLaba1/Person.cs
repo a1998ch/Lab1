@@ -144,33 +144,32 @@ namespace ModelLaba1
             char[] doubleNameOrSurname = { ' ', '-', ',' };
             string[] nameOrSurnameChar = nameOrSurname.Split(
                 doubleNameOrSurname, StringSplitOptions.RemoveEmptyEntries);
-            if (nameOrSurnameChar.Length == 1)
+            switch (nameOrSurnameChar.Length)
             {
-                //TODO: RSDN
-                string capitalName = Convert.ToString(
-                    nameOrSurnameChar[0]).Substring(1).ToLower();
-                nameOrSurname = Convert.ToString(
-                    nameOrSurnameChar[0])[0].ToString().ToUpper() 
-                    + capitalName;
-                return nameOrSurname;
-            }
-            else if (nameOrSurnameChar.Length == 2)
-            {
-                //TODO: RSDN
-                string capitalName1 = Convert.ToString(
-                    nameOrSurnameChar[0]).Substring(1).ToLower();
-                string capitalName2 = Convert.ToString(
-                    nameOrSurnameChar[1]).Substring(1).ToLower();
-                nameOrSurname = Convert.ToString(
-                    nameOrSurnameChar[0])[0].ToString().ToUpper() + 
-                    capitalName1 + "-" + Convert.ToString(
-                        nameOrSurnameChar[1])[0].ToString().ToUpper() + 
-                        capitalName2;
-                return nameOrSurname;
-            }
-            else
-            {
-                throw new Exception("Неправильный ввод данных");
+                case 1:
+                {
+                    string capitalName = Convert.ToString(
+                        nameOrSurnameChar[0]).Substring(1).ToLower();
+                    nameOrSurname = Convert.ToString(
+                                        nameOrSurnameChar[0])[0].ToString().ToUpper() 
+                                    + capitalName;
+                    return nameOrSurname;
+                }
+                case 2:
+                {
+                    string capitalName1 = Convert.ToString(
+                        nameOrSurnameChar[0]).Substring(1).ToLower();
+                    string capitalName2 = Convert.ToString(
+                        nameOrSurnameChar[1]).Substring(1).ToLower();
+                    nameOrSurname = Convert.ToString(
+                                        nameOrSurnameChar[0])[0].ToString().ToUpper() + 
+                                    capitalName1 + "-" + Convert.ToString(
+                                        nameOrSurnameChar[1])[0].ToString().ToUpper() + 
+                                    capitalName2;
+                    return nameOrSurname;
+                }
+                default:
+                    throw new Exception("Неправильный ввод данных");
             }
         }
 
@@ -199,7 +198,6 @@ namespace ModelLaba1
         {
             Regex rusAlphabet = new Regex("^[а-я]");
             
-            //TODO: RSDN
             if (!rusAlphabet.IsMatch(Name.ToLower()) 
                 && rusAlphabet.IsMatch(surname.ToLower()) ||
                 rusAlphabet.IsMatch(Name.ToLower()) 
@@ -244,8 +242,7 @@ namespace ModelLaba1
         public static Person GetRandomPerson()
         {
             Random person = new Random(DateTime.Now.Millisecond);
-
-            //TODO: RSDN
+            
             string[] menNameArray = new string[10] { "Павел", "Антон", 
                                                     "Алексей", "Максим", 
                                                     "Александр", "Ярослав", 
