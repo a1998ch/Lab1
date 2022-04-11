@@ -144,12 +144,14 @@ namespace ModelLaba1
                 StringSplitOptions.RemoveEmptyEntries);
             if (nameOrSurnameChar.Length == 1)
             {
+                //TODO: RSDN
                 string capitalName = Convert.ToString(nameOrSurnameChar[0]).Substring(1).ToLower();
                 nameOrSurname = Convert.ToString(nameOrSurnameChar[0])[0].ToString().ToUpper() + capitalName;
                 return nameOrSurname;
             }
             else if (nameOrSurnameChar.Length == 2)
             {
+                //TODO: RSDN
                 string capitalName1 = Convert.ToString(nameOrSurnameChar[0]).Substring(1).ToLower();
                 string capitalName2 = Convert.ToString(nameOrSurnameChar[1]).Substring(1).ToLower();
                 nameOrSurname = Convert.ToString(nameOrSurnameChar[0])[0].ToString().ToUpper() + capitalName1 +
@@ -185,7 +187,7 @@ namespace ModelLaba1
         {
             Regex rusAlphabet = new Regex("^[а-я]");
             
-            //TODO:
+            //TODO: RSDN
             if (!rusAlphabet.IsMatch(Name.ToLower()) && rusAlphabet.IsMatch(surname.ToLower()) ||
                 rusAlphabet.IsMatch(Name.ToLower()) && !rusAlphabet.IsMatch(surname.ToLower()))
             {
@@ -200,7 +202,6 @@ namespace ModelLaba1
         /// <returns>Корректный возраст</returns>
         private int AgeEntryRule(int age)
         {
-            //TODO: const
             if (age > MaxAge || age < 0)
             {
                 throw new Exception($"Необходимо вводить числа от \"0\" до \"{MaxAge}\"");
@@ -227,6 +228,7 @@ namespace ModelLaba1
         {
             Random person = new Random(DateTime.Now.Millisecond);
 
+            //TODO: RSDN
             string[] menNameArray = new string[10] { "Павел", "Антон", "Алексей", "Максим", "Александр", 
                                                      "Ярослав", "Илья", "Пётр", "Олег", "Сергей" };
             string[] woomenNameArray = new string[10] { "Ольга", "Светлана", "Марина", "Олеся", "Анна", 
@@ -239,7 +241,6 @@ namespace ModelLaba1
                                                              "Лопаницына", "Жеребцова", "Лосякова" };
             string[] genderArray = new string[2] { "Мужской", "Женский" };
  
-            //TODO: RSDN
             string menName = menNameArray[person.Next(menNameArray.Length)];
             string menSurame = menSurnameArray[person.Next(menSurnameArray.Length)];
             string woomenName = woomenNameArray[person.Next(woomenNameArray.Length)];

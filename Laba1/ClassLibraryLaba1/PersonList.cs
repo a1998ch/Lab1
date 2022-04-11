@@ -52,7 +52,6 @@ namespace ModelLaba1
                     break;
                 }
             }
-            //TODO: duplication
             DelitePerson(remove);
         }
 
@@ -71,7 +70,6 @@ namespace ModelLaba1
                     break;
                 }
             }
-            //TODO: duplication
             DelitePerson(indexRemove);
         }
 
@@ -146,17 +144,10 @@ namespace ModelLaba1
         {
             Array.Resize(ref _personList, 0);
         }
-
-        //TODO: property
+        
         /// <summary>
         /// Количество персон в списке
         /// </summary>
-        public int Length
-        {
-            get
-            {
-                return _personList.Length;
-            }
-        }
+        public int Length => _personList.Length;
     }
 }

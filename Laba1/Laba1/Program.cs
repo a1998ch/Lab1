@@ -5,7 +5,6 @@ using static System.Console;
 
 namespace ViewLaba1
 {
-    //TODO: RSDN
     public class Program
     {
         private static void Main(string[] args)
@@ -77,7 +76,7 @@ namespace ViewLaba1
                           "\"Количество элементов в списке\" = 7, \n" +
                           "\"Выбрать другой список\" = 8, \n" +
                           "\"Выход\" чтобы выйти\n");
-                //TODO: const
+                
                 string command = ReadLine();
                 const string addPerson = "1";
                 const string delitePerson = "2";
@@ -87,8 +86,7 @@ namespace ViewLaba1
                 const string cleanPersonList = "6";
                 const string lengthPersonList = "7";
                 const string choicePersonList = "8";
-
-                //TODO: switch-case
+                
                 switch (command)
                 {
                     case addPerson:
@@ -157,7 +155,6 @@ namespace ViewLaba1
                         {
                             try
                             {
-                                //TODO: RSDN
                                 WriteLine("\nИндекс введённого человека: {0}",
                                                     personList.SearchIndexByPerson(Read()));
                             }
@@ -218,7 +215,6 @@ namespace ViewLaba1
             }
         }
 
-        //TODO: static
         /// <summary>
         /// Выбор пола персоны
         /// </summary>
@@ -264,7 +260,6 @@ namespace ViewLaba1
                 try
                 {
                     partPerson.Name = testName;
-                    //TODO: duplication
                     WarningMessage(testName);
                     break;
                 }
@@ -289,8 +284,7 @@ namespace ViewLaba1
                     ExceptionMessage(ex);
                 }
             }
-
-            //TODO: duplication
+            
             while (true)
             {
                 Write("\nВведите возраст: ");
@@ -304,9 +298,8 @@ namespace ViewLaba1
                     ExceptionMessage(ex);
                 }
             }
-            //TODO: RSDN
+            
             partPerson.Gender = ReadGenderFromConsole();
-            //TODO:
             return partPerson;
         }
 
