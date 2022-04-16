@@ -51,7 +51,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibraryLaba1\ModelLaba2.csproj">
+    <ProjectReference Include="..\ClassLibraryLaba2\ModelLaba2.csproj">
       <Project>{b404b0c9-2bd4-4e4c-b992-b739cc07fb8d}</Project>
       <Name>ModelLaba2</Name>
     </ProjectReference>
