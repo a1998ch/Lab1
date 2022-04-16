@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ModelLaba1
+namespace ModelLaba2
 {
     /// <summary>
     /// Класс списка персон

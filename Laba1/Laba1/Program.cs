@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Text;
-using ModelLaba1;
+using ModelLaba2;
 using static System.Console;
 
-namespace ViewLaba1
+namespace ViewLaba2
 {
     public class Program
     {
@@ -203,7 +203,7 @@ namespace ViewLaba1
                 
                 if (command.ToLower() == "выход")
                 {
-                    WriteLine("\nПрограмма завершена");
+                    WriteLine("\nПрограмма завершена!");
                     break;
                 }
             }

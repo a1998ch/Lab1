@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
-namespace ModelLaba1
+namespace ModelLaba2
 {
     /// <summary>
     /// Класс Person 

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModelLaba1
+namespace ModelLaba2
 {
     /// <summary>
     /// Перечисление пола персоны
