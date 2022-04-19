@@ -10,7 +10,7 @@ namespace ModelLaba2
     /// <summary>
     /// Класс Person 
     /// </summary>
-    public class Person
+    public class PersonBase
     {
         /// <summary>
         /// Имя
@@ -98,7 +98,7 @@ namespace ModelLaba2
         /// <param name="surname">Фамилия персоны</param>
         /// <param name="age">Возраст персоны</param>
         /// <param name="gender">Пол персоны</param>
-        public Person(string name, string surname, int age, GenderType gender)
+        public PersonBase(string name, string surname, int age, GenderType gender)
         {
             Name = name;
             Surname = surname;
@@ -109,9 +109,18 @@ namespace ModelLaba2
         /// <summary>
         /// Конструктор по умолчанию
         /// </summary>
-        public Person(GenderType gender)
+        public PersonBase(GenderType gender)
         {
             Gender = gender;
+        }
+
+        /// <summary>
+        /// Конструктор для Adult
+        /// </summary>
+        public PersonBase(string name, string surname)
+        {
+            Name = name;
+            Surname = surname;
         }
 
         /// <summary>
@@ -239,7 +248,7 @@ namespace ModelLaba2
         /// Генерирует случайную персону
         /// </summary>
         /// <returns>Случайная персона</returns>
-        public static Person GetRandomPerson()
+        public static PersonBase GetRandomPerson()
         {
             Random person = new Random(DateTime.Now.Millisecond);
             
@@ -283,8 +292,8 @@ namespace ModelLaba2
             string gender = genderArray[person.Next(genderArray.Length)];
 
             return gender == Convert.ToString(GenderType.Мужской) 
-                ? new Person(menName, menSurame, age, GenderType.Мужской) 
-                : new Person(womenName, womenSurname, age, GenderType.Женский);
+                ? new PersonBase(menName, menSurame, age, GenderType.Мужской) 
+                : new PersonBase(womenName, womenSurname, age, GenderType.Женский);
         }
     }
 }

@@ -13,19 +13,19 @@ namespace ViewLaba2
             InputEncoding = Encoding.Unicode;
 
             PersonList personList1 = new PersonList();
-            personList1.Add(new Person(
+            personList1.Add(new PersonBase(
                 "Сергей", "Пащенко", 23, GenderType.Мужской));
-            personList1.Add(new Person(
+            personList1.Add(new PersonBase(
                 "Дмитрий", "Питомец", 55, GenderType.Мужской));
-            personList1.Add(new Person(
+            personList1.Add(new PersonBase(
                 "Дарья", "Ивасенко", 60, GenderType.Женский));
 
             PersonList personList2 = new PersonList();
-            personList2.Add(new Person(
+            personList2.Add(new PersonBase(
                 "Екатерина", "Бозырева", 28, GenderType.Женский));
-            personList2.Add(new Person(
+            personList2.Add(new PersonBase(
                 "Галина", "Павловская", 77, GenderType.Женский));
-            personList2.Add(new Person(
+            personList2.Add(new PersonBase(
                 "Вадим", "Азеев", 18, GenderType.Мужской));
 
             WriteLine("Чтобы вывести содержимое " +
@@ -40,7 +40,7 @@ namespace ViewLaba2
             WriteLine("\nЧтобы добавить человека в первый список" +
                 " нажмите любую кнопку");
             ReadLine();
-            personList1.Add(new Person(
+            personList1.Add(new PersonBase(
                 "Олег", "Николашкин", 23, GenderType.Мужской));
             WriteLine("Первый список персон:");
             WriteLine(personList1.PrintPersonList());
@@ -109,7 +109,7 @@ namespace ViewLaba2
                             switch (choice)
                             {
                                 case "1":
-                                    personList.Add(Person.GetRandomPerson());
+                                    personList.Add(PersonBase.GetRandomPerson());
                                     WriteLine("\n{0}", 
                                         personList.PrintPersonList());
                                     break;
@@ -269,9 +269,9 @@ namespace ViewLaba2
         /// Ввод информации о персоне в консоль
         /// </summary>
         /// <returns>Полная информация о персоне</returns>
-        private static Person Read()
+        private static PersonBase Read()
         {
-            var partPerson = new Person(GenderType.Мужской);
+            var partPerson = new PersonBase(GenderType.Мужской);
             
             while (true)
             {

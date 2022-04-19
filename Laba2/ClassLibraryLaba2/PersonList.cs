@@ -11,13 +11,13 @@ namespace ModelLaba2
         /// <summary>
         /// Список персон
         /// </summary>
-        private Person[] _personList = new Person[0];
+        private PersonBase[] _personList = new PersonBase[0];
 
         /// <summary>
         /// Добавление персоны в список
         /// </summary>
         /// <param name="person">Экземпляр класса Person</param>
-        public Person[] Add(Person person)
+        public PersonBase[] Add(PersonBase person)
         {
             Array.Resize(ref _personList, _personList.Length + 1);
             _personList[_personList.Length - 1] = person;
@@ -41,7 +41,7 @@ namespace ModelLaba2
         /// Удаление персоны из списка по его данным
         /// </summary>
         /// <param name="person">Экземпляр класса Person</param>
-        public void DelitePersonByData(Person person)
+        public void DelitePersonByData(PersonBase person)
         {
             int remove = -1;
             for (int i = 0; i < _personList.Length; ++i)
@@ -103,7 +103,7 @@ namespace ModelLaba2
         /// </summary>
         /// <param name="personIndex">Индекс персоны</param>
         /// <returns>Информация о персоне</returns>
-        public Person SearchByIndex(int personIndex)
+        public PersonBase SearchByIndex(int personIndex)
         {
             if (personIndex < 0 || personIndex > _personList.Length - 1)
             {
@@ -120,7 +120,7 @@ namespace ModelLaba2
         /// </summary>
         /// <param name="person">Экземпляр класса Person</param>
         /// <returns>Индекс персоны</returns>
-        public int SearchIndexByPerson(Person person)
+        public int SearchIndexByPerson(PersonBase person)
         {
             int index = 0;
             for (int i = 0; i < _personList.Length; ++i)
