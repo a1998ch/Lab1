@@ -12,343 +12,92 @@ namespace ViewLaba2
             OutputEncoding = Encoding.Unicode;
             InputEncoding = Encoding.Unicode;
 
-            PersonList personList1 = new PersonList();
-            personList1.Add(new PersonBase(
-                "Сергей", "Пащенко", 23, GenderType.Мужской));
-            personList1.Add(new PersonBase(
-                "Дмитрий", "Питомец", 55, GenderType.Мужской));
-            personList1.Add(new PersonBase(
-                "Дарья", "Ивасенко", 60, GenderType.Женский));
+            var adult = new Adult("Сергей", "Пащенко", 49,
+                GenderType.Мужской, 123456789, "Энергетик",
+                StateOfMarriageType.Married, "Антонина Пащенко");
 
-            PersonList personList2 = new PersonList();
-            personList2.Add(new PersonBase(
-                "Екатерина", "Бозырева", 28, GenderType.Женский));
-            personList2.Add(new PersonBase(
-                "Галина", "Павловская", 77, GenderType.Женский));
-            personList2.Add(new PersonBase(
-                "Вадим", "Азеев", 18, GenderType.Мужской));
+            var adult2 = new Adult("Антонина", "Пащенко", 33,
+                GenderType.Женский, 865756756, "Безработный",
+                StateOfMarriageType.Married, "Сергей Пащенко");
+
+            var adult3 = new Adult("Алина", "Буравченко", 57,
+                GenderType.Мужской, 876543425, "Слесарь",
+                StateOfMarriageType.CivilMarriage, "Фанит Загитов");
+
+            var adult4 = new Adult("Олег", "Николашкин", 23,
+                GenderType.Мужской, 876786425, "Актёр",
+                StateOfMarriageType.CivilMarriage, "Алина Буравченко");
+
+            var child = new Child("Дмитрий", "Питомец", 12,
+                GenderType.Мужской, adult2, adult, "Школа №5");
+
+            var child2 = new Child("Андрей", "Афанасьев", 4,
+                GenderType.Мужской, adult2, adult, "Детский сад №3");
+
+            var child3 = new Child("Юрий", "Шашков", 15,
+                GenderType.Мужской, adult3, adult4, "Школа №15");
+
+            PersonList personList = new PersonList();
+            personList.Add(adult);
+            personList.Add(adult2);
+            personList.Add(adult3);
+            personList.Add(adult4);
+            personList.Add(child);
+            personList.Add(child2);
+            personList.Add(child3);
 
             WriteLine("Чтобы вывести содержимое " +
-                "каждого списка на экран нажмите любую кнопку");
+                "списка на экран нажмите любую кнопку");
             ReadLine();
-            WriteLine("Первый список персон:");
-            WriteLine(personList1.PrintPersonList());
-            WriteLine("Второй список персон:");
-            WriteLine(personList2.PrintPersonList());
+            WriteLine("Список персон:");
+            WriteLine(personList.PrintPersonList());
 
-
-            WriteLine("\nЧтобы добавить человека в первый список" +
-                " нажмите любую кнопку");
-            ReadLine();
-            personList1.Add(new PersonBase(
-                "Олег", "Николашкин", 23, GenderType.Мужской));
-            WriteLine("Первый список персон:");
-            WriteLine(personList1.PrintPersonList());
-
-
-            WriteLine("\nЧтобы скопировать второго человека из первого " +
-                "списка в конец второго списка нажмите любую кнопку");
-            ReadLine();
-            var personTmp = personList1.SearchByIndex(1);
-            personList2.Add(personTmp);
-            WriteLine("Первый список персон:");
-            WriteLine(personList1.PrintPersonList());
-            WriteLine("Второй список персон:");
-            WriteLine(personList2.PrintPersonList());
-
-
-            WriteLine("\nЧтобы удалить второго человека " +
-                "из первого списка нажмите любую кнопку");
-            ReadLine();
-            personList1.DelitePersonByIndex(1);
-            WriteLine("Первый список персон:");
-            WriteLine(personList1.PrintPersonList());
-            WriteLine("Второй список персон:");
-            WriteLine(personList2.PrintPersonList());
-
-
-            WriteLine("\nЧтобы отчистить второй список нажмите любую кнопку");
-            ReadLine();
-            personList2.CleanList();
-            WriteLine("Список отчищен");
-
-            PersonList personList = ListChoice(personList1, personList2);
 
             while (true)
             {
-                WriteLine("\nВведите команду: \n" +
-                          "\"Добавить человека\" = 1, \n" +
-                          "\"Удалить человека\" = 2, \n" +
-                          "\"Удалить человека по индексу\" = 3, \n" +
-                          "\"Поиск человека по индексу\" = 4, \n" +
-                          "\"Поиск индекса по человеку\" = 5, \n" +
-                          "\"Очистить список\" = 6, \n" +
-                          "\"Количество элементов в списке\" = 7, \n" +
-                          "\"Выбрать другой список\" = 8, \n" +
-                          "\"Выход\" чтобы выйти\n");
-                
+                WriteLine("Чтобы добавить случайного взрослого " +
+                            "нажмите 1. \nЧтобы добавить случайного " +
+                            "ребёнка нажмите 2.\n" +
+                            "Чтобы выйти нажмите 3.");
                 string command = ReadLine();
-                const string addPerson = "1";
-                const string delitePerson = "2";
-                const string delitePersonByIndex = "3";
-                const string searchPersonByIndex = "4";
-                const string searchIndexByPerson = "5";
-                const string cleanPersonList = "6";
-                const string lengthPersonList = "7";
-                const string choicePersonList = "8";
-                
-                switch (command)
-                {
-                    case addPerson:
-                        {
-                            WriteLine("\nДля добавления " +
-                                "случайного человека нажмите \"1\" или" +
-                                " \"2\" чтобы добавить человека вручную: ");
-
-                            string choice = ReadLine();
-                            switch (choice)
-                            {
-                                case "1":
-                                    personList.Add(PersonBase.GetRandomPerson());
-                                    WriteLine("\n{0}", 
-                                        personList.PrintPersonList());
-                                    break;
-                                case "2":
-                                    personList.Add(Read());
-                                    WriteLine("\n{0}", 
-                                        personList.PrintPersonList());
-                                    break;
-                                default:
-                                    WriteLine(
-                                        "Нужно выбрать \"1\" или \"2\"");
-                                    break;
-                            }
-                            break;
-                        }
-                    case delitePerson:
-                        {
-                            try
-                            {
-                                personList.DelitePersonByData(Read());
-                            }
-                            catch (Exception ex)
-                            {
-                                ExceptionMessage(ex);
-                            }
-                            WriteLine("\n{0}", personList.PrintPersonList());
-                            break;
-                        }
-                    case delitePersonByIndex:
-                        {
-                            try
-                            {
-                                WriteLine("\nВведите индекс:");
-                                personList.DelitePersonByIndex(
-                                    int.Parse(ReadLine()));
-                            }
-                            catch (Exception ex)
-                            {
-                                ExceptionMessage(ex);
-                            }
-                            WriteLine("\n{0}", personList.PrintPersonList());
-                            break;
-                        }
-                    case searchPersonByIndex:
-                        {
-                            try
-                            {
-                                WriteLine("\nВведите индекс:");
-                                WriteLine("\n{0}", 
-                                    personList.SearchByIndex(
-                                        int.Parse(ReadLine())).Info());
-                            }
-                            catch (Exception ex)
-                            {
-                                ExceptionMessage(ex);
-                            }
-                            break;
-                        }
-                    case searchIndexByPerson:
-                        {
-                            try
-                            {
-                                WriteLine(
-                                    "\nИндекс введённого человека: {0}", 
-                                    personList.SearchIndexByPerson(Read()));
-                            }
-                            catch (Exception ex)
-                            {
-                                ExceptionMessage(ex);
-                            }
-                            break;
-                        }
-                    case cleanPersonList:
-                        {
-                            personList.CleanList();
-                            WriteLine("\nСписок отчищен");
-                            break;
-                        }
-                    case lengthPersonList:
-                        {
-                            WriteLine(
-                                "\nДлина списка: {0}", personList.Length);
-                            break;
-                        }
-                    case choicePersonList:
-                        {
-                            personList = ListChoice(personList1, personList2);
-                            break;
-                        }
-                }
-                
-                if (command.ToLower() == "выход")
-                {
-                    WriteLine("\nПрограмма завершена!");
-                    break;
-                }
-            }
-            ReadLine();
-        }
-
-        /// <summary>
-        /// Выбор списка персон
-        /// </summary>
-        /// <param name="people1">Экземпляр класса PersonList</param>
-        /// <param name="people2">Экземпляр класса PersonList</param>
-        private static PersonList ListChoice(
-            PersonList people1, PersonList people2)
-        {
-            while (true)
-            {
-                WriteLine($"\nВыберете список персон: 1 или 2");
-                string list = ReadLine();
-                switch (list)
+                switch(command)
                 {
                     case "1":
-                        return people1;
+                        personList.Add(Adult.GetRandomAdult());
+                        WriteLine(personList.PrintPersonList());
+                        break;
                     case "2":
-                        return people2;
-                    default:
-                        WriteLine("Нет такого списка");
+                        personList.Add(Child.GetRandomChild());
+                        WriteLine(personList.PrintPersonList());
                         break;
                 }
-            }
-        }
-
-        /// <summary>
-        /// Выбор пола персоны
-        /// </summary>
-        /// <returns>Пол персоны</returns>
-        private static GenderType ReadGenderFromConsole()
-        {
-            while (true)
-            {
-                WriteLine($"\nВведите пол: {GenderType.Мужской} = \"М\"" +
-                                    $" или {GenderType.Женский} = \"Ж\" ");
-                string gender = ReadLine();
-                try
+                if (command == "3")
                 {
-                    switch (gender.ToLower())
-                    {
-                        case "м":
-                            return GenderType.Мужской;
-                        case "ж":
-                            return GenderType.Женский;
-                        default:
-                            throw new Exception("Неправильный пол");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    ExceptionMessage(ex);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Ввод информации о персоне в консоль
-        /// </summary>
-        /// <returns>Полная информация о персоне</returns>
-        private static PersonBase Read()
-        {
-            var partPerson = new PersonBase(GenderType.Мужской);
-            
-            while (true)
-            {
-                Write("\nВведите имя: ");
-                string testName = ReadLine();
-                try
-                {
-                    partPerson.Name = testName;
-                    WarningMessage(testName);
                     break;
                 }
-                catch (Exception ex)
-                {
-                    ExceptionMessage(ex);
-                }
             }
 
-            while (true)
+
+            WriteLine("\nЧтобы программно определить тип четвёртого " +
+                        "человека в списке и вывести его на экран " +
+                        "нажмите любую кнопку");
+            ReadLine();
+            var personTmp = personList.SearchByIndex(3);
+            switch (personTmp.GetType().Name)
             {
-                Write("\nВведите фамилию: ");
-                string testSurname = ReadLine();
-                try
-                {
-                    partPerson.Surname = testSurname;
-                    WarningMessage(testSurname);
+                case "Adult":
+                    WriteLine("{0}\n{1}", personTmp.Info(),
+                        adult.TestTypeAdult());
                     break;
-                }
-                catch (Exception ex)
-                {
-                    ExceptionMessage(ex);
-                }
-            }
-            
-            while (true)
-            {
-                Write("\nВведите возраст: ");
-                try
-                {
-                    partPerson.Age = int.Parse(ReadLine());
+                case "Child":
+                    WriteLine("{0}\n{1}", personTmp.Info(),
+                        child.TestTypeChild());
                     break;
-                }
-                catch (Exception ex)
-                {
-                    ExceptionMessage(ex);
-                }
+                default:
+                    WriteLine("Неизвестный тип данных");
+                    break;
             }
-            
-            partPerson.Gender = ReadGenderFromConsole();
-            return partPerson;
-        }
-
-        /// <summary>
-        /// Выводит в консоль текст при срабатывании исключения
-        /// </summary>
-        /// <param name="ex">представляет из себя сообщение об ошибке</param>
-        private static void ExceptionMessage(Exception ex)
-        {
-            ForegroundColor = ConsoleColor.Red;
-            Write($"\nОшибка: { ex.Message}\n");
-            ResetColor();
-        }
-
-        /// <summary>
-        /// Выводит в консоль предупреждение при неправильном 
-        /// регистре имени или фамилии
-        /// </summary>
-        /// <param name="nameOrSurname">Имя или фамилия для проверки</param>
-        private static void WarningMessage(string nameOrSurname)
-        {
-            if (nameOrSurname[0].ToString() != 
-                nameOrSurname[0].ToString().ToUpper())
-            {
-                ForegroundColor = ConsoleColor.Green;
-                WriteLine("\nПредупреждение: \"Имя и Фамилию" +
-                    " необходимо писать с большой буквы\"");
-                ResetColor();
-            }
+            ReadLine();
         }
     }
 }

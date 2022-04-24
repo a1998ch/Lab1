@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ModelLaba2
 {
+    /// <summary>
+    /// Перечисление семейного положения персоны
+    /// </summary>
     public enum StateOfMarriageType
     {
         Married,

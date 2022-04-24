@@ -46,7 +46,8 @@ namespace ModelLaba2
             int remove = -1;
             for (int i = 0; i < _personList.Length; ++i)
             {
-                if (_personList[i].Info() == person.Info())
+                if (_personList[i].Info() ==
+                    person.Info())
                 {
                     remove = i;
                     break;
@@ -125,7 +126,8 @@ namespace ModelLaba2
             int index = 0;
             for (int i = 0; i < _personList.Length; ++i)
             {
-                if (_personList[i].Info() == person.Info())
+                if (_personList[i].Info() ==
+                    person.Info())
                 {
                     index = i;
                     break;
