@@ -13,6 +13,11 @@ namespace ModelLaba2
     public abstract class PersonBase
     {
         /// <summary>
+        /// Возраст взрослого
+        /// </summary>
+        private int _age;
+
+        /// <summary>
         /// Имя
         /// </summary>
         private string _name;
@@ -53,7 +58,11 @@ namespace ModelLaba2
         /// <summary>
         /// Метод для работы с возрастом 
         /// </summary>
-        public abstract int Age { set; get; }
+        public int Age 
+        {
+            set => _age = AgeEntryRule(value);
+            get => _age;
+        }
 
         /// <summary>
         /// Метод для работы с полом 
@@ -71,6 +80,7 @@ namespace ModelLaba2
         /// <param name="surname">Фамилия персоны</param>
         /// <param name="age">Возраст персоны</param>
         /// <param name="gender">Пол персоны</param>
+        //TODO:
         public PersonBase(string name, string surname,
             int age, GenderType gender)
         {
@@ -181,10 +191,13 @@ namespace ModelLaba2
             }
         }
 
+        //TODO: Переименовать и сделать свойством
         /// <summary>
         /// Инфомация о персоне
         /// </summary>
-        public abstract string Info(
-            bool conditionAdultOrChild = false);
+        public abstract string Info();
+
+        //TODO: XML
+        public string ShortInfo => $"{Name} {Surname}";
     }
 }

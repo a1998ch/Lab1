@@ -12,11 +12,6 @@ namespace ModelLaba2
     public class Adult : PersonBase
     {
         /// <summary>
-        /// Возраст взрослого
-        /// </summary>
-        private int _age;
-
-        /// <summary>
         /// Паспортные данные
         /// </summary>
         private int _passportDetails;
@@ -79,15 +74,6 @@ namespace ModelLaba2
         }
 
         /// <summary>
-        /// Метод для работы с возрастом взрослого
-        /// </summary>
-        public override int Age
-        {
-            set => _age = AgeEntryRule(value);
-            get => _age;
-        }
-
-        /// <summary>
         /// Констукрутор класса взросого
         /// </summary>
         /// <param name="name">Имя персоны</param>
@@ -135,11 +121,9 @@ namespace ModelLaba2
         /// <summary>
         /// Информация о взрослом
         /// </summary>
-        public override string Info(bool conditionAdultOrChild = false)
+        public override string Info()
         {
-            if (!conditionAdultOrChild)
-            {
-                return  $"Имя: {Name}, " +
+            return  $"Имя: {Name}, " +
                         $"Фамилия: {Surname}, " +
                         $"Возраст: {Age}, " +
                         $"Пол: {Gender}, " + "\n" +
@@ -147,11 +131,6 @@ namespace ModelLaba2
                         $"  Самозанятость: {PlaceOfWork}" + "\n" +
                         $"  Семейное положение: {StateOfMarriage} " + "\n" +
                         $"  Имя и фамилия супруга/супруги: {NameAndSurnameWifeOrHusband}}}" + "\n";
-            }
-            else
-            {
-                return Name + " " + Surname;
-            }
         }
 
         /// <summary>
@@ -234,27 +213,31 @@ namespace ModelLaba2
                 nameAndSurnameWife = nameAndSurnameHusband = "Отсутствует";
             }
 
-            if (mother == "m")
+            //TODO: duplication
+            switch (mother)
             {
-                return new Adult(womenName, womenSurname, age, 
-                    GenderType.Женский, passportDetails, placeOfWork, 
-                    stateOfMarriage, nameAndSurnameHusband);
-            }
-            else if (father == "f")
-            {
-                return new Adult(menName, menSurname, age,
-                    GenderType.Мужской, passportDetails, placeOfWork,
-                    stateOfMarriage, nameAndSurnameWife);
-            }
-            else
-            {
-                return gender == Convert.ToString(GenderType.Мужской)
-                    ? new Adult(menName, menSurname, age,
-                        GenderType.Мужской, passportDetails, placeOfWork,
-                        stateOfMarriage, nameAndSurnameWife)
-                    : new Adult(womenName, womenSurname, age, 
-                        GenderType.Женский, passportDetails, placeOfWork,
+                case "m":
+                    return new Adult(womenName, womenSurname, age, 
+                        GenderType.Женский, passportDetails, placeOfWork, 
                         stateOfMarriage, nameAndSurnameHusband);
+                default:
+                {
+                    switch (father)
+                    {
+                        case "f":
+                            return new Adult(menName, menSurname, age,
+                                GenderType.Мужской, passportDetails, placeOfWork,
+                                stateOfMarriage, nameAndSurnameWife);
+                        default:
+                            return gender == Convert.ToString(GenderType.Мужской)
+                                ? new Adult(menName, menSurname, age,
+                                    GenderType.Мужской, passportDetails, placeOfWork,
+                                    stateOfMarriage, nameAndSurnameWife)
+                                : new Adult(womenName, womenSurname, age, 
+                                    GenderType.Женский, passportDetails, placeOfWork,
+                                    stateOfMarriage, nameAndSurnameHusband);
+                    }
+                }
             }
         }
 

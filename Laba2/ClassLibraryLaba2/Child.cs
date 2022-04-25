@@ -11,10 +11,6 @@ namespace ModelLaba2
     /// </summary>
     public class Child : PersonBase
     {
-        /// <summary>
-        /// Возраст ребёнка
-        /// </summary>
-        private int _age;
 
         /// <summary>
         /// Мать ребёнка
@@ -64,15 +60,6 @@ namespace ModelLaba2
         }
 
         /// <summary>
-        /// Метод для работы с возрастом ребёнка
-        /// </summary>
-        public override int Age
-        {
-            set => _age = AgeEntryRule(value);
-            get => _age;
-        }
-
-        /// <summary>
         /// Констукрутор класса ребёнка
         /// </summary>
         /// <param name="name">Имя персоны</param>
@@ -118,14 +105,14 @@ namespace ModelLaba2
         /// <summary>
         /// Информация о ребёнке
         /// </summary>
-        public override string Info(bool conditionAdultOrChild = false)
+        public override string Info()
         {
             return $"Имя: {Name}, " +
                    $"Фамилия: {Surname}, " +
                    $"Возраст: {Age}, " +
                    $"Пол: {Gender}, " + "\n" +
-                   $"{{ Имя и фамилия матери: {Mother.Info(true)}" + "\n" +
-                   $"  Имя и фамилия отца: {Father.Info(true)}" + "\n" +
+                   $"{{ Имя и фамилия матери: {Mother.ShortInfo}" + "\n" +
+                   $"  Имя и фамилия отца: {Father.ShortInfo}" + "\n" +
                    $"  Название садика/школы: " +
                    $"{NameOfKindergartenOrSchool} }}" + "\n";
         }

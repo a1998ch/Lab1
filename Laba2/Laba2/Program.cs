@@ -12,6 +12,7 @@ namespace ViewLaba2
             OutputEncoding = Encoding.Unicode;
             InputEncoding = Encoding.Unicode;
 
+            //TODO:
             var adult = new Adult("Сергей", "Пащенко", 49,
                 GenderType.Мужской, 123456789, "Энергетик",
                 StateOfMarriageType.Married, "Антонина Пащенко");
@@ -36,7 +37,7 @@ namespace ViewLaba2
 
             var child3 = new Child("Юрий", "Шашков", 15,
                 GenderType.Мужской, adult3, adult4, "Школа №15");
-
+            
             PersonList personList = new PersonList();
             personList.Add(adult);
             personList.Add(adult2);
@@ -83,15 +84,16 @@ namespace ViewLaba2
                         "нажмите любую кнопку");
             ReadLine();
             var personTmp = personList.SearchByIndex(3);
-            switch (personTmp.GetType().Name)
+
+            switch (personTmp)
             {
-                case "Adult":
+                case Adult adult1:
                     WriteLine("{0}\n{1}", personTmp.Info(),
-                        adult.TestTypeAdult());
+                        adult1.TestTypeAdult());
                     break;
-                case "Child":
+                case Child child1:
                     WriteLine("{0}\n{1}", personTmp.Info(),
-                        child.TestTypeChild());
+                        child1.TestTypeChild());
                     break;
                 default:
                     WriteLine("Неизвестный тип данных");
