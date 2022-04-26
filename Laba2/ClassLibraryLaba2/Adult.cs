@@ -121,9 +121,9 @@ namespace ModelLaba2
         /// <summary>
         /// Информация о взрослом
         /// </summary>
-        public override string Info()
+        public override string FullInfo
         {
-            return  $"Имя: {Name}, " +
+           get => $"Имя: {Name}, " +
                         $"Фамилия: {Surname}, " +
                         $"Возраст: {Age}, " +
                         $"Пол: {Gender}, " + "\n" +
@@ -136,42 +136,15 @@ namespace ModelLaba2
         /// <summary>
         /// Создаёт случайного взрослого
         /// </summary>
-        /// <param name="mother">Мать</param>
-        /// <param name="father">Отец</param>
+        /// <param name="adult">Генератор случайных взрослых</param>
+        /// <param name="parents">Если данный параметр равен "f",
+        /// то возвращает отца, если - "m", возвращает мать.
+        /// В других случаях, возвращает случайного взрослого</param>
         /// <returns>Случайный взрослый</returns>
-        public static Adult GetRandomAdult(
-            string mother = "m", string father = "f")
+        public static Adult GetRandomAdult(Random adult, string parents = "")
         {
-            Random adult = new Random(DateTime.Now.Second);
-
-            string[] menNameArray = new string[10] { "Павел", "Антон",
-                                                    "Алексей", "Максим",
-                                                    "Александр", "Ярослав",
-                                                        "Илья", "Пётр",
-                                                        "Олег", "Сергей" };
-            string[] womenNameArray = new string[10] { "Ольга", "Светлана",
-                                                        "Марина", "Олеся",
-                                                        "Анна", "Галина",
-                                                        "Алиса", "Вероника",
-                                                        "Вера", "Лариса" };
-            string[] menSurnameArray = new string[10] { "Иванов", "Петров",
-                                                        "Сидоров", "Какауров",
-                                                        "Ермолаев", "Еремеев",
-                                                        "Раздобреев",
-                                                        "Пляскин",
-                                                        "Загибалов",
-                                                        "Сергеев" };
-            string[] womenSurnameArray = new string[10] { "Бардакова",
-                                                          "Филатова",
-                                                          "Попова",
-                                                          "Золотухина",
-                                                          "Сорокина",
-                                                          "Вычугжанина",
-                                                          "Стремилова",
-                                                          "Лопаницына",
-                                                          "Жеребцова",
-                                                          "Лосякова" };
-            string[] genderArray = new string[2] { "Мужской", "Женский" };
+            GenderType[] genderArray =
+                new GenderType[2] { GenderType.Мужской, GenderType.Женский };
 
             string[] placeOfWorkArray = new string[10] { "Энергетик",
                                                          "Програмист",
@@ -183,29 +156,24 @@ namespace ModelLaba2
                                                         "Безработный",
                                                                 "Музыкант"};
 
-            StateOfMarriageType[] stateOfMarriageArray = new 
+            StateOfMarriageType[] stateOfMarriageArray = new
                 StateOfMarriageType[4] { StateOfMarriageType.Married,
                                          StateOfMarriageType.NotMarried,
                                          StateOfMarriageType.Divorced,
                                          StateOfMarriageType.CivilMarriage};
 
-            string menName = menNameArray[adult.Next(menNameArray.Length)];
-            string menSurname = menSurnameArray[adult.Next(
-                                                    menSurnameArray.Length)];
-            string womenName = womenNameArray[adult.Next(
-                                                     womenNameArray.Length)];
-            string womenSurname = womenSurnameArray[adult.Next(
-                                                  womenSurnameArray.Length)];
             int age = adult.Next(18, 120);
-            string gender = genderArray[adult.Next(genderArray.Length)];
+            GenderType gender = genderArray[adult.Next(genderArray.Length)];
             int passportDetails = adult.Next(111111111, 999999999);
             string placeOfWork = placeOfWorkArray[adult.Next(
                                                    placeOfWorkArray.Length)];
-            StateOfMarriageType stateOfMarriage = 
+            StateOfMarriageType stateOfMarriage =
                stateOfMarriageArray[adult.Next(stateOfMarriageArray.Length)];
-            
-            string nameAndSurnameWife = womenName + " " + womenSurname;
-            string nameAndSurnameHusband = menName + " " + menSurname;
+
+            string nameAndSurnameWife =
+                GetRandomWomen(adult) + " " + GetRandomWomen(adult, true);
+            string nameAndSurnameHusband =
+                GetRandomMen(adult) + " " + GetRandomMen(adult, true);
 
             if (stateOfMarriage != StateOfMarriageType.Married &&
                 stateOfMarriage != StateOfMarriageType.CivilMarriage)
@@ -214,30 +182,24 @@ namespace ModelLaba2
             }
 
             //TODO: duplication
-            switch (mother)
+            switch (parents)
             {
                 case "m":
-                    return new Adult(womenName, womenSurname, age, 
-                        GenderType.Женский, passportDetails, placeOfWork, 
+                    return new Adult(GetRandomWomen(adult), GetRandomWomen(adult, true), age,
+                        GenderType.Женский, passportDetails, placeOfWork,
                         stateOfMarriage, nameAndSurnameHusband);
+                case "f":
+                    return new Adult(GetRandomMen(adult), GetRandomMen(adult, true), age,
+                        GenderType.Мужской, passportDetails, placeOfWork,
+                        stateOfMarriage, nameAndSurnameWife);
                 default:
-                {
-                    switch (father)
-                    {
-                        case "f":
-                            return new Adult(menName, menSurname, age,
-                                GenderType.Мужской, passportDetails, placeOfWork,
-                                stateOfMarriage, nameAndSurnameWife);
-                        default:
-                            return gender == Convert.ToString(GenderType.Мужской)
-                                ? new Adult(menName, menSurname, age,
-                                    GenderType.Мужской, passportDetails, placeOfWork,
-                                    stateOfMarriage, nameAndSurnameWife)
-                                : new Adult(womenName, womenSurname, age, 
-                                    GenderType.Женский, passportDetails, placeOfWork,
-                                    stateOfMarriage, nameAndSurnameHusband);
-                    }
-                }
+                    return gender == GenderType.Мужской
+                        ? new Adult(GetRandomMen(adult), GetRandomMen(adult, true), age,
+                            GenderType.Мужской, passportDetails, placeOfWork,
+                            stateOfMarriage, nameAndSurnameWife)
+                        : new Adult(GetRandomWomen(adult), GetRandomWomen(adult, true), age,
+                            GenderType.Женский, passportDetails, placeOfWork,
+                            stateOfMarriage, nameAndSurnameHusband);
             }
         }
 

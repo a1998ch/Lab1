@@ -11,7 +11,6 @@ namespace ModelLaba2
     /// </summary>
     public class Child : PersonBase
     {
-
         /// <summary>
         /// Мать ребёнка
         /// </summary>
@@ -31,6 +30,16 @@ namespace ModelLaba2
         /// Максимальный возраст ребёнка
         /// </summary>
         public const int MaxAgeChild = 17;
+
+        /// <summary>
+        /// Минимальный возраст ребёнка для зачисления в детский сад
+        /// </summary>
+        public const int MinAgeforKindergarten = 2;
+
+        /// <summary>
+        /// Минимальный возраст ребёнка для зачисления в школу
+        /// </summary>
+        public const int MinAgeforSchool = 6;
 
         /// <summary>
         /// Метод для работы с матерью
@@ -105,9 +114,9 @@ namespace ModelLaba2
         /// <summary>
         /// Информация о ребёнке
         /// </summary>
-        public override string Info()
+        public override string FullInfo
         {
-            return $"Имя: {Name}, " +
+            get => $"Имя: {Name}, " +
                    $"Фамилия: {Surname}, " +
                    $"Возраст: {Age}, " +
                    $"Пол: {Gender}, " + "\n" +
@@ -120,71 +129,55 @@ namespace ModelLaba2
         /// <summary>
         /// Создаёт случайного ребёнка
         /// </summary>
+        /// <param name="child">Генератор случайных детей</param>
         /// <returns>Случайный ребёнок</returns>
-        public static Child GetRandomChild()
+        public static Child GetRandomChild(Random child)
         {
-            Random child = new Random(DateTime.Now.Millisecond);
-
-            string[] menNameArray = new string[10] { "Павел", "Антон",
-                                                    "Алексей", "Максим",
-                                                    "Александр", "Ярослав",
-                                                        "Илья", "Пётр",
-                                                        "Олег", "Сергей" };
-            string[] womenNameArray = new string[10] { "Ольга", "Светлана",
-                                                        "Марина", "Олеся",
-                                                        "Анна", "Галина",
-                                                        "Алиса", "Вероника",
-                                                        "Вера", "Лариса" };
-            string[] menSurnameArray = new string[10] { "Иванов", "Петров",
-                                                        "Сидоров", "Какауров",
-                                                        "Ермолаев", "Еремеев",
-                                                        "Раздобреев",
-                                                        "Пляскин",
-                                                        "Загибалов",
-                                                        "Сергеев" };
-            string[] womenSurnameArray = new string[10] { "Бардакова",
-                                                          "Филатова",
-                                                          "Попова",
-                                                          "Золотухина",
-                                                          "Сорокина",
-                                                          "Вычугжанина",
-                                                          "Стремилова",
-                                                          "Лопаницына",
-                                                          "Жеребцова",
-                                                          "Лосякова" };
-            string[] genderArray = new string[2] { "Мужской", "Женский" };
-            string[] nameOfKindergartenOrSchoolArray = new string[10] 
+            GenderType[] genderArray =
+                 new GenderType[2] { GenderType.Мужской, GenderType.Женский };
+            string[] nameOfKindergartenArray = new string[5]
                                                           { "Детский сад №1",
                                                             "Детский сад №2",
                                                             "Детский сад №3",
                                                             "Детский сад №4",
-                                                            "Детский сад №5",
+                                                            "Детский сад №5",};
+            string[] nameOfSchoolArray = new string[5]
+                                                           {
                                                             "Школа №1",
                                                             "Школа №2",
                                                             "Школа №3",
                                                             "Школа №4",
                                                             "Школа №5" };
 
-            string menName = menNameArray[child.Next(menNameArray.Length)];
-            string menSurname = menSurnameArray[child.Next(
-                                                    menSurnameArray.Length)];
-            string womenName = womenNameArray[child.Next(
-                                                     womenNameArray.Length)];
-            string womenSurname = womenSurnameArray[child.Next(
-                                                  womenSurnameArray.Length)];
             int age = child.Next(0, 17);
-            string gender = genderArray[child.Next(genderArray.Length)];
-            string nameOfKindergartenOrSchool =
-                nameOfKindergartenOrSchoolArray[child.Next(
-                    nameOfKindergartenOrSchoolArray.Length)];
+            GenderType gender = genderArray[child.Next(genderArray.Length)];
 
-            return gender == Convert.ToString(GenderType.Мужской)
-                ? new Child(menName, menSurname, age, GenderType.Мужской,
-                    Adult.GetRandomAdult("m"), Adult.GetRandomAdult("f"),
-                    nameOfKindergartenOrSchool)
-                : new Child(womenName, womenSurname, age, GenderType.Женский,
-                    Adult.GetRandomAdult("m"), Adult.GetRandomAdult("f"),
-                    nameOfKindergartenOrSchool);
+            string nameOfKindergartenOrSchool = "";
+            if (age >= MinAgeforKindergarten && age < MinAgeforSchool)
+            {
+                nameOfKindergartenOrSchool = nameOfKindergartenArray[
+                    child.Next(nameOfKindergartenArray.Length)];
+            }
+            else if(age >= MinAgeforSchool)
+            {
+                nameOfKindergartenOrSchool = nameOfSchoolArray[
+                    child.Next(nameOfSchoolArray.Length)];
+            }
+            else
+            {
+                nameOfKindergartenOrSchool = "Не прикреплён";
+            }    
+
+            var mother = Adult.GetRandomAdult(child, "m");
+            var father = Adult.GetRandomAdult(child, "f");
+
+            return gender == GenderType.Мужской
+                ? new Child(GetRandomMen(child), GetRandomMen(child, true),
+                      age, GenderType.Мужской, mother, father,
+                      nameOfKindergartenOrSchool)
+                : new Child(GetRandomWomen(child), GetRandomWomen(child, true),
+                      age, GenderType.Женский, mother, father,
+                      nameOfKindergartenOrSchool);
         }
 
         /// <summary>

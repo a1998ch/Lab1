@@ -32,7 +32,7 @@ namespace ModelLaba2
             string personList = "";
             for (int i = 0; i < _personList.Length; i++)
             {
-                personList += _personList[i].Info() + "\n";
+                personList += _personList[i].FullInfo + "\n";
             }
             return personList;
         }
@@ -46,8 +46,8 @@ namespace ModelLaba2
             int remove = -1;
             for (int i = 0; i < _personList.Length; ++i)
             {
-                if (_personList[i].Info() ==
-                    person.Info())
+                if (_personList[i].FullInfo ==
+                    person.FullInfo)
                 {
                     remove = i;
                     break;
@@ -126,8 +126,8 @@ namespace ModelLaba2
             int index = 0;
             for (int i = 0; i < _personList.Length; ++i)
             {
-                if (_personList[i].Info() ==
-                    person.Info())
+                if (_personList[i].FullInfo ==
+                    person.FullInfo)
                 {
                     index = i;
                     break;

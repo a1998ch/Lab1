@@ -11,41 +11,22 @@ namespace ViewLaba2
         {
             OutputEncoding = Encoding.Unicode;
             InputEncoding = Encoding.Unicode;
-
             //TODO:
-            var adult = new Adult("Сергей", "Пащенко", 49,
-                GenderType.Мужской, 123456789, "Энергетик",
-                StateOfMarriageType.Married, "Антонина Пащенко");
-
-            var adult2 = new Adult("Антонина", "Пащенко", 33,
-                GenderType.Женский, 865756756, "Безработный",
-                StateOfMarriageType.Married, "Сергей Пащенко");
-
-            var adult3 = new Adult("Алина", "Буравченко", 57,
-                GenderType.Мужской, 876543425, "Слесарь",
-                StateOfMarriageType.CivilMarriage, "Фанит Загитов");
-
-            var adult4 = new Adult("Олег", "Николашкин", 23,
-                GenderType.Мужской, 876786425, "Актёр",
-                StateOfMarriageType.CivilMarriage, "Алина Буравченко");
-
-            var child = new Child("Дмитрий", "Питомец", 12,
-                GenderType.Мужской, adult2, adult, "Школа №5");
-
-            var child2 = new Child("Андрей", "Афанасьев", 4,
-                GenderType.Мужской, adult2, adult, "Детский сад №3");
-
-            var child3 = new Child("Юрий", "Шашков", 15,
-                GenderType.Мужской, adult3, adult4, "Школа №15");
-            
             PersonList personList = new PersonList();
-            personList.Add(adult);
-            personList.Add(adult2);
-            personList.Add(adult3);
-            personList.Add(adult4);
-            personList.Add(child);
-            personList.Add(child2);
-            personList.Add(child3);
+            var rnd = new Random();
+
+            string[] person = new string[7];
+            for (int i = 0; i < person.Length; i++)
+            {
+                if (i % 2 == 0)
+                {
+                    personList.Add(Child.GetRandomChild(rnd));
+                }
+                else
+                {
+                    personList.Add(Adult.GetRandomAdult(rnd));
+                }
+            }
 
             WriteLine("Чтобы вывести содержимое " +
                 "списка на экран нажмите любую кнопку");
@@ -53,22 +34,21 @@ namespace ViewLaba2
             WriteLine("Список персон:");
             WriteLine(personList.PrintPersonList());
 
-
             while (true)
             {
                 WriteLine("Чтобы добавить случайного взрослого " +
-                            "нажмите 1. \nЧтобы добавить случайного " +
-                            "ребёнка нажмите 2.\n" +
-                            "Чтобы выйти нажмите 3.");
+                            "нажмите \"1\". \nЧтобы добавить случайного " +
+                            "ребёнка нажмите \"2\".\n" +
+                            "Чтобы выйти нажмите \"3\".");
                 string command = ReadLine();
-                switch(command)
+                switch (command)
                 {
                     case "1":
-                        personList.Add(Adult.GetRandomAdult());
+                        personList.Add(Adult.GetRandomAdult(rnd));
                         WriteLine(personList.PrintPersonList());
                         break;
                     case "2":
-                        personList.Add(Child.GetRandomChild());
+                        personList.Add(Child.GetRandomChild(rnd));
                         WriteLine(personList.PrintPersonList());
                         break;
                 }
@@ -87,13 +67,13 @@ namespace ViewLaba2
 
             switch (personTmp)
             {
-                case Adult adult1:
-                    WriteLine("{0}\n{1}", personTmp.Info(),
-                        adult1.TestTypeAdult());
+                case Adult adult:
+                    WriteLine("{0}\n{1}", personTmp.FullInfo,
+                        adult.TestTypeAdult());
                     break;
-                case Child child1:
-                    WriteLine("{0}\n{1}", personTmp.Info(),
-                        child1.TestTypeChild());
+                case Child child:
+                    WriteLine("{0}\n{1}", personTmp.FullInfo,
+                        child.TestTypeChild());
                     break;
                 default:
                     WriteLine("Неизвестный тип данных");
