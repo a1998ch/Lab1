@@ -87,7 +87,8 @@ namespace ModelLaba2
         /// имя и фамилия супруга/супруги персоны</param>
         public Adult(string name, string surname, int age, GenderType gender,
             int passportDetails, string placeOfWork,
-            StateOfMarriageType stateOfMarriage, string nameAndSurnameWifeOrHusband)
+            StateOfMarriageType stateOfMarriage,
+            string nameAndSurnameWifeOrHusband)
             : base(name, surname, age, gender)
         {
             Name = name;
@@ -130,7 +131,8 @@ namespace ModelLaba2
                         $"{{ Паспотные данные: { PassportDetails}" + "\n" +
                         $"  Самозанятость: {PlaceOfWork}" + "\n" +
                         $"  Семейное положение: {StateOfMarriage} " + "\n" +
-                        $"  Имя и фамилия супруга/супруги: {NameAndSurnameWifeOrHusband}}}" + "\n";
+                        $"  Имя и фамилия супруга/супруги: " +
+                        $"{NameAndSurnameWifeOrHusband}}}" + "\n";
         }
 
         /// <summary>
@@ -185,21 +187,25 @@ namespace ModelLaba2
             switch (parents)
             {
                 case "m":
-                    return new Adult(GetRandomWomen(adult), GetRandomWomen(adult, true), age,
-                        GenderType.Женский, passportDetails, placeOfWork,
-                        stateOfMarriage, nameAndSurnameHusband);
+                    return new Adult(GetRandomWomen(adult),
+                        GetRandomWomen(adult, true), age, GenderType.Женский,
+                        passportDetails, placeOfWork, stateOfMarriage,
+                        nameAndSurnameHusband);
                 case "f":
-                    return new Adult(GetRandomMen(adult), GetRandomMen(adult, true), age,
-                        GenderType.Мужской, passportDetails, placeOfWork,
-                        stateOfMarriage, nameAndSurnameWife);
+                    return new Adult(GetRandomMen(adult),
+                        GetRandomMen(adult, true), age, GenderType.Мужской,
+                        passportDetails, placeOfWork, stateOfMarriage,
+                        nameAndSurnameWife);
                 default:
                     return gender == GenderType.Мужской
-                        ? new Adult(GetRandomMen(adult), GetRandomMen(adult, true), age,
-                            GenderType.Мужской, passportDetails, placeOfWork,
-                            stateOfMarriage, nameAndSurnameWife)
-                        : new Adult(GetRandomWomen(adult), GetRandomWomen(adult, true), age,
-                            GenderType.Женский, passportDetails, placeOfWork,
-                            stateOfMarriage, nameAndSurnameHusband);
+                        ? new Adult(GetRandomMen(adult),
+                          GetRandomMen(adult, true), age, GenderType.Мужской,
+                          passportDetails, placeOfWork, stateOfMarriage,
+                          nameAndSurnameWife)
+                        : new Adult(GetRandomWomen(adult),
+                          GetRandomWomen(adult, true), age, GenderType.Женский,
+                          passportDetails, placeOfWork, stateOfMarriage,
+                          nameAndSurnameHusband);
             }
         }
 
