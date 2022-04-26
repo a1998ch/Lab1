@@ -4,15 +4,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BFA246A3-DF8D-484B-AF16-427E35C5CBF4}</ProjectGuid>
+    <ProjectGuid>{DD130E82-5F68-4076-A7D4-620887C074A6}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ViewLaba1</RootNamespace>
-    <AssemblyName>ViewLaba1</AssemblyName>
+    <RootNamespace>ViewLaba3</RootNamespace>
+    <AssemblyName>ViewLaba3</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -51,9 +50,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibraryLaba1\ModelLaba1.csproj">
-      <Project>{b404b0c9-2bd4-4e4c-b992-b739cc07fb8d}</Project>
-      <Name>ModelLaba1</Name>
+    <ProjectReference Include="..\ModelLaba3\ModelLaba3.csproj">
+      <Project>{2435973a-cf18-4fc0-b3d5-0ed60490566c}</Project>
+      <Name>ModelLaba3</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
