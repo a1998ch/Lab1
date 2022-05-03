@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ModelLaba3\ModelLaba3.csproj">
-      <Project>{2435973a-cf18-4fc0-b3d5-0ed60490566c}</Project>
+      <Project>{fce4ffb9-1925-4062-929f-d82fed10e524}</Project>
       <Name>ModelLaba3</Name>
     </ProjectReference>
   </ItemGroup>

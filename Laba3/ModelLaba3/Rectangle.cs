@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ModelLaba3
 {
-    public class Class1
+    /*public class Rectangle : FiguresBase
     {
 
-    }
+    }*/
 }
