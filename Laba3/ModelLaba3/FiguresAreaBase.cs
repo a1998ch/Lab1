@@ -23,14 +23,9 @@ namespace ModelLaba3
         /// <returns>Корректные параметры фигуры</returns>
         protected double DataCorrectness(double data)
         {
-            if (data <= 0)
-            {
-                throw new ArgumentException("Неправильный ввод данных");
-            }
-            else
-            {
-                return data;
-            }
+            return data <= 0
+                ? throw new ArgumentException("Неправильный ввод данных")
+                : data;
         }
     }
 }
