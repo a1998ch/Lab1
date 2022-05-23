@@ -5,8 +5,10 @@ using static System.Console;
 
 namespace ViewLaba2
 {
+    //TODO: XML
     public class Program
     {
+        //TODO: XML
         private static void Main(string[] args)
         {
             OutputEncoding = Encoding.Unicode;

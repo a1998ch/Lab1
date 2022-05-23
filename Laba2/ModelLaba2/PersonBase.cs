@@ -80,7 +80,6 @@ namespace ModelLaba2
         /// <param name="surname">Фамилия персоны</param>
         /// <param name="age">Возраст персоны</param>
         /// <param name="gender">Пол персоны</param>
-        //TODO:
         protected PersonBase(string name, string surname,
             int age, GenderType gender)
         {
@@ -190,14 +189,12 @@ namespace ModelLaba2
                     "должны быть написаны на одном языке");
             }
         }
-
-        //TODO: Переименовать и сделать свойством
+        
         /// <summary>
         /// Полная инфомация о персоне
         /// </summary>
         public abstract string FullInfo { get; }
-
-        //TODO: XML
+        
         /// <summary>
         /// Имя и фамилия персоны
         /// </summary>
@@ -210,8 +207,8 @@ namespace ModelLaba2
         /// <param name="returnWomenName">Если данный параметр равен false,
         /// то возвращает имя, если - true, возвращает фамилию</param>
         /// <returns>Случайная женщина</returns>
-        protected static string GetRandomWomen(Random womenRandom,
-                                        bool returnWomenName = false)
+        protected static string GetRandomWomen(Random womenRandom, 
+            bool returnWomenName = false)
         {
             string[] womenNameArray = new string[10] { "Ольга", "Светлана",
                                                         "Марина", "Олеся",
@@ -271,5 +268,16 @@ namespace ModelLaba2
                 ? menName
                 : menSurname;
         }
+
+        public static string[] MenNameArray => new string[10]
+        {
+            "Павел", "Антон",
+            "Алексей", "Максим",
+            "Александр", "Ярослав",
+            "Илья", "Пётр",
+            "Олег", "Сергей"
+        };
+
+
     }
 }

@@ -138,12 +138,14 @@ namespace ModelLaba2
         /// <summary>
         /// Создаёт случайного взрослого
         /// </summary>
+        /// TODO: название
         /// <param name="adult">Генератор случайных взрослых</param>
+        /// TODO: передавать пол?
         /// <param name="parents">Если данный параметр равен "f",
         /// то возвращает отца, если - "m", возвращает мать.
         /// В других случаях, возвращает случайного взрослого</param>
         /// <returns>Случайный взрослый</returns>
-        public static Adult GetRandomAdult(Random adult, string parents = "")
+        public static Adult GetRandomAdult(Random adult, string parents = "", bool isRandomGender = false)
         {
             GenderType[] genderArray =
                 new GenderType[2] { GenderType.Мужской, GenderType.Женский };
@@ -165,7 +167,7 @@ namespace ModelLaba2
                                          StateOfMarriageType.CivilMarriage};
 
             int age = adult.Next(18, 120);
-            GenderType gender = genderArray[adult.Next(genderArray.Length)];
+            
             int passportDetails = adult.Next(111111111, 999999999);
             string placeOfWork = placeOfWorkArray[adult.Next(
                                                    placeOfWorkArray.Length)];
@@ -184,29 +186,29 @@ namespace ModelLaba2
             }
 
             //TODO: duplication
+            if (isRandomGender)
+            {
+                //parents = genderArray[adult.Next(genderArray.Length)];
+            }
+            string name = string.Empty;
+            string lastName = string.Empty;
             switch (parents)
             {
                 case "m":
-                    return new Adult(GetRandomWomen(adult),
-                        GetRandomWomen(adult, true), age, GenderType.Женский,
-                        passportDetails, placeOfWork, stateOfMarriage,
-                        nameAndSurnameHusband);
+                    name = GetRandomWomen(adult);
+                    lastName = GetRandomWomen(adult, true);
+                    break;
                 case "f":
-                    return new Adult(GetRandomMen(adult),
-                        GetRandomMen(adult, true), age, GenderType.Мужской,
-                        passportDetails, placeOfWork, stateOfMarriage,
-                        nameAndSurnameWife);
-                default:
-                    return gender == GenderType.Мужской
-                        ? new Adult(GetRandomMen(adult),
-                          GetRandomMen(adult, true), age, GenderType.Мужской,
-                          passportDetails, placeOfWork, stateOfMarriage,
-                          nameAndSurnameWife)
-                        : new Adult(GetRandomWomen(adult),
-                          GetRandomWomen(adult, true), age, GenderType.Женский,
-                          passportDetails, placeOfWork, stateOfMarriage,
-                          nameAndSurnameHusband);
+                    name = GetRandomMen(adult);
+                    lastName = GetRandomMen(adult, true);
+                    break;
             }
+            
+                
+            //TODO: вместо genderType передавать parents после изменения типа
+            return new Adult(name, lastName, age, GenderType.Женский,
+                passportDetails, placeOfWork, stateOfMarriage,
+                nameAndSurnameHusband);
         }
 
         /// <summary>
