@@ -6,9 +6,16 @@ using static System.Console;
 namespace ViewLaba2
 {
     //TODO: XML
+    /// <summary>
+    /// Класс Program
+    /// </summary>
     public class Program
     {
         //TODO: XML
+        /// <summary>
+        /// Точка входа приложения
+        /// </summary>
+        /// <param name="args">Аргументы командной строки</param>
         private static void Main(string[] args)
         {
             OutputEncoding = Encoding.Unicode;

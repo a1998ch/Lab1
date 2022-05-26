@@ -129,9 +129,9 @@ namespace ModelLaba2
         /// <summary>
         /// Создаёт случайного ребёнка
         /// </summary>
-        /// <param name="child">Генератор случайных детей</param>
+        /// <param name="rnd">Генератор случайных детей</param>
         /// <returns>Случайный ребёнок</returns>
-        public static Child GetRandomChild(Random child)
+        public static Child GetRandomChild(Random rnd)
         {
             GenderType[] genderArray =
                  new GenderType[2] { GenderType.Мужской, GenderType.Женский };
@@ -149,35 +149,37 @@ namespace ModelLaba2
                                                             "Школа №4",
                                                             "Школа №5" };
 
-            int age = child.Next(0, 17);
-            GenderType gender = genderArray[child.Next(genderArray.Length)];
+            int age = rnd.Next(0, 17);
+            GenderType gender = genderArray[rnd.Next(genderArray.Length)];
 
             string nameOfKindergartenOrSchool = "";
             if (age >= MinAgeforKindergarten && age < MinAgeforSchool)
             {
                 nameOfKindergartenOrSchool = nameOfKindergartenArray[
-                    child.Next(nameOfKindergartenArray.Length)];
+                    rnd.Next(nameOfKindergartenArray.Length)];
             }
             else if(age >= MinAgeforSchool)
             {
                 nameOfKindergartenOrSchool = nameOfSchoolArray[
-                    child.Next(nameOfSchoolArray.Length)];
+                    rnd.Next(nameOfSchoolArray.Length)];
             }
             else
             {
                 nameOfKindergartenOrSchool = "Не прикреплён";
             }    
 
-            var mother = Adult.GetRandomAdult(child, "m");
-            var father = Adult.GetRandomAdult(child, "f");
+            var mother = Adult.GetRandomAdult(rnd, true, GenderType.Женский);
+            var father = Adult.GetRandomAdult(rnd, true, GenderType.Мужской);
 
             return gender == GenderType.Мужской
-                ? new Child(GetRandomMen(child), GetRandomMen(child, true),
-                      age, GenderType.Мужской, mother, father,
-                      nameOfKindergartenOrSchool)
-                : new Child(GetRandomWomen(child), GetRandomWomen(child, true),
-                      age, GenderType.Женский, mother, father,
-                      nameOfKindergartenOrSchool);
+                ? new Child(GetRandomName(rnd, GenderType.Мужской),
+                            GetRandomSurname(rnd, GenderType.Мужской), age,
+                            GenderType.Мужской, mother, father,
+                            nameOfKindergartenOrSchool)
+                : new Child(GetRandomName(rnd, GenderType.Женский),
+                            GetRandomSurname(rnd, GenderType.Женский), age,
+                            GenderType.Женский, mother, father,
+                            nameOfKindergartenOrSchool);
         }
 
         /// <summary>

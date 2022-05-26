@@ -135,17 +135,19 @@ namespace ModelLaba2
                         $"{NameAndSurnameWifeOrHusband}}}" + "\n";
         }
 
+
         /// <summary>
         /// Создаёт случайного взрослого
         /// </summary>
         /// TODO: название
-        /// <param name="adult">Генератор случайных взрослых</param>
+        /// <param name="rnd">Генератор случайных взрослых</param>
         /// TODO: передавать пол?
         /// <param name="parents">Если данный параметр равен "f",
         /// то возвращает отца, если - "m", возвращает мать.
         /// В других случаях, возвращает случайного взрослого</param>
         /// <returns>Случайный взрослый</returns>
-        public static Adult GetRandomAdult(Random adult, string parents = "", bool isRandomGender = false)
+        public static Adult GetRandomAdult(Random rnd,
+                bool parents = false, GenderType gender = GenderType.Мужской)
         {
             GenderType[] genderArray =
                 new GenderType[2] { GenderType.Мужской, GenderType.Женский };
@@ -166,18 +168,20 @@ namespace ModelLaba2
                                          StateOfMarriageType.Divorced,
                                          StateOfMarriageType.CivilMarriage};
 
-            int age = adult.Next(18, 120);
+            int age = rnd.Next(18, 120);
             
-            int passportDetails = adult.Next(111111111, 999999999);
-            string placeOfWork = placeOfWorkArray[adult.Next(
+            int passportDetails = rnd.Next(111111111, 999999999);
+            string placeOfWork = placeOfWorkArray[rnd.Next(
                                                    placeOfWorkArray.Length)];
             StateOfMarriageType stateOfMarriage =
-               stateOfMarriageArray[adult.Next(stateOfMarriageArray.Length)];
+               stateOfMarriageArray[rnd.Next(stateOfMarriageArray.Length)];
 
             string nameAndSurnameWife =
-                GetRandomWomen(adult) + " " + GetRandomWomen(adult, true);
+                GetRandomName(rnd, GenderType.Женский) + " " + 
+                GetRandomSurname(rnd, GenderType.Женский);
             string nameAndSurnameHusband =
-                GetRandomMen(adult) + " " + GetRandomMen(adult, true);
+                GetRandomName(rnd, GenderType.Мужской) + " " +
+                GetRandomSurname(rnd, GenderType.Мужской);
 
             if (stateOfMarriage != StateOfMarriageType.Married &&
                 stateOfMarriage != StateOfMarriageType.CivilMarriage)
@@ -186,29 +190,32 @@ namespace ModelLaba2
             }
 
             //TODO: duplication
-            if (isRandomGender)
+            if (!parents)
             {
-                //parents = genderArray[adult.Next(genderArray.Length)];
+                gender = genderArray[rnd.Next(genderArray.Length)];
             }
             string name = string.Empty;
             string lastName = string.Empty;
-            switch (parents)
+            string partner = string.Empty;
+            switch (gender)
             {
-                case "m":
-                    name = GetRandomWomen(adult);
-                    lastName = GetRandomWomen(adult, true);
+                case GenderType.Мужской:
+                    name = GetRandomName(rnd, GenderType.Мужской);
+                    lastName = GetRandomSurname(rnd, gender);
+                    partner = nameAndSurnameWife;
                     break;
-                case "f":
-                    name = GetRandomMen(adult);
-                    lastName = GetRandomMen(adult, true);
+                case GenderType.Женский:
+                    name = GetRandomName(rnd, GenderType.Женский);
+                    lastName = GetRandomSurname(rnd, gender);
+                    partner = nameAndSurnameHusband;
                     break;
             }
             
                 
             //TODO: вместо genderType передавать parents после изменения типа
-            return new Adult(name, lastName, age, GenderType.Женский,
+            return new Adult(name, lastName, age, gender,
                 passportDetails, placeOfWork, stateOfMarriage,
-                nameAndSurnameHusband);
+                partner);
         }
 
         /// <summary>

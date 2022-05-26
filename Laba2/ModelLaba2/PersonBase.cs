@@ -201,83 +201,82 @@ namespace ModelLaba2
         public string ShortInfo => $"{Name} {Surname}";
 
         /// <summary>
-        /// Создаёт случайного взрослого
+        /// Создаёт имя случайного взрослого
         /// </summary>
-        /// <param name="womenRandom">Генератор случайных женщин</param>
-        /// <param name="returnWomenName">Если данный параметр равен false,
-        /// то возвращает имя, если - true, возвращает фамилию</param>
-        /// <returns>Случайная женщина</returns>
-        protected static string GetRandomWomen(Random womenRandom, 
-            bool returnWomenName = false)
+        /// <param name="rnd">Генератор случайных женщин</param>
+        /// <param name="gender">Пол человека</param>
+        /// <returns>Имя взрослого</returns>
+        protected static string GetRandomName(Random rnd, GenderType gender)
         {
-            string[] womenNameArray = new string[10] { "Ольга", "Светлана",
-                                                        "Марина", "Олеся",
-                                                        "Анна", "Галина",
-                                                        "Алиса", "Вероника",
-                                                        "Вера", "Лариса" };
-            string[] womenSurnameArray = new string[10] { "Бардакова",
-                                                            "Филатова",
-                                                            "Попова",
-                                                            "Золотухина",
-                                                            "Сорокина",
-                                                            "Вычугжанина",
-                                                            "Стремилова",
-                                                            "Лопаницына",
-                                                            "Жеребцова",
-                                                            "Лосякова" };
+            string[] menNameArray = new string[10]
+            {
+                "Павел", "Антон",
+                "Алексей", "Максим",
+                "Александр", "Ярослав",
+                "Илья", "Пётр",
+                "Олег", "Сергей"
+            };
 
+            string[] womenNameArray = new string[10]
+            {
+                "Ольга", "Светлана",
+                "Марина", "Олеся",
+                "Анна", "Галина",
+                "Алиса", "Вероника",
+                "Вера", "Лариса" 
+            };
 
-            string womenName = womenNameArray[womenRandom.Next(
+            string womenName = womenNameArray[rnd.Next(
                                                      womenNameArray.Length)];
-            string womenSurname = womenSurnameArray[womenRandom.Next(
-                                      womenSurnameArray.Length)];
+            string menName = menNameArray[rnd.Next(
+                                                    menNameArray.Length)];
 
-            return !returnWomenName
-                ? womenName
-                : womenSurname;
+            return gender == GenderType.Мужской
+                ? menName
+                : womenName;
         }
 
         /// <summary>
         /// Создаёт случайного взрослого
         /// </summary>
-        /// <param name="menRandom">Генератор случайных мужчин</param>
-        /// <param name="returnMenName">Если данный параметр равен false,
-        /// то возвращает имя, если - true, возвращает фамилию</param>
-        /// <returns>Случайная женщина</returns>
-        protected static string GetRandomMen(Random menRandom,
-                                                bool returnMenName = false)
+        /// <param name="rnd">Генератор случайных мужчин</param>
+        /// <param name="gender">Пол человека</param>
+        /// <returns>Фамилия взрослого</returns>
+        protected static string GetRandomSurname(Random rnd, GenderType gender)
         {
-            string[] menNameArray = new string[10] { "Павел", "Антон",
-                                                "Алексей", "Максим",
-                                                "Александр", "Ярослав",
-                                                    "Илья", "Пётр",
-                                                    "Олег", "Сергей" };
-            string[] menSurnameArray = new string[10] { "Иванов", "Петров",
-                                                    "Сидоров", "Какауров",
-                                                    "Ермолаев", "Еремеев",
-                                                    "Раздобреев",
-                                                    "Пляскин",
-                                                    "Загибалов",
-                                                    "Сергеев" };
+            string[] menSurnameArray = new string[10]
+            { 
+                "Иванов", "Петров",
+                "Сидоров", "Какауров",
+                "Ермолаев", "Еремеев",
+                "Раздобреев",
+                "Пляскин",
+                "Загибалов",
+                "Сергеев" 
+            };
 
-            string menName = menNameArray[menRandom.Next(menNameArray.Length)];
-            string menSurname = menSurnameArray[menRandom.Next(
+            string[] womenSurnameArray = new string[10]
+            { 
+                "Бардакова",
+                "Филатова",
+                "Попова",
+                "Золотухина",
+                "Сорокина",
+                "Вычугжанина",
+                "Стремилова",
+                "Лопаницына",
+                "Жеребцова",
+                "Лосякова" 
+            };
+
+            string menSurname = menSurnameArray[rnd.Next(
                                                 menSurnameArray.Length)];
+            string womenSurname = womenSurnameArray[rnd.Next(
+                          womenSurnameArray.Length)];
 
-            return !returnMenName
-                ? menName
-                : menSurname;
+            return gender == GenderType.Мужской
+                ? menSurname
+                : womenSurname;
         }
-
-        public static string[] MenNameArray => new string[10]
-        {
-            "Павел", "Антон",
-            "Алексей", "Максим",
-            "Александр", "Ярослав",
-            "Илья", "Пётр",
-            "Олег", "Сергей"
-        };
-
-
     }
 }
