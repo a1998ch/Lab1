@@ -142,9 +142,10 @@ namespace ModelLaba2
         /// TODO: название
         /// <param name="rnd">Генератор случайных взрослых</param>
         /// TODO: передавать пол?
-        /// <param name="parents">Если данный параметр равен "f",
-        /// то возвращает отца, если - "m", возвращает мать.
-        /// В других случаях, возвращает случайного взрослого</param>
+        /// <param name="parents">Если данный параметр равен "false",
+        /// то возвращает случайных взрослых, если - "true",
+        /// возвращает взрослого мужского пола</param>
+        /// <param name="gender">Пол персоны</param>
         /// <returns>Случайный взрослый</returns>
         public static Adult GetRandomAdult(Random rnd,
                 bool parents = false, GenderType gender = GenderType.Мужской)
