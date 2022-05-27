@@ -5,13 +5,11 @@ using static System.Console;
 
 namespace ViewLaba2
 {
-    //TODO: XML
     /// <summary>
     /// Класс Program
     /// </summary>
     public class Program
     {
-        //TODO: XML
         /// <summary>
         /// Точка входа приложения
         /// </summary>
@@ -20,7 +18,6 @@ namespace ViewLaba2
         {
             OutputEncoding = Encoding.Unicode;
             InputEncoding = Encoding.Unicode;
-            //TODO:
             PersonList personList = new PersonList();
             var rnd = new Random();
 

@@ -139,9 +139,7 @@ namespace ModelLaba2
         /// <summary>
         /// Создаёт случайного взрослого
         /// </summary>
-        /// TODO: название
         /// <param name="rnd">Генератор случайных взрослых</param>
-        /// TODO: передавать пол?
         /// <param name="parents">Если данный параметр равен "false",
         /// то возвращает случайных взрослых, если - "true",
         /// возвращает взрослого мужского пола</param>
@@ -189,8 +187,7 @@ namespace ModelLaba2
             {
                 nameAndSurnameWife = nameAndSurnameHusband = "Отсутствует";
             }
-
-            //TODO: duplication
+            
             if (!parents)
             {
                 gender = genderArray[rnd.Next(genderArray.Length)];
@@ -212,8 +209,6 @@ namespace ModelLaba2
                     break;
             }
             
-                
-            //TODO: вместо genderType передавать parents после изменения типа
             return new Adult(name, lastName, age, gender,
                 passportDetails, placeOfWork, stateOfMarriage,
                 partner);
