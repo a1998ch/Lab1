@@ -61,6 +61,7 @@ namespace ModelLaba3
         /// <param name="sideC">Длинна одной из сторон треугольника</param>
         public Triangle(double sideA, double sideB, double sideC)
         {
+            //TODO: Проверка на соответствие сторон
             SideA = sideA;
             SideB = sideB;
             SideC = sideC;

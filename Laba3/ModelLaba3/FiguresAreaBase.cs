@@ -16,6 +16,7 @@ namespace ModelLaba3
         /// </summary>
         public abstract double FigureArea { get; }
 
+        //TODO: naming + комментарии
         /// <summary>
         /// Корректный ввод данных фигуры
         /// </summary>
