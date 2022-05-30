@@ -31,7 +31,7 @@ namespace ModelLaba3
         /// </summary>
         public double SideA
         {
-            set => _sideA = DataCorrectness(value);
+            set => _sideA = CheckValue(value);
             get => _sideA;
         }
 
@@ -40,7 +40,7 @@ namespace ModelLaba3
         /// </summary>
         public double SideB
         {
-            set => _sideB = DataCorrectness(value);
+            set => _sideB = CheckValue(value);
             get => _sideB;
         }
 
@@ -49,7 +49,7 @@ namespace ModelLaba3
         /// </summary>
         public double SideC
         {
-            set => _sideC = DataCorrectness(value);
+            set => _sideC = CheckValue(value);
             get => _sideC;
         }
 
@@ -62,9 +62,18 @@ namespace ModelLaba3
         public Triangle(double sideA, double sideB, double sideC)
         {
             //TODO: Проверка на соответствие сторон
-            SideA = sideA;
-            SideB = sideB;
-            SideC = sideC;
+            if (sideA + sideB <= sideC ||
+                sideB + sideC <= sideA || sideC + sideA <= sideB)
+            {
+                throw new ArgumentException("Из введённых длин отрезков" +
+                                        "невозможно построить треугольник");
+            }
+            else
+            {
+                SideA = sideA;
+                SideB = sideB;
+                SideC = sideC;
+            }
         }
 
         /// <summary>

@@ -21,7 +21,7 @@ namespace ModelLaba3
         /// </summary>
         public double Radius
         {
-            set => _radius = DataCorrectness(value);
+            set => _radius = CheckValue(value);
             get => _radius;
         }
 

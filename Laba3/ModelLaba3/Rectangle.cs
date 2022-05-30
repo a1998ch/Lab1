@@ -26,7 +26,7 @@ namespace ModelLaba3
         /// </summary>
         public double SideA
         {
-            set => _sideA = DataCorrectness(value);
+            set => _sideA = CheckValue(value);
             get => _sideA;
         }
 
@@ -35,7 +35,7 @@ namespace ModelLaba3
         /// </summary>
         public double SideB
         {
-            set => _sideB = DataCorrectness(value);
+            set => _sideB = CheckValue(value);
             get => _sideB;
         }
 

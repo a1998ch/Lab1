@@ -26,7 +26,7 @@ namespace ViewLaba3
             {
                 new Circle(5.6),
                 new Rectangle(4, 5.7),
-                new Triangle(1, 2, 3),
+                new Triangle(3, 2, 4),
             };
             
             foreach (var figures in figuresAreaList)

@@ -18,15 +18,15 @@ namespace ModelLaba3
 
         //TODO: naming + комментарии
         /// <summary>
-        /// Корректный ввод данных фигуры
+        /// Проверка знака (плюс или минус) отрезка фигуры
         /// </summary>
-        /// <param name="data">Параметр фигуры</param>
-        /// <returns>Корректные параметры фигуры</returns>
-        protected double DataCorrectness(double data)
+        /// <param name="lineSegment">Отрезок фигуры</param>
+        /// <returns>Отрезок фигуры</returns>
+        protected double CheckValue(double lineSegment)
         {
-            return data <= 0
+            return lineSegment <= 0
                 ? throw new ArgumentException("Неправильный ввод данных")
-                : data;
+                : lineSegment;
         }
     }
 }
