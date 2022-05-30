@@ -40,7 +40,7 @@ namespace ModelLaba2
         /// <summary>
         /// Метод для работы с именем 
         /// </summary>
-        public string Name
+        protected string Name
         {
             set => _name = ValidationNameAndSurname(value);
             get => _name;
@@ -49,7 +49,7 @@ namespace ModelLaba2
         /// <summary>
         /// Метод для работы с фамилией 
         /// </summary>
-        public string Surname
+        protected string Surname
         {
             set => _surname = ValidationNameAndSurname(value);
             get => _surname;
@@ -58,7 +58,7 @@ namespace ModelLaba2
         /// <summary>
         /// Метод для работы с возрастом 
         /// </summary>
-        public int Age 
+        protected int Age 
         {
             set => _age = AgeEntryRule(value);
             get => _age;
@@ -67,7 +67,7 @@ namespace ModelLaba2
         /// <summary>
         /// Метод для работы с полом 
         /// </summary>
-        public GenderType Gender
+        protected GenderType Gender
         {
             set => _gender = value;
             get => _gender;

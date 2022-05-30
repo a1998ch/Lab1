@@ -39,7 +39,7 @@ namespace ModelLaba2
         /// <summary>
         /// Метод для работы с паспортными данными
         /// </summary>
-        public int PassportDetails
+        protected int PassportDetails
         {
             set => _passportDetails = value;
             get => _passportDetails;
@@ -48,7 +48,7 @@ namespace ModelLaba2
         /// <summary>
         /// Метод для работы с местом работы
         /// </summary>
-        public string PlaceOfWork
+        protected string PlaceOfWork
         {
             set => _placeOfWork = value;
             get => _placeOfWork;
@@ -57,7 +57,7 @@ namespace ModelLaba2
         /// <summary>
         /// Метод для работы с семейным положением
         /// </summary>
-        public StateOfMarriageType StateOfMarriage
+        protected StateOfMarriageType StateOfMarriage
         {
             set => _stateOfMarriage = value;
             get => _stateOfMarriage;
@@ -66,7 +66,7 @@ namespace ModelLaba2
         /// <summary>
         /// Метод для работы с именем и фамилией супруга/супруги
         /// </summary>
-        public string NameAndSurnameWifeOrHusband
+        protected string NameAndSurnameWifeOrHusband
         {
             set => _nameAndSurnameWifeOrHusband =
                         ValidationNameAndSurname(value);

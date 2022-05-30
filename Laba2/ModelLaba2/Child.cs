@@ -44,7 +44,7 @@ namespace ModelLaba2
         /// <summary>
         /// Метод для работы с матерью
         /// </summary>
-        public Adult Mother
+        protected Adult Mother
         {
             set => _mother = value;
             get => _mother;
@@ -53,7 +53,7 @@ namespace ModelLaba2
         /// <summary>
         /// Метод для работы с отцом
         /// </summary>
-        public Adult Father
+        protected Adult Father
         {
             set => _father = value;
             get => _father;
@@ -62,7 +62,7 @@ namespace ModelLaba2
         /// <summary>
         /// Метод для работы с детским садом/школой
         /// </summary>
-        public string NameOfKindergartenOrSchool
+        protected string NameOfKindergartenOrSchool
         {
             set => _nameOfKindergartenOrSchool = value;
             get => _nameOfKindergartenOrSchool;
