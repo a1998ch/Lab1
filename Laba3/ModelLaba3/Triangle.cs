@@ -61,9 +61,9 @@ namespace ModelLaba3
         /// <param name="sideC">Длинна одной из сторон треугольника</param>
         public Triangle(double sideA, double sideB, double sideC)
         {
-            //TODO: Проверка на соответствие сторон
-            if (sideA + sideB <= sideC ||
-                sideB + sideC <= sideA || sideC + sideA <= sideB)
+            if (sideA + sideB <= sideC 
+                || sideB + sideC <= sideA 
+                || sideC + sideA <= sideB)
             {
                 throw new ArgumentException("Из введённых длин отрезков" +
                                         "невозможно построить треугольник");
@@ -79,12 +79,10 @@ namespace ModelLaba3
         /// <summary>
         /// Площадь треугольника
         /// </summary>
-        public override double FigureArea
-        {
-            get => Math.Sqrt((SideA + SideB + SideC) *
-                        ((SideA + SideB + SideC) - SideA) *
-                        ((SideA + SideB + SideC) - SideB) *
-                        ((SideA + SideB + SideC) - SideC));
-        }
+        public override double FigureArea =>
+            Math.Sqrt((SideA + SideB + SideC) *
+                      ((SideA + SideB + SideC) - SideA) *
+                      ((SideA + SideB + SideC) - SideB) *
+                      ((SideA + SideB + SideC) - SideC));
     }
 }
