@@ -61,8 +61,8 @@ namespace ModelLaba3
         /// <param name="sideC">Длинна одной из сторон треугольника</param>
         public Triangle(double sideA, double sideB, double sideC)
         {
-            if (sideA + sideB <= sideC 
-                || sideB + sideC <= sideA 
+            if (sideA + sideB <= sideC
+                || sideB + sideC <= sideA
                 || sideC + sideA <= sideB)
             {
                 throw new ArgumentException("Из введённых длин отрезков" +

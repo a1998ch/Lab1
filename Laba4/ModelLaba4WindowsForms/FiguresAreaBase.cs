@@ -15,7 +15,7 @@ namespace ModelLaba3
         /// Площадь фигуры
         /// </summary>
         public abstract double FigureArea { get; }
-        
+
         /// <summary>
         /// Проверка знака (плюс или минус) отрезка фигуры
         /// </summary>

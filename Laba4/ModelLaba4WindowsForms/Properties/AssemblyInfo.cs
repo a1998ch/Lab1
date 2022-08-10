@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанные со сборкой.
-[assembly: AssemblyTitle("ModelLaba3")]
+[assembly: AssemblyTitle("ModelLaba4WindowsForms")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ModelLaba3")]
+[assembly: AssemblyProduct("ModelLaba4WindowsForms")]
 [assembly: AssemblyCopyright("Copyright ©  2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("fce4ffb9-1925-4062-929f-d82fed10e524")]
+[assembly: Guid("168b4887-38e0-4ebb-8f8c-ef3b79e97810")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //
