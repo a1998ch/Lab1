@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModelLaba3
+namespace ModelLaba4WindowsForms
 {
     /// <summary>
     /// Класс Rectangle
@@ -55,7 +55,12 @@ namespace ModelLaba3
         /// </summary>
         public override double FigureArea
         {
-            get => SideA * SideB;
+            get => Math.Round(SideA * SideB, 3);
         }
+
+        /// <summary>
+        /// Тип фигуры
+        /// </summary>
+        public override string Type => "Прямоугольник";
     }
 }

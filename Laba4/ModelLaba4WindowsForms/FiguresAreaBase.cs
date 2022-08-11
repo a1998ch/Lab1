@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
-namespace ModelLaba3
+namespace ModelLaba4WindowsForms
 {
     /// <summary>
     /// Класс FiguresAreaBase
@@ -15,6 +16,11 @@ namespace ModelLaba3
         /// Площадь фигуры
         /// </summary>
         public abstract double FigureArea { get; }
+
+        /// <summary>
+        /// Тип фигуры
+        /// </summary>
+        public abstract string Type { get; }
 
         /// <summary>
         /// Проверка знака (плюс или минус) отрезка фигуры

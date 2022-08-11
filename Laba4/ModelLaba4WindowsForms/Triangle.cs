@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModelLaba3
+namespace ModelLaba4WindowsForms
 {
     /// <summary>
     /// Класс Triangle
@@ -80,9 +80,14 @@ namespace ModelLaba3
         /// Площадь треугольника
         /// </summary>
         public override double FigureArea =>
-            Math.Sqrt((SideA + SideB + SideC) *
-                      ((SideA + SideB + SideC) - SideA) *
-                      ((SideA + SideB + SideC) - SideB) *
-                      ((SideA + SideB + SideC) - SideC));
+            Math.Round(Math.Sqrt((SideA + SideB + SideC) *
+                       ((SideA + SideB + SideC) - SideA) *
+                       ((SideA + SideB + SideC) - SideB) *
+                       ((SideA + SideB + SideC) - SideC)), 3);
+
+        /// <summary>
+        /// Тип фигуры
+        /// </summary>
+        public override string Type => "Треугольник";
     }
 }

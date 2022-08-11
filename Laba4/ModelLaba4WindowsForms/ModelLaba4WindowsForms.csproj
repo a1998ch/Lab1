@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{168B4887-38E0-4EBB-8F8C-EF3B79E97810}</ProjectGuid>
+    <ProjectGuid>{2521CFA9-C242-4AD4-A862-D96CBCD132CF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ModelLaba4WindowsForms</RootNamespace>

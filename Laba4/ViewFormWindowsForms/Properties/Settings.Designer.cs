@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ViewLaba4WindowsForms.Properties
+namespace ViewFormWindowsForms.Properties
 {
 
 

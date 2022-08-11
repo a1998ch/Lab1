@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModelLaba3
+namespace ModelLaba4WindowsForms
 {
     /// <summary>
     /// Класс Circle
@@ -39,7 +39,12 @@ namespace ModelLaba3
         /// </summary>
         public override double FigureArea
         {
-            get => Math.Pow(Radius, 2) * Math.PI;
+            get => Math.Round(Math.Pow(Radius, 2) * Math.PI, 3);
         }
+
+        /// <summary>
+        /// Тип фигуры
+        /// </summary>
+        public override string Type => "Круг";
     }
 }
