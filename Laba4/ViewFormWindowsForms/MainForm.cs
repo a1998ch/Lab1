@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Xml.Serialization;
 using ModelLaba4WindowsForms;
+using System.Text.RegularExpressions;
 
 namespace ViewFormWindowsForms
 {
@@ -30,8 +31,8 @@ namespace ViewFormWindowsForms
 
         private void MainFormLoad(object sender, EventArgs e)
         {
-            dataGridView.DataSource = _figuresList;
-            dataGridView.AutoResizeColumns();
+            dataGridViewMain.DataSource = _figuresList;
+            dataGridViewMain.AutoResizeColumns();
         }
 
         private void AddFigureClick(object sender, EventArgs e)
@@ -41,7 +42,14 @@ namespace ViewFormWindowsForms
 
             if (addForm.ShowDialog() == DialogResult.OK)
             {
-                _figuresList.Add(new Circle(5));
+                try
+                {
+                    _figuresList.Add(new Circle(addForm.Radius()));
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

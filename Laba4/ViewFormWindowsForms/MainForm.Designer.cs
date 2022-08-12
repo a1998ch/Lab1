@@ -32,16 +32,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewMain = new System.Windows.Forms.DataGridView();
             this.RemoveFigure = new System.Windows.Forms.Button();
             this.AddFigure = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.dataGridView);
+            this.groupBox1.Controls.Add(this.dataGridViewMain);
             this.groupBox1.Controls.Add(this.RemoveFigure);
             this.groupBox1.Controls.Add(this.AddFigure);
             this.groupBox1.Location = new System.Drawing.Point(14, 17);
@@ -53,13 +53,13 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "AllFigures";
             // 
-            // dataGridView
+            // dataGridViewMain
             // 
-            this.dataGridView.AllowUserToAddRows = false;
-            this.dataGridView.AllowUserToDeleteRows = false;
-            this.dataGridView.AllowUserToResizeColumns = false;
-            this.dataGridView.AllowUserToResizeRows = false;
-            this.dataGridView.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewMain.AllowUserToAddRows = false;
+            this.dataGridViewMain.AllowUserToDeleteRows = false;
+            this.dataGridViewMain.AllowUserToResizeColumns = false;
+            this.dataGridViewMain.AllowUserToResizeRows = false;
+            this.dataGridViewMain.BackgroundColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -67,13 +67,13 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.GridColor = System.Drawing.Color.Black;
-            this.dataGridView.Location = new System.Drawing.Point(6, 31);
-            this.dataGridView.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.dataGridView.Name = "dataGridView";
-            this.dataGridView.ReadOnly = true;
+            this.dataGridViewMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewMain.GridColor = System.Drawing.Color.Black;
+            this.dataGridViewMain.Location = new System.Drawing.Point(6, 31);
+            this.dataGridViewMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dataGridViewMain.Name = "dataGridViewMain";
+            this.dataGridViewMain.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -81,16 +81,16 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView.RowHeadersVisible = false;
-            this.dataGridView.RowHeadersWidth = 51;
+            this.dataGridViewMain.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridViewMain.RowHeadersVisible = false;
+            this.dataGridViewMain.RowHeadersWidth = 51;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.dataGridView.RowsDefaultCellStyle = dataGridViewCellStyle3;
-            this.dataGridView.RowTemplate.Height = 24;
-            this.dataGridView.RowTemplate.ReadOnly = true;
-            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView.Size = new System.Drawing.Size(268, 355);
-            this.dataGridView.TabIndex = 1;
+            this.dataGridViewMain.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewMain.RowTemplate.Height = 24;
+            this.dataGridViewMain.RowTemplate.ReadOnly = true;
+            this.dataGridViewMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewMain.Size = new System.Drawing.Size(268, 355);
+            this.dataGridViewMain.TabIndex = 1;
             // 
             // RemoveFigure
             // 
@@ -141,7 +141,7 @@
             this.Text = "MainForm";
             this.Load += new System.EventHandler(this.MainFormLoad);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -151,7 +151,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button RemoveFigure;
         private System.Windows.Forms.Button AddFigure;
-        private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.DataGridView dataGridViewMain;
     }
 }
 
