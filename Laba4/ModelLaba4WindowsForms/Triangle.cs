@@ -65,7 +65,7 @@ namespace ModelLaba4WindowsForms
                 || sideB + sideC <= sideA
                 || sideC + sideA <= sideB)
             {
-                throw new ArgumentException("Из введённых длин отрезков" +
+                throw new ArgumentException("Из введённых длин отрезков" + " " +
                                         "невозможно построить треугольник");
             }
             else

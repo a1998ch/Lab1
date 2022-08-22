@@ -31,12 +31,12 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.AddFigure = new System.Windows.Forms.Button();
+            this.AddFigureOK = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripTextBox2 = new System.Windows.Forms.ToolStripTextBox();
             this.Exit = new System.Windows.Forms.Button();
-            this.choiceFigure = new System.Windows.Forms.ComboBox();
+            this.ComboBoxChoiceFigure = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewAdd = new System.Windows.Forms.DataGridView();
             this.contextMenuStrip1.SuspendLayout();
@@ -44,23 +44,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAdd)).BeginInit();
             this.SuspendLayout();
             // 
-            // AddFigure
+            // AddFigureOK
             // 
-            this.AddFigure.BackColor = System.Drawing.Color.White;
-            this.AddFigure.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AddFigure.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.AddFigure.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.AddFigure.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.AddFigure.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
-            this.AddFigure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddFigure.Location = new System.Drawing.Point(12, 201);
-            this.AddFigure.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.AddFigure.Name = "AddFigure";
-            this.AddFigure.Size = new System.Drawing.Size(112, 33);
-            this.AddFigure.TabIndex = 1;
-            this.AddFigure.Text = "OK";
-            this.AddFigure.UseVisualStyleBackColor = false;
-            this.AddFigure.Click += new System.EventHandler(this.AddFigureClick);
+            this.AddFigureOK.BackColor = System.Drawing.Color.White;
+            this.AddFigureOK.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AddFigureOK.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.AddFigureOK.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.AddFigureOK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.AddFigureOK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.AddFigureOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddFigureOK.Location = new System.Drawing.Point(12, 201);
+            this.AddFigureOK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.AddFigureOK.Name = "AddFigureOK";
+            this.AddFigureOK.Size = new System.Drawing.Size(112, 33);
+            this.AddFigureOK.TabIndex = 1;
+            this.AddFigureOK.Text = "OK";
+            this.AddFigureOK.UseVisualStyleBackColor = false;
             // 
             // contextMenuStrip1
             // 
@@ -98,25 +97,25 @@
             this.Exit.TabIndex = 1;
             this.Exit.Text = "Выход";
             this.Exit.UseVisualStyleBackColor = false;
-            this.Exit.Click += new System.EventHandler(this.AddFigureClick);
+            this.Exit.Click += new System.EventHandler(this.ExitClick);
             // 
-            // choiceFigure
+            // ComboBoxChoiceFigure
             // 
-            this.choiceFigure.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.choiceFigure.FormattingEnabled = true;
-            this.choiceFigure.Items.AddRange(new object[] {
+            this.ComboBoxChoiceFigure.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ComboBoxChoiceFigure.FormattingEnabled = true;
+            this.ComboBoxChoiceFigure.Items.AddRange(new object[] {
             "Круг",
             "Прямоугольник",
             "Треугольник"});
-            this.choiceFigure.Location = new System.Drawing.Point(6, 29);
-            this.choiceFigure.Name = "choiceFigure";
-            this.choiceFigure.Size = new System.Drawing.Size(165, 31);
-            this.choiceFigure.TabIndex = 2;
-            this.choiceFigure.SelectedIndexChanged += new System.EventHandler(this.choiceFigureSelectedIndexChanged);
+            this.ComboBoxChoiceFigure.Location = new System.Drawing.Point(6, 29);
+            this.ComboBoxChoiceFigure.Name = "ComboBoxChoiceFigure";
+            this.ComboBoxChoiceFigure.Size = new System.Drawing.Size(165, 31);
+            this.ComboBoxChoiceFigure.TabIndex = 2;
+            this.ComboBoxChoiceFigure.SelectedIndexChanged += new System.EventHandler(this.ChoiceFigureSelectedIndexChanged);
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.choiceFigure);
+            this.groupBox1.Controls.Add(this.ComboBoxChoiceFigure);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(185, 81);
@@ -150,7 +149,7 @@
             this.dataGridViewAdd.RowTemplate.Height = 24;
             this.dataGridViewAdd.Size = new System.Drawing.Size(386, 97);
             this.dataGridViewAdd.TabIndex = 4;
-            this.dataGridViewAdd.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAddCellValueChanged);
+            this.dataGridViewAdd.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewAddCellValueChanged);
             // 
             // AddForm
             // 
@@ -160,7 +159,7 @@
             this.Controls.Add(this.dataGridViewAdd);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Exit);
-            this.Controls.Add(this.AddFigure);
+            this.Controls.Add(this.AddFigureOK);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -168,7 +167,7 @@
             this.Name = "AddForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddForm";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddFormFormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddFormClosing);
             this.Load += new System.EventHandler(this.AddFormLoad);
             this.contextMenuStrip1.ResumeLayout(false);
             this.contextMenuStrip1.PerformLayout();
@@ -179,14 +178,13 @@
         }
 
         #endregion
-
-        public System.Windows.Forms.Button AddFigure;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox2;
         private System.Windows.Forms.Button Exit;
-        private System.Windows.Forms.ComboBox choiceFigure;
+        private System.Windows.Forms.ComboBox ComboBoxChoiceFigure;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridViewAdd;
+        public System.Windows.Forms.Button AddFigureOK;
     }
 }

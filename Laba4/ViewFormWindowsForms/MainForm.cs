@@ -39,16 +39,27 @@ namespace ViewFormWindowsForms
         {
             this.Hide();
             AddForm addForm = new AddForm();
-
             if (addForm.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    _figuresList.Add(new Circle(addForm.Radius()));
+                    switch (addForm.FigureParam().Length)
+                    {
+                        case 1:
+                            _figuresList.Add(new Circle(addForm.FigureParam()[0]));
+                            break;
+                        case 2:
+                            _figuresList.Add(new ModelLaba4WindowsForms.Rectangle(addForm.FigureParam()[0], addForm.FigureParam()[1]));
+                            break;
+                        case 3:
+                            _figuresList.Add(new Triangle(addForm.FigureParam()[0], addForm.FigureParam()[1], addForm.FigureParam()[2]));
+                            break;
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    AddFigureClick(sender, e);
                 }
             }
         }

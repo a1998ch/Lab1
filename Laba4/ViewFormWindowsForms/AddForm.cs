@@ -21,51 +21,94 @@ namespace ViewFormWindowsForms
 
         private void AddFormLoad(object sender, EventArgs e)
         {
-            choiceFigure.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            AddFigure.Enabled = false;
+            ComboBoxChoiceFigure.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            AddFigureOK.Enabled = false;
         }
 
-        private void AddFormFormClosed(object sender, FormClosedEventArgs e)
+        private void AddFormClosing(object sender, FormClosingEventArgs e)
         {
             Form mainForm = Application.OpenForms[0];
             mainForm.Show();
         }
 
-        private void AddFigureClick(object sender, EventArgs e)
+        private void ExitClick(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void choiceFigureSelectedIndexChanged(object sender, EventArgs e)
+        private void ChoiceFigureSelectedIndexChanged(object sender, EventArgs e)
         {
             const int CircleSelectedIndex = 0;
-            switch (choiceFigure.SelectedIndex)
+            const int RectangleSelectedIndex = 1;
+            const int TriangleSelectedIndex = 2;
+            switch (ComboBoxChoiceFigure.SelectedIndex)
             {
                 case CircleSelectedIndex:
+                    DataGridViewClear();
                     dataGridViewAdd.Columns.Add("Радиус", "Радиус");
+                    dataGridViewAdd.Rows.Add();
+                    break;
+                case RectangleSelectedIndex:
+                    DataGridViewClear();
+                    dataGridViewAdd.Columns.Add("Сторона А", "Сторона А");
+                    dataGridViewAdd.Columns.Add("Сторона В", "Сторона В");
+                    dataGridViewAdd.Rows.Add();
+                    break;
+                case TriangleSelectedIndex:
+                    DataGridViewClear();
+                    dataGridViewAdd.Columns.Add("Сторона А", "Сторона А");
+                    dataGridViewAdd.Columns.Add("Сторона В", "Сторона В");
+                    dataGridViewAdd.Columns.Add("Сторона С", "Сторона С");
                     dataGridViewAdd.Rows.Add();
                     break;
             }
         }
 
-        private void dataGridViewAddCellValueChanged(object sender, DataGridViewCellEventArgs e)
+        private void DataGridViewAddCellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             dataGridViewAdd.AutoResizeColumns();
             Regex regex = new Regex("[a-z]||[а-я]");
-            if (!double.TryParse(dataGridViewAdd.Rows[0].Cells[0].Value.ToString(), out double checkDouble))
+            for (int i = 0; i < dataGridViewAdd.Columns.Count; i++)
             {
-                dataGridViewAdd.Rows[0].Cells[0].Value = "";
-                AddFigure.Enabled = false;
+                if (dataGridViewAdd.Rows[0].Cells[i].Value != null && 
+                    !double.TryParse(dataGridViewAdd.Rows[0].Cells[i].Value.ToString(), out double checkDouble))
+                {
+                    dataGridViewAdd.Rows[0].Cells[i].Value = "";
+                    AddFigureOK.Enabled = false;
+                }
             }
-            else
+            for (int i = 0, j = 0; i < dataGridViewAdd.Columns.Count; i++)
             {
-                AddFigure.Enabled = true;
+                if (dataGridViewAdd[i, 0].Value != null &&
+                    dataGridViewAdd[i, 0].Value.ToString() != "")
+                {
+                    j++;
+                }
+                if (j == dataGridViewAdd.Columns.Count)
+                {
+                    AddFigureOK.Enabled = true;
+                }
             }
         }
 
-        public double Radius()
+        private void DataGridViewClear()
         {
-            return Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[0].Value);
+            int count = dataGridViewAdd.Columns.Count;
+            dataGridViewAdd.Rows.Clear();
+            for (int i = 0; i < count; i++)
+            {
+                dataGridViewAdd.Columns.RemoveAt(0);
+            }
+        }
+
+        public double[] FigureParam()
+        {
+            double[] arrayParametrs = new double[dataGridViewAdd.Columns.Count];
+            for (int i = 0; i < arrayParametrs.Length; i++)
+            {
+                arrayParametrs[i] = Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i].Value);
+            }
+            return arrayParametrs;
         }
     }
 }
