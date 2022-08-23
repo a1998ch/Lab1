@@ -55,6 +55,7 @@ namespace ViewFormWindowsForms
                             _figuresList.Add(new Triangle(addForm.FigureParam()[0], addForm.FigureParam()[1], addForm.FigureParam()[2]));
                             break;
                     }
+                    RemoveFigure.Enabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -66,7 +67,14 @@ namespace ViewFormWindowsForms
 
         private void RemoveFigureClick(object sender, EventArgs e)
         {
-
+            if (dataGridViewMain.RowCount == 1)
+            {
+                RemoveFigure.Enabled = false;
+            }
+            foreach (DataGridViewRow row in dataGridViewMain.SelectedRows)
+            {
+                 dataGridViewMain.Rows.RemoveAt(row.Index);
+            }
         }
     }
 }

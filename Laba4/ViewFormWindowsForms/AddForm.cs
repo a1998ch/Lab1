@@ -17,6 +17,9 @@ namespace ViewFormWindowsForms
         public AddForm()
         {
             InitializeComponent();
+            #if !DEBUG
+            CreateRandomData.Visible = false;
+            #endif
         }
 
         private void AddFormLoad(object sender, EventArgs e)
@@ -24,7 +27,7 @@ namespace ViewFormWindowsForms
             ComboBoxChoiceFigure.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             AddFigureOK.Enabled = false;
         }
-
+        MainForm MainForm = new MainForm();
         private void AddFormClosing(object sender, FormClosingEventArgs e)
         {
             Form mainForm = Application.OpenForms[0];
@@ -67,7 +70,6 @@ namespace ViewFormWindowsForms
         private void DataGridViewAddCellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             dataGridViewAdd.AutoResizeColumns();
-            Regex regex = new Regex("[a-z]||[а-я]");
             for (int i = 0; i < dataGridViewAdd.Columns.Count; i++)
             {
                 if (dataGridViewAdd.Rows[0].Cells[i].Value != null && 
@@ -109,6 +111,25 @@ namespace ViewFormWindowsForms
                 arrayParametrs[i] = Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i].Value);
             }
             return arrayParametrs;
+        }
+
+        private void CreateRandomDataClick(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+            int randomFigure = rnd.Next(0, 3);
+            ComboBoxChoiceFigure.SelectedIndex = randomFigure;
+
+            for (int i = 0; i < dataGridViewAdd.Columns.Count; i++)
+            {
+                dataGridViewAdd[i, 0].Value = GetRandomData(rnd);
+            }
+        }
+
+        private static double GetRandomData(Random rnd)
+        {
+            double doubleNamber = rnd.NextDouble();
+            double param = rnd.Next(0, 100) * doubleNamber;
+            return Math.Round(param, 7);
         }
     }
 }
