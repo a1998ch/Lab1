@@ -56,6 +56,7 @@ namespace ViewFormWindowsForms
                             break;
                     }
                     RemoveFigure.Enabled = true;
+                    SearchFigure.Enabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -67,13 +68,51 @@ namespace ViewFormWindowsForms
 
         private void RemoveFigureClick(object sender, EventArgs e)
         {
-            if (dataGridViewMain.RowCount == 1)
-            {
-                RemoveFigure.Enabled = false;
-            }
             foreach (DataGridViewRow row in dataGridViewMain.SelectedRows)
             {
-                 dataGridViewMain.Rows.RemoveAt(row.Index);
+                dataGridViewMain.Rows.RemoveAt(row.Index);
+            }
+            if (dataGridViewMain.RowCount == 0)
+            {
+                RemoveFigure.Enabled = false;
+                SearchFigure.Enabled = false;
+            }
+        }
+
+        private void SearchFigureClick(object sender, EventArgs e)
+        {
+            SearchForm searchForm = new SearchForm(_figuresList);
+            this.Hide();
+            searchForm.ShowDialog();
+        }
+
+        private void SaveFileClick(object sender, EventArgs e)
+        {
+            /*BindingList<FiguresAreaBase> listSave = new BindingList<FiguresAreaBase>();
+            int k = 0;
+            for (int i = 0; i < dataGridViewMain.Rows.Count; i++)
+            {
+                for (int j = 0; j < dataGridViewMain.Columns.Count; j++)
+                {
+                    listSave.Add((FiguresAreaBase) dataGridViewMain.Rows[i].Cells[j].Value);
+                    k++;
+                }
+            }*/
+
+            SaveFileDialog saveFile = new SaveFileDialog();
+            saveFile.Filter = "FiguresAreaBase (*.fgrbs)|*.fgrbs";
+            saveFile.ShowDialog();
+            string path = saveFile.FileName;
+
+            if (string.IsNullOrEmpty(path))
+            {
+                return;
+            }
+
+            var writer = new XmlSerializer(typeof(BindingList<FiguresAreaBase>));
+            using (var fail = new FileStream(path, FileMode.Create))
+            {
+                writer.Serialize(fail, _figuresList);
             }
         }
     }

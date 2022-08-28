@@ -40,6 +40,13 @@ namespace ModelLaba4WindowsForms
         }
 
         /// <summary>
+        /// Констукрутор по умолчанию класса "Прямоугольник"
+        /// </summary>
+        public Rectangle()
+        {
+        }
+
+        /// <summary>
         /// Констукрутор класса "Прямоугольник"
         /// </summary>
         /// <param name="sideA">Длинна одной из сторон прямоугольника</param>

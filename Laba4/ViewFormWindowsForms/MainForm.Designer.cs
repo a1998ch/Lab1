@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewMain = new System.Windows.Forms.DataGridView();
             this.RemoveFigure = new System.Windows.Forms.Button();
+            this.SaveFile = new System.Windows.Forms.Button();
+            this.SearchFigure = new System.Windows.Forms.Button();
             this.AddFigure = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMain)).BeginInit();
@@ -43,6 +45,8 @@
             // 
             this.groupBox1.Controls.Add(this.dataGridViewMain);
             this.groupBox1.Controls.Add(this.RemoveFigure);
+            this.groupBox1.Controls.Add(this.SaveFile);
+            this.groupBox1.Controls.Add(this.SearchFigure);
             this.groupBox1.Controls.Add(this.AddFigure);
             this.groupBox1.Location = new System.Drawing.Point(14, 17);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -60,32 +64,32 @@
             this.dataGridViewMain.AllowUserToResizeColumns = false;
             this.dataGridViewMain.AllowUserToResizeRows = false;
             this.dataGridViewMain.BackgroundColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMain.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewMain.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMain.GridColor = System.Drawing.Color.Black;
             this.dataGridViewMain.Location = new System.Drawing.Point(6, 31);
             this.dataGridViewMain.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dataGridViewMain.Name = "dataGridViewMain";
             this.dataGridViewMain.ReadOnly = true;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewMain.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewMain.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewMain.RowHeadersVisible = false;
             this.dataGridViewMain.RowHeadersWidth = 51;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.dataGridViewMain.RowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.dataGridViewMain.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewMain.RowTemplate.Height = 24;
             this.dataGridViewMain.RowTemplate.ReadOnly = true;
             this.dataGridViewMain.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -108,6 +112,40 @@
             this.RemoveFigure.Text = "Удалить фигуру";
             this.RemoveFigure.UseVisualStyleBackColor = false;
             this.RemoveFigure.Click += new System.EventHandler(this.RemoveFigureClick);
+            // 
+            // SaveFile
+            // 
+            this.SaveFile.BackColor = System.Drawing.Color.White;
+            this.SaveFile.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SaveFile.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.SaveFile.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.SaveFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.SaveFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveFile.Location = new System.Drawing.Point(305, 327);
+            this.SaveFile.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.SaveFile.Name = "SaveFile";
+            this.SaveFile.Size = new System.Drawing.Size(180, 45);
+            this.SaveFile.TabIndex = 0;
+            this.SaveFile.Text = "Сохранить в файл";
+            this.SaveFile.UseVisualStyleBackColor = false;
+            this.SaveFile.Click += new System.EventHandler(this.SaveFileClick);
+            // 
+            // SearchFigure
+            // 
+            this.SearchFigure.BackColor = System.Drawing.Color.White;
+            this.SearchFigure.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SearchFigure.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.SearchFigure.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.SearchFigure.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.SearchFigure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SearchFigure.Location = new System.Drawing.Point(305, 130);
+            this.SearchFigure.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.SearchFigure.Name = "SearchFigure";
+            this.SearchFigure.Size = new System.Drawing.Size(180, 45);
+            this.SearchFigure.TabIndex = 0;
+            this.SearchFigure.Text = "Поиск фигуры";
+            this.SearchFigure.UseVisualStyleBackColor = false;
+            this.SearchFigure.Click += new System.EventHandler(this.SearchFigureClick);
             // 
             // AddFigure
             // 
@@ -152,6 +190,8 @@
         private System.Windows.Forms.Button RemoveFigure;
         private System.Windows.Forms.Button AddFigure;
         private System.Windows.Forms.DataGridView dataGridViewMain;
+        private System.Windows.Forms.Button SearchFigure;
+        private System.Windows.Forms.Button SaveFile;
     }
 }
 

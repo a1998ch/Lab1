@@ -27,7 +27,7 @@ namespace ViewFormWindowsForms
             ComboBoxChoiceFigure.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             AddFigureOK.Enabled = false;
         }
-        MainForm MainForm = new MainForm();
+
         private void AddFormClosing(object sender, FormClosingEventArgs e)
         {
             Form mainForm = Application.OpenForms[0];

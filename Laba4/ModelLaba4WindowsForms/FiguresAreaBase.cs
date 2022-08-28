@@ -10,6 +10,9 @@ namespace ModelLaba4WindowsForms
     /// <summary>
     /// Класс FiguresAreaBase
     /// </summary>
+    [XmlInclude(typeof(Circle))]
+    [XmlInclude(typeof(Rectangle))]
+    [XmlInclude(typeof(Triangle))]
     public abstract class FiguresAreaBase
     {
         /// <summary>

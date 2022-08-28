@@ -26,6 +26,13 @@ namespace ModelLaba4WindowsForms
         }
 
         /// <summary>
+        /// Констукрутор по умолчанию класса "Круг"
+        /// </summary>
+        public Circle()
+        {
+        }
+
+        /// <summary>
         /// Констукрутор класса "Круг"
         /// </summary>
         /// <param name="radius">Радиус круга</param>

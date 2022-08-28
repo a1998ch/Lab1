@@ -54,6 +54,13 @@ namespace ModelLaba4WindowsForms
         }
 
         /// <summary>
+        /// Констукрутор по умолчанию класса "Треугольник"
+        /// </summary>
+        public Triangle()
+        {
+        }
+
+        /// <summary>
         /// Констукрутор класса "Треугольник"
         /// </summary>
         /// <param name="sideA">Длинна одной из сторон треугольника</param>
