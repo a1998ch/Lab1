@@ -1,21 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml.Serialization;
 using ModelLaba4WindowsForms;
-using System.Text.RegularExpressions;
 
 namespace ViewFormWindowsForms
 {
+    /// <summary>
+    /// Класс MainForm
+    /// </summary>
     public partial class MainForm : Form
     {
+        /// <summary>
+        /// Список фигур
+        /// </summary>
         private BindingList<FiguresAreaBase> _figuresList = 
             new BindingList<FiguresAreaBase>()
         {
@@ -23,18 +22,31 @@ namespace ViewFormWindowsForms
             new ModelLaba4WindowsForms.Rectangle(7, 9),
             new Triangle(3, 2, 4)
         };
-            
+
+        /// <summary>
+        /// Конструктор класса
+        /// </summary>
         public MainForm()
         {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Загрузка MainForm
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event</param>
         private void MainFormLoad(object sender, EventArgs e)
         {
             dataGridViewMain.DataSource = _figuresList;
             dataGridViewMain.AutoResizeColumns();
         }
 
+        /// <summary>
+        /// Добавление новой фигуры
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event</param>
         private void AddFigureClick(object sender, EventArgs e)
         {
             this.Hide();
@@ -57,6 +69,7 @@ namespace ViewFormWindowsForms
                     }
                     RemoveFigure.Enabled = true;
                     SearchFigure.Enabled = true;
+                    SaveFile.Enabled = true;
                 }
                 catch (Exception ex)
                 {
@@ -66,6 +79,11 @@ namespace ViewFormWindowsForms
             }
         }
 
+        /// <summary>
+        /// Удаление фигуры
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event</param>
         private void RemoveFigureClick(object sender, EventArgs e)
         {
             foreach (DataGridViewRow row in dataGridViewMain.SelectedRows)
@@ -76,9 +94,15 @@ namespace ViewFormWindowsForms
             {
                 RemoveFigure.Enabled = false;
                 SearchFigure.Enabled = false;
+                SaveFile.Enabled = false;
             }
         }
 
+        /// <summary>
+        /// Поиск фигуры
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event</param>
         private void SearchFigureClick(object sender, EventArgs e)
         {
             SearchForm searchForm = new SearchForm(_figuresList);
@@ -86,6 +110,11 @@ namespace ViewFormWindowsForms
             searchForm.ShowDialog();
         }
 
+        /// <summary>
+        /// Сохранение введённых пользователем данных
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event</param>
         private void SaveFileClick(object sender, EventArgs e)
         {
             SaveFileDialog saveFile = new SaveFileDialog();
@@ -105,6 +134,11 @@ namespace ViewFormWindowsForms
             }
         }
 
+        /// <summary>
+        /// Загрузка данных
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event</param>
         private void LoadFileClick(object sender, EventArgs e)
         {
             OpenFileDialog openFile = new OpenFileDialog();

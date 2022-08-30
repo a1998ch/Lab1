@@ -1,19 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using ModelLaba4WindowsForms;
-using System.Text.RegularExpressions;
 
 namespace ViewFormWindowsForms
 {
+    /// <summary>
+    /// Класс AddForm
+    /// </summary>
     public partial class AddForm : Form
     {
+        /// <summary>
+        /// Конструктор класса
+        /// </summary>
         public AddForm()
         {
             InitializeComponent();
@@ -22,23 +19,43 @@ namespace ViewFormWindowsForms
             #endif
         }
 
+        /// <summary>
+        /// Загрузка AddForm
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event</param>
         private void AddFormLoad(object sender, EventArgs e)
         {
             ComboBoxChoiceFigure.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             AddFigureOK.Enabled = false;
         }
 
+        /// <summary>
+        /// Действия при завершении работы AddForm
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event</param>
         private void AddFormClosing(object sender, FormClosingEventArgs e)
         {
             Form mainForm = Application.OpenForms[0];
             mainForm.Show();
         }
 
+        /// <summary>
+        /// Завершение работы AddForm
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event</param>
         private void ExitClick(object sender, EventArgs e)
         {
             this.Close();
         }
 
+        /// <summary>
+        /// Изменение типа фигуры
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event</param>
         private void ChoiceFigureSelectedIndexChanged(object sender, EventArgs e)
         {
             const int CircleSelectedIndex = 0;
@@ -67,6 +84,11 @@ namespace ViewFormWindowsForms
             }
         }
 
+        /// <summary>
+        /// Изменение DataGridViewAdd
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event</param>
         private void DataGridViewAddCellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             dataGridViewAdd.AutoResizeColumns();
@@ -93,6 +115,9 @@ namespace ViewFormWindowsForms
             }
         }
 
+        /// <summary>
+        /// Удаление строк и столбцов DataGridViewAdd
+        /// </summary>
         private void DataGridViewClear()
         {
             int count = dataGridViewAdd.Columns.Count;
@@ -103,6 +128,10 @@ namespace ViewFormWindowsForms
             }
         }
 
+        /// <summary>
+        /// Запись параметров фигуры
+        /// </summary>
+        /// <returns>Параметры фигуры</returns>
         public double[] FigureParam()
         {
             double[] arrayParametrs = new double[dataGridViewAdd.Columns.Count];
@@ -113,6 +142,11 @@ namespace ViewFormWindowsForms
             return arrayParametrs;
         }
 
+        /// <summary>
+        /// Заполнение DataGridViewAdd случайными значениями
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event</param>
         private void CreateRandomDataClick(object sender, EventArgs e)
         {
             Random rnd = new Random();
@@ -125,6 +159,11 @@ namespace ViewFormWindowsForms
             }
         }
 
+        /// <summary>
+        /// Создание случайных параметров фигуры
+        /// </summary>
+        /// <param name="rnd">Генератор случайных чисел</param>
+        /// <returns>Параметры фигуры</returns>
         private static double GetRandomData(Random rnd)
         {
             double doubleNamber = rnd.NextDouble();

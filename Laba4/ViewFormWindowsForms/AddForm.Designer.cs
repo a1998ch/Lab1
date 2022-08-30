@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.AddFigureOK = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
@@ -54,7 +54,7 @@
             this.AddFigureOK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.AddFigureOK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.AddFigureOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddFigureOK.Location = new System.Drawing.Point(12, 201);
+            this.AddFigureOK.Location = new System.Drawing.Point(12, 166);
             this.AddFigureOK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.AddFigureOK.Name = "AddFigureOK";
             this.AddFigureOK.Size = new System.Drawing.Size(112, 33);
@@ -91,7 +91,7 @@
             this.Exit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.Exit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Exit.Location = new System.Drawing.Point(142, 201);
+            this.Exit.Location = new System.Drawing.Point(142, 166);
             this.Exit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(112, 33);
@@ -133,20 +133,20 @@
             this.dataGridViewAdd.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewAdd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAdd.GridColor = System.Drawing.Color.Black;
-            this.dataGridViewAdd.Location = new System.Drawing.Point(245, 41);
+            this.dataGridViewAdd.Location = new System.Drawing.Point(245, 12);
             this.dataGridViewAdd.Name = "dataGridViewAdd";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewAdd.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewAdd.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewAdd.RowHeadersVisible = false;
             this.dataGridViewAdd.RowHeadersWidth = 51;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.dataGridViewAdd.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.dataGridViewAdd.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewAdd.RowTemplate.Height = 24;
             this.dataGridViewAdd.Size = new System.Drawing.Size(386, 97);
             this.dataGridViewAdd.TabIndex = 4;
@@ -160,7 +160,7 @@
             this.CreateRandomData.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.CreateRandomData.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.CreateRandomData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CreateRandomData.Location = new System.Drawing.Point(376, 201);
+            this.CreateRandomData.Location = new System.Drawing.Point(376, 166);
             this.CreateRandomData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CreateRandomData.Name = "CreateRandomData";
             this.CreateRandomData.Size = new System.Drawing.Size(255, 33);
@@ -173,7 +173,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(654, 247);
+            this.ClientSize = new System.Drawing.Size(654, 212);
             this.Controls.Add(this.dataGridViewAdd);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.CreateRandomData);
