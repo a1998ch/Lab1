@@ -88,17 +88,6 @@ namespace ViewFormWindowsForms
 
         private void SaveFileClick(object sender, EventArgs e)
         {
-            /*BindingList<FiguresAreaBase> listSave = new BindingList<FiguresAreaBase>();
-            int k = 0;
-            for (int i = 0; i < dataGridViewMain.Rows.Count; i++)
-            {
-                for (int j = 0; j < dataGridViewMain.Columns.Count; j++)
-                {
-                    listSave.Add((FiguresAreaBase) dataGridViewMain.Rows[i].Cells[j].Value);
-                    k++;
-                }
-            }*/
-
             SaveFileDialog saveFile = new SaveFileDialog();
             saveFile.Filter = "FiguresAreaBase (*.fgrbs)|*.fgrbs";
             saveFile.ShowDialog();
@@ -110,9 +99,36 @@ namespace ViewFormWindowsForms
             }
 
             var writer = new XmlSerializer(typeof(BindingList<FiguresAreaBase>));
-            using (var fail = new FileStream(path, FileMode.Create))
+            using (var fail = new StreamWriter(path))
             {
                 writer.Serialize(fail, _figuresList);
+            }
+        }
+
+        private void LoadFileClick(object sender, EventArgs e)
+        {
+            OpenFileDialog openFile = new OpenFileDialog();
+            openFile.Filter = "FiguresAreaBase (*.fgrbs)|*.fgrbs";
+            openFile.ShowDialog();
+            string path = openFile.FileName;
+
+            if (string.IsNullOrEmpty(path))
+            {
+                return;
+            }
+
+            var reader = new XmlSerializer(_figuresList.GetType());
+            using (var fail = new StreamReader(path))
+            {
+                try
+                {
+                    _figuresList = (BindingList<FiguresAreaBase>)reader.Deserialize(fail);
+                    dataGridViewMain.DataSource = _figuresList;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }
