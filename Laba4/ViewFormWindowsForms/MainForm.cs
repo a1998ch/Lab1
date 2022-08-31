@@ -61,10 +61,12 @@ namespace ViewFormWindowsForms
                             _figuresList.Add(new Circle(addForm.FigureParam()[0]));
                             break;
                         case 2:
-                            _figuresList.Add(new ModelLaba4WindowsForms.Rectangle(addForm.FigureParam()[0], addForm.FigureParam()[1]));
+                            _figuresList.Add(new ModelLaba4WindowsForms.Rectangle(
+                                addForm.FigureParam()[0], addForm.FigureParam()[1]));
                             break;
                         case 3:
-                            _figuresList.Add(new Triangle(addForm.FigureParam()[0], addForm.FigureParam()[1], addForm.FigureParam()[2]));
+                            _figuresList.Add(new Triangle(addForm.FigureParam()[0], 
+                                addForm.FigureParam()[1], addForm.FigureParam()[2]));
                             break;
                     }
                     RemoveFigure.Enabled = true;
@@ -73,7 +75,8 @@ namespace ViewFormWindowsForms
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Ошибка", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     AddFigureClick(sender, e);
                 }
             }
@@ -161,7 +164,8 @@ namespace ViewFormWindowsForms
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "Ошибка", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

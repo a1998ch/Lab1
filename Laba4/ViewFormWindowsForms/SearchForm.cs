@@ -61,9 +61,11 @@ namespace ViewFormWindowsForms
                 for (int j = 0; j < dataGridViewSearch.ColumnCount; j++)
                 {
                     dataGridViewSearch.Rows[i].Cells[j].Style.BackColor = Color.White;
-                    if (dataGridViewSearch.Rows[i].Cells[j].Value != null && TextBoxSearch.Text != "")
+                    if (dataGridViewSearch.Rows[i].Cells[j].Value != null && 
+                        TextBoxSearch.Text != "")
                     {
-                        if (dataGridViewSearch.Rows[i].Cells[j].Value.ToString().ToLower().Contains(TextBoxSearch.Text.ToLower()))
+                        if (dataGridViewSearch.Rows[i].Cells[j].Value.
+                            ToString().ToLower().Contains(TextBoxSearch.Text.ToLower()))
                         {
                             dataGridViewSearch.Rows[i].Cells[j].Style.BackColor = Color.Green;
                             dataGridViewSearch.CurrentCell = dataGridViewSearch.Rows[i].Cells[j];

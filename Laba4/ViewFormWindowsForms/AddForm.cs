@@ -26,7 +26,7 @@ namespace ViewFormWindowsForms
         /// <param name="e">Event</param>
         private void AddFormLoad(object sender, EventArgs e)
         {
-            ComboBoxChoiceFigure.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            ComboBoxChoiceFigure.DropDownStyle = ComboBoxStyle.DropDownList;
             AddFigureOK.Enabled = false;
         }
 
@@ -95,7 +95,8 @@ namespace ViewFormWindowsForms
             for (int i = 0; i < dataGridViewAdd.Columns.Count; i++)
             {
                 if (dataGridViewAdd.Rows[0].Cells[i].Value != null && 
-                    !double.TryParse(dataGridViewAdd.Rows[0].Cells[i].Value.ToString(), out double checkDouble))
+                    !double.TryParse(dataGridViewAdd.Rows[0].Cells[i].
+                        Value.ToString(), out double checkDouble))
                 {
                     dataGridViewAdd.Rows[0].Cells[i].Value = "";
                     AddFigureOK.Enabled = false;
@@ -137,7 +138,8 @@ namespace ViewFormWindowsForms
             double[] arrayParametrs = new double[dataGridViewAdd.Columns.Count];
             for (int i = 0; i < arrayParametrs.Length; i++)
             {
-                arrayParametrs[i] = Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i].Value);
+                arrayParametrs[i] = 
+                    Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i].Value);
             }
             return arrayParametrs;
         }
