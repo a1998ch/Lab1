@@ -120,6 +120,7 @@ namespace ViewFormWindowsForms
         /// <param name="e">Event</param>
         private void SaveFileClick(object sender, EventArgs e)
         {
+            //TODO: Собрать в метод без дублирования
             SaveFileDialog saveFile = new SaveFileDialog();
             saveFile.Filter = "FiguresAreaBase (*.fgrbs)|*.fgrbs";
             saveFile.ShowDialog();
@@ -144,6 +145,7 @@ namespace ViewFormWindowsForms
         /// <param name="e">Event</param>
         private void LoadFileClick(object sender, EventArgs e)
         {
+            //TODO: Собрать в метод без дублирования
             OpenFileDialog openFile = new OpenFileDialog();
             openFile.Filter = "FiguresAreaBase (*.fgrbs)|*.fgrbs";
             openFile.ShowDialog();
