@@ -114,6 +114,19 @@ namespace ViewFormWindowsForms
         }
 
         /// <summary>
+        /// Сохранение/загрузка данных
+        /// </summary>
+        /// <param name="saveOpenFile">saveFileDialog or openFileDialog</param>
+        /// <returns>Путь для сохранения/загрузки</returns>
+        private string File(FileDialog saveOpenFile)
+        {
+            saveOpenFile.Filter = "FiguresAreaBase (*.fgrbs)|*.fgrbs";
+            saveOpenFile.ShowDialog();
+            string path = saveOpenFile.FileName;
+            return path;
+        }
+
+        /// <summary>
         /// Сохранение введённых пользователем данных
         /// </summary>
         /// <param name="sender">Sender</param>
@@ -122,14 +135,8 @@ namespace ViewFormWindowsForms
         {
             //TODO: Собрать в метод без дублирования
             SaveFileDialog saveFile = new SaveFileDialog();
-            saveFile.Filter = "FiguresAreaBase (*.fgrbs)|*.fgrbs";
-            saveFile.ShowDialog();
-            string path = saveFile.FileName;
-
-            if (string.IsNullOrEmpty(path))
-            {
-                return;
-            }
+            string path = File(saveFile);
+            if (string.IsNullOrEmpty(path)) { return; }
 
             var writer = new XmlSerializer(typeof(BindingList<FiguresAreaBase>));
             using (var fail = new StreamWriter(path))
@@ -147,14 +154,8 @@ namespace ViewFormWindowsForms
         {
             //TODO: Собрать в метод без дублирования
             OpenFileDialog openFile = new OpenFileDialog();
-            openFile.Filter = "FiguresAreaBase (*.fgrbs)|*.fgrbs";
-            openFile.ShowDialog();
-            string path = openFile.FileName;
-
-            if (string.IsNullOrEmpty(path))
-            {
-                return;
-            }
+            string path = File(openFile);
+            if (string.IsNullOrEmpty(path)) { return; }
 
             var reader = new XmlSerializer(_figuresList.GetType());
             using (var fail = new StreamReader(path))
