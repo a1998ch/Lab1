@@ -118,7 +118,7 @@ namespace ViewFormWindowsForms
         /// </summary>
         /// <param name="saveOpenFile">saveFileDialog or openFileDialog</param>
         /// <returns>Путь для сохранения/загрузки</returns>
-        private string File(FileDialog saveOpenFile)
+        private string WorkByFile(FileDialog saveOpenFile)
         {
             saveOpenFile.Filter = "FiguresAreaBase (*.fgrbs)|*.fgrbs";
             saveOpenFile.ShowDialog();
@@ -135,7 +135,7 @@ namespace ViewFormWindowsForms
         {
             //TODO: Собрать в метод без дублирования
             SaveFileDialog saveFile = new SaveFileDialog();
-            string path = File(saveFile);
+            string path = WorkByFile(saveFile);
             if (string.IsNullOrEmpty(path)) { return; }
 
             var writer = new XmlSerializer(typeof(BindingList<FiguresAreaBase>));
@@ -154,7 +154,7 @@ namespace ViewFormWindowsForms
         {
             //TODO: Собрать в метод без дублирования
             OpenFileDialog openFile = new OpenFileDialog();
-            string path = File(openFile);
+            string path = WorkByFile(openFile);
             if (string.IsNullOrEmpty(path)) { return; }
 
             var reader = new XmlSerializer(_figuresList.GetType());
