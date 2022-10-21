@@ -92,16 +92,16 @@ namespace ViewFormWindowsForms
         private void DataGridViewAddCellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             dataGridViewAdd.AutoResizeColumns();
-            for (int i = 0; i < dataGridViewAdd.Columns.Count; i++)
+            if (dataGridViewAdd.CurrentCell.Value != null && 
+                !double.TryParse(dataGridViewAdd.CurrentCell.Value.ToString(), out double checkDouble))
             {
-                if (dataGridViewAdd.Rows[0].Cells[i].Value != null && 
-                    !double.TryParse(dataGridViewAdd.Rows[0].Cells[i].
-                        Value.ToString(), out double checkDouble))
-                {
-                    dataGridViewAdd.Rows[0].Cells[i].Value = "";
-                    AddFigureOK.Enabled = false;
-                }
+                MessageBox.Show("Неправильный ввод данных", "Ошибка",
+                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AddFigureOK.Enabled = false;
+                dataGridViewAdd.CurrentCell.Value = null;
+                return;
             }
+
             for (int i = 0, j = 0; i < dataGridViewAdd.Columns.Count; i++)
             {
                 if (dataGridViewAdd[i, 0].Value != null &&
@@ -115,6 +115,83 @@ namespace ViewFormWindowsForms
                 }
             }
         }
+
+
+        private void dataGridViewAdd_CellParsing(object sender, DataGridViewCellParsingEventArgs e)
+        {
+            /*bool flag = true;
+            dataGridViewAdd.AutoResizeColumns();
+            for (int i = 0; i < dataGridViewAdd.Columns.Count; i++)
+            {
+                if (dataGridViewAdd.Rows[0].Cells[i].Value != null &&
+                !double.TryParse(dataGridViewAdd.Rows[0].Cells[i].Value.ToString(),
+                                                        out double checkDouble))
+                {
+                    dataGridViewAdd.Rows[0].Cells[i].Value = "";
+                    flag = false;
+                    AddFigureOK.Enabled = false;
+                }
+            }
+
+            if (!flag)
+            {
+                MessageBox.Show("Неправильный ввод данных", "Ошибка",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            for (int i = 0, j = 0; i < dataGridViewAdd.Columns.Count; i++)
+            {
+                if (dataGridViewAdd[i, 0].Value != null &&
+                    dataGridViewAdd[i, 0].Value.ToString() != "")
+                {
+                    j++;
+                }
+                if (j == dataGridViewAdd.Columns.Count)
+                {
+                    AddFigureOK.Enabled = true;
+                }
+            }*/
+        }
+
+
+        private void dataGridViewAdd_CellLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            /*bool flag = true;
+            dataGridViewAdd.AutoResizeColumns();
+            for (int i = 0; i < dataGridViewAdd.Columns.Count; i++)
+            {
+                if (dataGridViewAdd.Rows[0].Cells[i].Value != null &&
+                !double.TryParse(dataGridViewAdd.Rows[0].Cells[i].Value.ToString(),
+                                                        out double checkDouble))
+                {
+                    dataGridViewAdd.Rows[0].Cells[i].Value = "";
+                    flag = false;
+                    AddFigureOK.Enabled = false;
+                }
+            }
+
+            if (!flag)
+            {
+                MessageBox.Show("Неправильный ввод данных", "Ошибка",
+                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            for (int i = 0, j = 0; i < dataGridViewAdd.Columns.Count; i++)
+            {
+                if (dataGridViewAdd[i, 0].Value != null &&
+                    dataGridViewAdd[i, 0].Value.ToString() != "")
+                {
+                    j++;
+                }
+                if (j == dataGridViewAdd.Columns.Count)
+                {
+                    AddFigureOK.Enabled = true;
+                }
+            }*/
+        }
+
 
         /// <summary>
         /// Удаление строк и столбцов DataGridViewAdd

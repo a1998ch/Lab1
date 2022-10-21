@@ -1,9 +1,9 @@
-﻿using System;
+﻿using ModelLaba4WindowsForms;
+using System;
 using System.ComponentModel;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
 using System.Xml.Serialization;
-using ModelLaba4WindowsForms;
 
 namespace ViewFormWindowsForms
 {
@@ -15,7 +15,7 @@ namespace ViewFormWindowsForms
         /// <summary>
         /// Список фигур
         /// </summary>
-        private BindingList<FiguresAreaBase> _figuresList = 
+        private BindingList<FiguresAreaBase> _figuresList =
             new BindingList<FiguresAreaBase>()
         {
             new Circle(10),
@@ -40,6 +40,8 @@ namespace ViewFormWindowsForms
         {
             dataGridViewMain.DataSource = _figuresList;
             dataGridViewMain.AutoResizeColumns();
+            dataGridViewMain.Columns[0].HeaderText = "Площадь фигуры";
+            dataGridViewMain.Columns[1].HeaderText = "Название фигуры";
         }
 
         /// <summary>
@@ -65,7 +67,7 @@ namespace ViewFormWindowsForms
                                 addForm.FigureParam()[0], addForm.FigureParam()[1]));
                             break;
                         case 3:
-                            _figuresList.Add(new Triangle(addForm.FigureParam()[0], 
+                            _figuresList.Add(new Triangle(addForm.FigureParam()[0],
                                 addForm.FigureParam()[1], addForm.FigureParam()[2]));
                             break;
                     }
@@ -75,7 +77,7 @@ namespace ViewFormWindowsForms
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Ошибка", 
+                    MessageBox.Show(ex.Message, "Ошибка",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     AddFigureClick(sender, e);
                 }
@@ -167,7 +169,7 @@ namespace ViewFormWindowsForms
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, "Ошибка", 
+                    MessageBox.Show(ex.Message, "Ошибка",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

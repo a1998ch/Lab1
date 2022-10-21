@@ -44,11 +44,11 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.TextBoxSearch);
             this.groupBox1.Controls.Add(this.dataGridViewSearch);
-            this.groupBox1.Location = new System.Drawing.Point(12, 4);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Location = new System.Drawing.Point(10, 3);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox1.Size = new System.Drawing.Size(566, 404);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.groupBox1.Size = new System.Drawing.Size(453, 323);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Геометрические фигуры";
@@ -56,17 +56,19 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(288, 34);
+            this.label1.Location = new System.Drawing.Point(230, 27);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 23);
+            this.label1.Size = new System.Drawing.Size(48, 19);
             this.label1.TabIndex = 3;
             this.label1.Text = "Поиск";
             // 
             // TextBoxSearch
             // 
-            this.TextBoxSearch.Location = new System.Drawing.Point(352, 31);
+            this.TextBoxSearch.Location = new System.Drawing.Point(282, 25);
+            this.TextBoxSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.TextBoxSearch.Name = "TextBoxSearch";
-            this.TextBoxSearch.Size = new System.Drawing.Size(200, 30);
+            this.TextBoxSearch.Size = new System.Drawing.Size(161, 26);
             this.TextBoxSearch.TabIndex = 2;
             this.TextBoxSearch.TextChanged += new System.EventHandler(this.TextBoxSearchTextChanged);
             // 
@@ -87,8 +89,8 @@
             this.dataGridViewSearch.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewSearch.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSearch.GridColor = System.Drawing.Color.Black;
-            this.dataGridViewSearch.Location = new System.Drawing.Point(6, 31);
-            this.dataGridViewSearch.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dataGridViewSearch.Location = new System.Drawing.Point(5, 25);
+            this.dataGridViewSearch.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.dataGridViewSearch.Name = "dataGridViewSearch";
             this.dataGridViewSearch.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
@@ -105,18 +107,19 @@
             this.dataGridViewSearch.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewSearch.RowTemplate.Height = 24;
             this.dataGridViewSearch.RowTemplate.ReadOnly = true;
-            this.dataGridViewSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridViewSearch.Size = new System.Drawing.Size(268, 355);
+            this.dataGridViewSearch.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridViewSearch.Size = new System.Drawing.Size(214, 284);
             this.dataGridViewSearch.TabIndex = 1;
             // 
             // SearchForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(589, 412);
+            this.ClientSize = new System.Drawing.Size(471, 330);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.Name = "SearchForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.AddFigureOK = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
@@ -54,10 +54,10 @@
             this.AddFigureOK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.AddFigureOK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.AddFigureOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddFigureOK.Location = new System.Drawing.Point(12, 166);
-            this.AddFigureOK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.AddFigureOK.Location = new System.Drawing.Point(10, 133);
+            this.AddFigureOK.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.AddFigureOK.Name = "AddFigureOK";
-            this.AddFigureOK.Size = new System.Drawing.Size(112, 33);
+            this.AddFigureOK.Size = new System.Drawing.Size(90, 26);
             this.AddFigureOK.TabIndex = 1;
             this.AddFigureOK.Text = "OK";
             this.AddFigureOK.UseVisualStyleBackColor = false;
@@ -69,19 +69,17 @@
             this.toolStripTextBox1,
             this.toolStripTextBox2});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(161, 62);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(161, 54);
             // 
             // toolStripTextBox1
             // 
-            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
-            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 27);
+            this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
             // 
             // toolStripTextBox2
             // 
-            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox2.Name = "toolStripTextBox2";
-            this.toolStripTextBox2.Size = new System.Drawing.Size(100, 27);
+            this.toolStripTextBox2.Size = new System.Drawing.Size(100, 23);
             // 
             // Exit
             // 
@@ -91,10 +89,10 @@
             this.Exit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.Exit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Exit.Location = new System.Drawing.Point(142, 166);
-            this.Exit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Exit.Location = new System.Drawing.Point(114, 133);
+            this.Exit.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Exit.Name = "Exit";
-            this.Exit.Size = new System.Drawing.Size(112, 33);
+            this.Exit.Size = new System.Drawing.Size(90, 26);
             this.Exit.TabIndex = 1;
             this.Exit.Text = "Выход";
             this.Exit.UseVisualStyleBackColor = false;
@@ -108,18 +106,21 @@
             "Круг",
             "Прямоугольник",
             "Треугольник"});
-            this.ComboBoxChoiceFigure.Location = new System.Drawing.Point(6, 29);
+            this.ComboBoxChoiceFigure.Location = new System.Drawing.Point(5, 23);
+            this.ComboBoxChoiceFigure.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.ComboBoxChoiceFigure.Name = "ComboBoxChoiceFigure";
-            this.ComboBoxChoiceFigure.Size = new System.Drawing.Size(165, 31);
+            this.ComboBoxChoiceFigure.Size = new System.Drawing.Size(133, 27);
             this.ComboBoxChoiceFigure.TabIndex = 2;
             this.ComboBoxChoiceFigure.SelectedIndexChanged += new System.EventHandler(this.ChoiceFigureSelectedIndexChanged);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.ComboBoxChoiceFigure);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(10, 10);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(185, 81);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(148, 65);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Выбор фигуры";
@@ -133,23 +134,26 @@
             this.dataGridViewAdd.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewAdd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAdd.GridColor = System.Drawing.Color.Black;
-            this.dataGridViewAdd.Location = new System.Drawing.Point(245, 12);
+            this.dataGridViewAdd.Location = new System.Drawing.Point(196, 10);
+            this.dataGridViewAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridViewAdd.Name = "dataGridViewAdd";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewAdd.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewAdd.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewAdd.RowHeadersVisible = false;
             this.dataGridViewAdd.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.dataGridViewAdd.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.dataGridViewAdd.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewAdd.RowTemplate.Height = 24;
-            this.dataGridViewAdd.Size = new System.Drawing.Size(386, 97);
+            this.dataGridViewAdd.Size = new System.Drawing.Size(309, 78);
             this.dataGridViewAdd.TabIndex = 4;
+            this.dataGridViewAdd.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAdd_CellLeave);
+            this.dataGridViewAdd.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.dataGridViewAdd_CellParsing);
             this.dataGridViewAdd.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewAddCellValueChanged);
             // 
             // CreateRandomData
@@ -160,10 +164,10 @@
             this.CreateRandomData.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.CreateRandomData.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
             this.CreateRandomData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CreateRandomData.Location = new System.Drawing.Point(376, 166);
-            this.CreateRandomData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.CreateRandomData.Location = new System.Drawing.Point(301, 133);
+            this.CreateRandomData.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.CreateRandomData.Name = "CreateRandomData";
-            this.CreateRandomData.Size = new System.Drawing.Size(255, 33);
+            this.CreateRandomData.Size = new System.Drawing.Size(204, 26);
             this.CreateRandomData.TabIndex = 1;
             this.CreateRandomData.Text = "Ввод случайных данных";
             this.CreateRandomData.UseVisualStyleBackColor = false;
@@ -171,9 +175,9 @@
             // 
             // AddForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(654, 212);
+            this.ClientSize = new System.Drawing.Size(523, 170);
             this.Controls.Add(this.dataGridViewAdd);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.CreateRandomData);
@@ -181,7 +185,7 @@
             this.Controls.Add(this.AddFigureOK);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.MaximizeBox = false;
             this.Name = "AddForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
