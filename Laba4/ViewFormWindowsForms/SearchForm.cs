@@ -63,17 +63,26 @@ namespace ViewFormWindowsForms
                     dataGridViewSearch.Rows[i].Cells[j].Style.BackColor = Color.White;
                     if (dataGridViewSearch.Rows[i].Cells[j].Value != null)
                     {
-                        if (dataGridViewSearch.Rows[i].Cells[j].Value.
-                            ToString().ToLower() == TextBoxSearch.Text.ToLower())
+                        if (dataGridViewSearch.Rows[i].Cells[j].Value.ToString().ToLower().IndexOf(
+                            TextBoxSearch.Text.ToLower()) >= 0 && TextBoxSearch.Text != String.Empty)
                         {
                             dataGridViewSearch.Rows[i].Cells[j].Style.BackColor = Color.Green;
                             dataGridViewSearch.CurrentCell = dataGridViewSearch.Rows[i].Cells[j];
                         }
                         else
                         {
-                            dataGridViewSearch.Rows[i].Cells[j].Style.BackColor = Color.White;
                             dataGridViewSearch.CurrentCell = null;
                         }
+                    }
+                }
+            }
+            for (int i = 0; i < dataGridViewSearch.RowCount; i++)
+            {
+                for (int j = 0; j < dataGridViewSearch.ColumnCount; j++)
+                {
+                    if (dataGridViewSearch.Rows[i].Cells[j].Style.BackColor == Color.Green)
+                    {
+                        dataGridViewSearch.CurrentCell = dataGridViewSearch.Rows[i].Cells[j];
                     }
                 }
             }

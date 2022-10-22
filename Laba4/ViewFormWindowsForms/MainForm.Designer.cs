@@ -104,7 +104,7 @@
             this.RemoveFigure.Cursor = System.Windows.Forms.Cursors.Hand;
             this.RemoveFigure.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.RemoveFigure.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.RemoveFigure.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.RemoveFigure.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LawnGreen;
             this.RemoveFigure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.RemoveFigure.Location = new System.Drawing.Point(12, 84);
             this.RemoveFigure.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -121,7 +121,7 @@
             this.LoadFile.Cursor = System.Windows.Forms.Cursors.Hand;
             this.LoadFile.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.LoadFile.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.LoadFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.LoadFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LawnGreen;
             this.LoadFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LoadFile.Location = new System.Drawing.Point(12, 273);
             this.LoadFile.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -138,7 +138,7 @@
             this.SaveFile.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SaveFile.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.SaveFile.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.SaveFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.SaveFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LawnGreen;
             this.SaveFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveFile.Location = new System.Drawing.Point(12, 209);
             this.SaveFile.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -155,7 +155,7 @@
             this.SearchFigure.Cursor = System.Windows.Forms.Cursors.Hand;
             this.SearchFigure.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.SearchFigure.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.SearchFigure.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.SearchFigure.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LawnGreen;
             this.SearchFigure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SearchFigure.Location = new System.Drawing.Point(12, 146);
             this.SearchFigure.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -172,7 +172,7 @@
             this.AddFigure.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AddFigure.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.AddFigure.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.AddFigure.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.AddFigure.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LawnGreen;
             this.AddFigure.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddFigure.Location = new System.Drawing.Point(12, 25);
             this.AddFigure.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);

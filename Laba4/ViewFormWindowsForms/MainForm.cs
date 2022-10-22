@@ -166,6 +166,10 @@ namespace ViewFormWindowsForms
                 {
                     _figuresList = (BindingList<FiguresAreaBase>)reader.Deserialize(fail);
                     dataGridViewMain.DataSource = _figuresList;
+
+                    RemoveFigure.Enabled = true;
+                    SearchFigure.Enabled = true;
+                    SaveFile.Enabled = true;
                 }
                 catch (Exception ex)
                 {
