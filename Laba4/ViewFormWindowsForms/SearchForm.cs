@@ -33,6 +33,7 @@ namespace ViewFormWindowsForms
         /// <param name="e">Event</param>
         private void SearchFormLoad(object sender, EventArgs e)
         {
+            //TODO: Не используется
             MainForm mainForm = new MainForm();
             dataGridViewSearch.DataSource = _figuresListCopy;
             dataGridViewSearch.AutoResizeColumns();
@@ -45,6 +46,7 @@ namespace ViewFormWindowsForms
         /// <param name="e">Event</param>
         private void SearchFormFormClosing(object sender, FormClosingEventArgs e)
         {
+            //TODO: Не используется
             Form mainForm = Application.OpenForms[0];
             mainForm.Show();
         }

@@ -116,7 +116,7 @@ namespace ViewFormWindowsForms
             }
         }
 
-
+        //TODO: RSDN
         private void dataGridViewAdd_CellParsing(object sender, DataGridViewCellParsingEventArgs e)
         {
             /*bool flag = true;
@@ -154,7 +154,7 @@ namespace ViewFormWindowsForms
             }*/
         }
 
-
+        //TODO: RSDN
         private void dataGridViewAdd_CellLeave(object sender, DataGridViewCellEventArgs e)
         {
             /*bool flag = true;
@@ -221,6 +221,7 @@ namespace ViewFormWindowsForms
             return arrayParametrs;
         }
 
+        //TODO: директивы условной компиляции
         /// <summary>
         /// Заполнение DataGridViewAdd случайными значениями
         /// </summary>
@@ -228,6 +229,7 @@ namespace ViewFormWindowsForms
         /// <param name="e">Event</param>
         private void CreateRandomDataClick(object sender, EventArgs e)
         {
+            //TODO: RSDN
             Random rnd = new Random();
             int randomFigure = rnd.Next(0, 3);
             ComboBoxChoiceFigure.SelectedIndex = randomFigure;
@@ -238,6 +240,7 @@ namespace ViewFormWindowsForms
             }
         }
 
+        //TODO: RSDN
         /// <summary>
         /// Создание случайных параметров фигуры
         /// </summary>
