@@ -53,6 +53,7 @@ namespace ViewFormWindowsForms
         {
             this.Hide();
             AddForm addForm = new AddForm();
+            addForm.CloseForm += AddSearchFormsClose;
             if (addForm.ShowDialog() == DialogResult.OK)
             {
                 try
@@ -63,8 +64,8 @@ namespace ViewFormWindowsForms
                             _figuresList.Add(new Circle(addForm.FigureParam()[0]));
                             break;
                         case 2:
-                            _figuresList.Add(new ModelLaba4WindowsForms.Rectangle(
-                                addForm.FigureParam()[0], addForm.FigureParam()[1]));
+                            _figuresList.Add(new Rectangle(addForm.FigureParam()[0], 
+                                                           addForm.FigureParam()[1]));
                             break;
                         case 3:
                             _figuresList.Add(new Triangle(addForm.FigureParam()[0],
@@ -82,6 +83,16 @@ namespace ViewFormWindowsForms
                     AddFigureClick(sender, e);
                 }
             }
+        }
+
+        /// <summary>
+        /// Действия при завершении работы AddForm
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event</param>
+        private void AddSearchFormsClose(object sender, EventArgs e)
+        {
+            this.Show();
         }
 
         /// <summary>
@@ -111,6 +122,7 @@ namespace ViewFormWindowsForms
         private void SearchFigureClick(object sender, EventArgs e)
         {
             SearchForm searchForm = new SearchForm(_figuresList);
+            searchForm.CloseForm += AddSearchFormsClose;
             this.Hide();
             searchForm.ShowDialog();
         }

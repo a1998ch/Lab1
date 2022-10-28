@@ -12,6 +12,12 @@ namespace ViewFormWindowsForms
     public partial class SearchForm : Form
     {
         /// <summary>
+        /// Предопределенный делегат, 
+        /// который представляет метод обработчика событий для события
+        /// </summary>
+        internal event EventHandler CloseForm;
+
+        /// <summary>
         /// Список фигур
         /// </summary>
         private readonly BindingList<FiguresAreaBase> _figuresListCopy;
@@ -33,8 +39,6 @@ namespace ViewFormWindowsForms
         /// <param name="e">Event</param>
         private void SearchFormLoad(object sender, EventArgs e)
         {
-            //TODO: Не используется
-            MainForm mainForm = new MainForm();
             dataGridViewSearch.DataSource = _figuresListCopy;
             dataGridViewSearch.AutoResizeColumns();
         }
@@ -44,11 +48,10 @@ namespace ViewFormWindowsForms
         /// </summary>
         /// <param name="sender">Sender</param>
         /// <param name="e">Event</param>
-        private void SearchFormFormClosing(object sender, FormClosingEventArgs e)
+        private void SearchFormClosing(object sender, FormClosingEventArgs e)
         {
             //TODO: Не используется
-            Form mainForm = Application.OpenForms[0];
-            mainForm.Show();
+            CloseForm?.Invoke(sender, e);
         }
 
         /// <summary>
@@ -62,13 +65,13 @@ namespace ViewFormWindowsForms
             {
                 for (int j = 0; j < dataGridViewSearch.ColumnCount; j++)
                 {
-                    dataGridViewSearch.Rows[i].Cells[j].Style.BackColor = Color.White;
+                    dataGridViewSearch.Rows[i].DefaultCellStyle.BackColor = Color.White;
                     if (dataGridViewSearch.Rows[i].Cells[j].Value != null)
                     {
                         if (dataGridViewSearch.Rows[i].Cells[j].Value.ToString().ToLower().IndexOf(
                             TextBoxSearch.Text.ToLower()) >= 0 && TextBoxSearch.Text != String.Empty)
                         {
-                            dataGridViewSearch.Rows[i].Cells[j].Style.BackColor = Color.Green;
+                            dataGridViewSearch.Rows[i].DefaultCellStyle.BackColor = Color.Green;
                             dataGridViewSearch.CurrentCell = dataGridViewSearch.Rows[i].Cells[j];
                         }
                         else
@@ -82,7 +85,7 @@ namespace ViewFormWindowsForms
             {
                 for (int j = 0; j < dataGridViewSearch.ColumnCount; j++)
                 {
-                    if (dataGridViewSearch.Rows[i].Cells[j].Style.BackColor == Color.Green)
+                    if (dataGridViewSearch.Rows[i].DefaultCellStyle.BackColor == Color.Green)
                     {
                         dataGridViewSearch.CurrentCell = dataGridViewSearch.Rows[i].Cells[j];
                     }

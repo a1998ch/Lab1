@@ -66,7 +66,7 @@
             // TextBoxSearch
             // 
             this.TextBoxSearch.Location = new System.Drawing.Point(282, 25);
-            this.TextBoxSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TextBoxSearch.Margin = new System.Windows.Forms.Padding(2);
             this.TextBoxSearch.Name = "TextBoxSearch";
             this.TextBoxSearch.Size = new System.Drawing.Size(161, 26);
             this.TextBoxSearch.TabIndex = 2;
@@ -104,6 +104,7 @@
             this.dataGridViewSearch.RowHeadersVisible = false;
             this.dataGridViewSearch.RowHeadersWidth = 51;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Empty;
             this.dataGridViewSearch.RowsDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewSearch.RowTemplate.Height = 24;
             this.dataGridViewSearch.RowTemplate.ReadOnly = true;
@@ -119,12 +120,12 @@
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "SearchForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SearchForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SearchFormFormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SearchFormClosing);
             this.Load += new System.EventHandler(this.SearchFormLoad);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

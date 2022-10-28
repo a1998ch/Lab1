@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.AddFigureOK = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
@@ -52,7 +52,7 @@
             this.AddFigureOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.AddFigureOK.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.AddFigureOK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.AddFigureOK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.AddFigureOK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
             this.AddFigureOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.AddFigureOK.Location = new System.Drawing.Point(10, 133);
             this.AddFigureOK.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -73,11 +73,13 @@
             // 
             // toolStripTextBox1
             // 
+            this.toolStripTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
             // 
             // toolStripTextBox2
             // 
+            this.toolStripTextBox2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.toolStripTextBox2.Name = "toolStripTextBox2";
             this.toolStripTextBox2.Size = new System.Drawing.Size(100, 23);
             // 
@@ -87,7 +89,7 @@
             this.Exit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Exit.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.Exit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.Exit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.Exit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
             this.Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Exit.Location = new System.Drawing.Point(114, 133);
             this.Exit.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -107,7 +109,7 @@
             "Прямоугольник",
             "Треугольник"});
             this.ComboBoxChoiceFigure.Location = new System.Drawing.Point(5, 23);
-            this.ComboBoxChoiceFigure.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ComboBoxChoiceFigure.Margin = new System.Windows.Forms.Padding(2);
             this.ComboBoxChoiceFigure.Name = "ComboBoxChoiceFigure";
             this.ComboBoxChoiceFigure.Size = new System.Drawing.Size(133, 27);
             this.ComboBoxChoiceFigure.TabIndex = 2;
@@ -117,9 +119,9 @@
             // 
             this.groupBox1.Controls.Add(this.ComboBoxChoiceFigure);
             this.groupBox1.Location = new System.Drawing.Point(10, 10);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(148, 65);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
@@ -135,25 +137,23 @@
             this.dataGridViewAdd.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAdd.GridColor = System.Drawing.Color.Black;
             this.dataGridViewAdd.Location = new System.Drawing.Point(196, 10);
-            this.dataGridViewAdd.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewAdd.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewAdd.Name = "dataGridViewAdd";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewAdd.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewAdd.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewAdd.RowHeadersVisible = false;
             this.dataGridViewAdd.RowHeadersWidth = 51;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.dataGridViewAdd.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.dataGridViewAdd.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewAdd.RowTemplate.Height = 24;
             this.dataGridViewAdd.Size = new System.Drawing.Size(309, 78);
             this.dataGridViewAdd.TabIndex = 4;
-            this.dataGridViewAdd.CellLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewAdd_CellLeave);
-            this.dataGridViewAdd.CellParsing += new System.Windows.Forms.DataGridViewCellParsingEventHandler(this.dataGridViewAdd_CellParsing);
             this.dataGridViewAdd.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewAddCellValueChanged);
             // 
             // CreateRandomData
@@ -162,7 +162,7 @@
             this.CreateRandomData.Cursor = System.Windows.Forms.Cursors.Hand;
             this.CreateRandomData.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.CreateRandomData.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.CreateRandomData.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Red;
+            this.CreateRandomData.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
             this.CreateRandomData.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CreateRandomData.Location = new System.Drawing.Point(301, 133);
             this.CreateRandomData.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -200,7 +200,7 @@
 
         }
 
-        #endregion
+#endregion
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox2;

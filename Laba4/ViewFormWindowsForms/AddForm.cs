@@ -9,6 +9,12 @@ namespace ViewFormWindowsForms
     public partial class AddForm : Form
     {
         /// <summary>
+        /// Предопределенный делегат, 
+        /// который представляет метод обработчика событий для события
+        /// </summary>
+        internal event EventHandler CloseForm;
+
+        /// <summary>
         /// Конструктор класса
         /// </summary>
         public AddForm()
@@ -37,8 +43,7 @@ namespace ViewFormWindowsForms
         /// <param name="e">Event</param>
         private void AddFormClosing(object sender, FormClosingEventArgs e)
         {
-            Form mainForm = Application.OpenForms[0];
-            mainForm.Show();
+            CloseForm?.Invoke(sender, e);
         }
 
         /// <summary>
@@ -93,7 +98,7 @@ namespace ViewFormWindowsForms
         {
             dataGridViewAdd.AutoResizeColumns();
             if (dataGridViewAdd.CurrentCell.Value != null && 
-                !double.TryParse(dataGridViewAdd.CurrentCell.Value.ToString(), out double checkDouble))
+                !double.TryParse(dataGridViewAdd.CurrentCell.Value.ToString(), out double _))
             {
                 MessageBox.Show("Неправильный ввод данных", "Ошибка",
                                 MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -115,83 +120,6 @@ namespace ViewFormWindowsForms
                 }
             }
         }
-
-        //TODO: RSDN
-        private void dataGridViewAdd_CellParsing(object sender, DataGridViewCellParsingEventArgs e)
-        {
-            /*bool flag = true;
-            dataGridViewAdd.AutoResizeColumns();
-            for (int i = 0; i < dataGridViewAdd.Columns.Count; i++)
-            {
-                if (dataGridViewAdd.Rows[0].Cells[i].Value != null &&
-                !double.TryParse(dataGridViewAdd.Rows[0].Cells[i].Value.ToString(),
-                                                        out double checkDouble))
-                {
-                    dataGridViewAdd.Rows[0].Cells[i].Value = "";
-                    flag = false;
-                    AddFigureOK.Enabled = false;
-                }
-            }
-
-            if (!flag)
-            {
-                MessageBox.Show("Неправильный ввод данных", "Ошибка",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            for (int i = 0, j = 0; i < dataGridViewAdd.Columns.Count; i++)
-            {
-                if (dataGridViewAdd[i, 0].Value != null &&
-                    dataGridViewAdd[i, 0].Value.ToString() != "")
-                {
-                    j++;
-                }
-                if (j == dataGridViewAdd.Columns.Count)
-                {
-                    AddFigureOK.Enabled = true;
-                }
-            }*/
-        }
-
-        //TODO: RSDN
-        private void dataGridViewAdd_CellLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            /*bool flag = true;
-            dataGridViewAdd.AutoResizeColumns();
-            for (int i = 0; i < dataGridViewAdd.Columns.Count; i++)
-            {
-                if (dataGridViewAdd.Rows[0].Cells[i].Value != null &&
-                !double.TryParse(dataGridViewAdd.Rows[0].Cells[i].Value.ToString(),
-                                                        out double checkDouble))
-                {
-                    dataGridViewAdd.Rows[0].Cells[i].Value = "";
-                    flag = false;
-                    AddFigureOK.Enabled = false;
-                }
-            }
-
-            if (!flag)
-            {
-                MessageBox.Show("Неправильный ввод данных", "Ошибка",
-                                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            for (int i = 0, j = 0; i < dataGridViewAdd.Columns.Count; i++)
-            {
-                if (dataGridViewAdd[i, 0].Value != null &&
-                    dataGridViewAdd[i, 0].Value.ToString() != "")
-                {
-                    j++;
-                }
-                if (j == dataGridViewAdd.Columns.Count)
-                {
-                    AddFigureOK.Enabled = true;
-                }
-            }*/
-        }
-
 
         /// <summary>
         /// Удаление строк и столбцов DataGridViewAdd
@@ -221,6 +149,7 @@ namespace ViewFormWindowsForms
             return arrayParametrs;
         }
 
+        #if DEBUG
         //TODO: директивы условной компиляции
         /// <summary>
         /// Заполнение DataGridViewAdd случайными значениями
@@ -230,13 +159,20 @@ namespace ViewFormWindowsForms
         private void CreateRandomDataClick(object sender, EventArgs e)
         {
             //TODO: RSDN
-            Random rnd = new Random();
-            int randomFigure = rnd.Next(0, 3);
+            Random random = new Random();
+            int randomFigure = random.Next(0, 3);
             ComboBoxChoiceFigure.SelectedIndex = randomFigure;
 
             for (int i = 0; i < dataGridViewAdd.Columns.Count; i++)
             {
-                dataGridViewAdd[i, 0].Value = GetRandomData(rnd);
+                dataGridViewAdd[i, 0].Value = GetRandomData(random);
+
+                if (dataGridViewAdd.Columns.Count == 3 && i > 0)
+                {
+                    dataGridViewAdd[i, 0].Value = 
+                        (double)dataGridViewAdd[1, 0].Value / 10 + 
+                        (double)dataGridViewAdd[i-1, 0].Value;
+                }
             }
         }
 
@@ -244,13 +180,14 @@ namespace ViewFormWindowsForms
         /// <summary>
         /// Создание случайных параметров фигуры
         /// </summary>
-        /// <param name="rnd">Генератор случайных чисел</param>
+        /// <param name="random">Генератор случайных чисел</param>
         /// <returns>Параметры фигуры</returns>
-        private static double GetRandomData(Random rnd)
+        private static double GetRandomData(Random random)
         {
-            double doubleNamber = rnd.NextDouble();
-            double param = rnd.Next(0, 100) * doubleNamber;
+            double doubleNamber = random.NextDouble();
+            double param = random.Next(1, 100) * doubleNamber;
             return Math.Round(param, 7);
         }
+        #endif
     }
 }
