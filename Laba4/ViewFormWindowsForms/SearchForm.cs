@@ -73,6 +73,7 @@ namespace ViewFormWindowsForms
                         {
                             dataGridViewSearch.Rows[i].DefaultCellStyle.BackColor = Color.Green;
                             dataGridViewSearch.CurrentCell = dataGridViewSearch.Rows[i].Cells[j];
+                            break;
                         }
                         else
                         {
