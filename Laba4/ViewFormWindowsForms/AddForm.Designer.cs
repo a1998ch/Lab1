@@ -155,6 +155,7 @@
             this.dataGridViewAdd.Size = new System.Drawing.Size(309, 78);
             this.dataGridViewAdd.TabIndex = 4;
             this.dataGridViewAdd.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewAddCellValueChanged);
+            //TODO: Директивы условной компиляции
             // 
             // CreateRandomData
             // 

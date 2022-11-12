@@ -150,7 +150,6 @@ namespace ViewFormWindowsForms
         }
 
         #if DEBUG
-        //TODO: директивы условной компиляции
         /// <summary>
         /// Заполнение DataGridViewAdd случайными значениями
         /// </summary>
@@ -158,7 +157,6 @@ namespace ViewFormWindowsForms
         /// <param name="e">Event</param>
         private void CreateRandomDataClick(object sender, EventArgs e)
         {
-            //TODO: RSDN
             Random random = new Random();
             int randomFigure = random.Next(0, 3);
             ComboBoxChoiceFigure.SelectedIndex = randomFigure;
@@ -171,12 +169,11 @@ namespace ViewFormWindowsForms
                 {
                     dataGridViewAdd[i, 0].Value = 
                         (double)dataGridViewAdd[1, 0].Value / 10 + 
-                        (double)dataGridViewAdd[i-1, 0].Value;
+                        (double)dataGridViewAdd[i - 1, 0].Value;
                 }
             }
         }
-
-        //TODO: RSDN
+        
         /// <summary>
         /// Создание случайных параметров фигуры
         /// </summary>

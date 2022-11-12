@@ -50,7 +50,6 @@ namespace ViewFormWindowsForms
         /// <param name="e">Event</param>
         private void SearchFormClosing(object sender, FormClosingEventArgs e)
         {
-            //TODO: Не используется
             CloseForm?.Invoke(sender, e);
         }
 
@@ -61,6 +60,7 @@ namespace ViewFormWindowsForms
         /// <param name="e">Event</param>
         private void TextBoxSearchTextChanged(object sender, EventArgs e)
         {
+            //TODO Выполнить поиск в листе
             for (int i = 0; i < dataGridViewSearch.RowCount; i++)
             {
                 for (int j = 0; j < dataGridViewSearch.ColumnCount; j++)

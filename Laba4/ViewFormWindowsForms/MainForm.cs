@@ -58,6 +58,7 @@ namespace ViewFormWindowsForms
             {
                 try
                 {
+                    //TODO: создать переменную параметров 1 раз
                     switch (addForm.FigureParam().Length)
                     {
                         case 1:
