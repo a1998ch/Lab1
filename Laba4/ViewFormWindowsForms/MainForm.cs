@@ -38,8 +38,10 @@ namespace ViewFormWindowsForms
         /// <param name="e">Event</param>
         private void MainFormLoad(object sender, EventArgs e)
         {
+            dataGridViewMain.AutoGenerateColumns = true;
             dataGridViewMain.DataSource = _figuresList;
             dataGridViewMain.AutoResizeColumns();
+
             dataGridViewMain.Columns[0].HeaderText = "Площадь фигуры";
             dataGridViewMain.Columns[1].HeaderText = "Название фигуры";
         }
@@ -52,38 +54,19 @@ namespace ViewFormWindowsForms
         private void AddFigureClick(object sender, EventArgs e)
         {
             this.Hide();
-            AddForm addForm = new AddForm();
+            AddForm addForm = new AddForm(_figuresList);
             addForm.CloseForm += AddSearchFormsClose;
-            if (addForm.ShowDialog() == DialogResult.OK)
-            {
-                try
-                {
-                    //TODO: создать переменную параметров 1 раз
-                    switch (addForm.FigureParam().Length)
-                    {
-                        case 1:
-                            _figuresList.Add(new Circle(addForm.FigureParam()[0]));
-                            break;
-                        case 2:
-                            _figuresList.Add(new Rectangle(addForm.FigureParam()[0], 
-                                                           addForm.FigureParam()[1]));
-                            break;
-                        case 3:
-                            _figuresList.Add(new Triangle(addForm.FigureParam()[0],
-                                addForm.FigureParam()[1], addForm.FigureParam()[2]));
-                            break;
-                    }
-                    RemoveFigure.Enabled = true;
-                    SearchFigure.Enabled = true;
-                    SaveFile.Enabled = true;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    AddFigureClick(sender, e);
-                }
-            }
+            addForm.ClicOK += AddFormClicOK;
+            addForm.ShowDialog();
+            //TODO: создать переменную параметров 1 раз
+        }
+
+        private void AddFormClicOK(object sender, EventArgs e)
+        {
+            dataGridViewMain.DataSource = _figuresList;
+            RemoveFigure.Enabled = true;
+            SearchFigure.Enabled = true;
+            SaveFile.Enabled = true;
         }
 
         /// <summary>

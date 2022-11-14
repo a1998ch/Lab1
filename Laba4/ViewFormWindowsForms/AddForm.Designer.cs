@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.AddFigureOK = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
@@ -39,7 +39,9 @@
             this.ComboBoxChoiceFigure = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewAdd = new System.Windows.Forms.DataGridView();
+#if !Debug
             this.CreateRandomData = new System.Windows.Forms.Button();
+#endif
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAdd)).BeginInit();
@@ -49,7 +51,6 @@
             // 
             this.AddFigureOK.BackColor = System.Drawing.Color.White;
             this.AddFigureOK.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AddFigureOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.AddFigureOK.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.AddFigureOK.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.AddFigureOK.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
@@ -61,6 +62,7 @@
             this.AddFigureOK.TabIndex = 1;
             this.AddFigureOK.Text = "OK";
             this.AddFigureOK.UseVisualStyleBackColor = false;
+            this.AddFigureOK.Click += new System.EventHandler(this.AddFigureOKClick);
             // 
             // contextMenuStrip1
             // 
@@ -139,23 +141,23 @@
             this.dataGridViewAdd.Location = new System.Drawing.Point(196, 10);
             this.dataGridViewAdd.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewAdd.Name = "dataGridViewAdd";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewAdd.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewAdd.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridViewAdd.RowHeadersVisible = false;
             this.dataGridViewAdd.RowHeadersWidth = 51;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.dataGridViewAdd.RowsDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.dataGridViewAdd.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewAdd.RowTemplate.Height = 24;
             this.dataGridViewAdd.Size = new System.Drawing.Size(309, 78);
             this.dataGridViewAdd.TabIndex = 4;
             this.dataGridViewAdd.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewAddCellValueChanged);
-            //TODO: Директивы условной компиляции
+#if !Debug
             // 
             // CreateRandomData
             // 
@@ -173,6 +175,7 @@
             this.CreateRandomData.Text = "Ввод случайных данных";
             this.CreateRandomData.UseVisualStyleBackColor = false;
             this.CreateRandomData.Click += new System.EventHandler(this.CreateRandomDataClick);
+#endif
             // 
             // AddForm
             // 
@@ -181,7 +184,9 @@
             this.ClientSize = new System.Drawing.Size(523, 170);
             this.Controls.Add(this.dataGridViewAdd);
             this.Controls.Add(this.groupBox1);
+#if !Debug
             this.Controls.Add(this.CreateRandomData);
+#endif
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.AddFigureOK);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -210,6 +215,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridViewAdd;
         private System.Windows.Forms.Button AddFigureOK;
+#if !Debug
         private System.Windows.Forms.Button CreateRandomData;
+#endif
     }
 }

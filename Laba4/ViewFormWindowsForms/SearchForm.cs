@@ -52,6 +52,16 @@ namespace ViewFormWindowsForms
         {
             CloseForm?.Invoke(sender, e);
         }
+        
+        /// <summary>
+        /// Информация о фигуре
+        /// </summary>
+        /// <param name="i">Индекс фигуры</param>
+        /// <returns>Название фигуры и её площадь</returns>
+        private string Info(int i)
+        {
+            return _figuresListCopy[i].FigureArea.ToString() + " " + _figuresListCopy[i].Type;
+        }
 
         /// <summary>
         /// Поиск данных
@@ -60,38 +70,21 @@ namespace ViewFormWindowsForms
         /// <param name="e">Event</param>
         private void TextBoxSearchTextChanged(object sender, EventArgs e)
         {
+            for (int i = 0; i < _figuresListCopy.Count; i++)
+            {
+                dataGridViewSearch.Rows[i].DefaultCellStyle.BackColor = Color.White;
+                if (Info(i).ToString().ToLower().IndexOf(TextBoxSearch.Text.ToLower()) >= 0 
+                                                        && TextBoxSearch.Text != String.Empty)
+                {
+                    dataGridViewSearch.Rows[i].DefaultCellStyle.BackColor = Color.Green;
+                    dataGridViewSearch.CurrentCell = dataGridViewSearch.Rows[i].Cells[0];
+                }
+                else
+                {
+                    dataGridViewSearch.CurrentCell = null;
+                }
+            }
             //TODO Выполнить поиск в листе
-            for (int i = 0; i < dataGridViewSearch.RowCount; i++)
-            {
-                for (int j = 0; j < dataGridViewSearch.ColumnCount; j++)
-                {
-                    dataGridViewSearch.Rows[i].DefaultCellStyle.BackColor = Color.White;
-                    if (dataGridViewSearch.Rows[i].Cells[j].Value != null)
-                    {
-                        if (dataGridViewSearch.Rows[i].Cells[j].Value.ToString().ToLower().IndexOf(
-                            TextBoxSearch.Text.ToLower()) >= 0 && TextBoxSearch.Text != String.Empty)
-                        {
-                            dataGridViewSearch.Rows[i].DefaultCellStyle.BackColor = Color.Green;
-                            dataGridViewSearch.CurrentCell = dataGridViewSearch.Rows[i].Cells[j];
-                            break;
-                        }
-                        else
-                        {
-                            dataGridViewSearch.CurrentCell = null;
-                        }
-                    }
-                }
-            }
-            for (int i = 0; i < dataGridViewSearch.RowCount; i++)
-            {
-                for (int j = 0; j < dataGridViewSearch.ColumnCount; j++)
-                {
-                    if (dataGridViewSearch.Rows[i].DefaultCellStyle.BackColor == Color.Green)
-                    {
-                        dataGridViewSearch.CurrentCell = dataGridViewSearch.Rows[i].Cells[j];
-                    }
-                }
-            }
         }
     }
 }

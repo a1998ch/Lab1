@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.ComponentModel;
+using ModelLaba4WindowsForms;
 
 namespace ViewFormWindowsForms
 {
@@ -11,14 +13,28 @@ namespace ViewFormWindowsForms
         /// <summary>
         /// Предопределенный делегат, 
         /// который представляет метод обработчика событий для события
+        /// нажатия на кнопку "OK"
+        /// </summary>
+        internal event EventHandler ClicOK;
+
+        /// <summary>
+        /// Предопределенный делегат, 
+        /// который представляет метод обработчика событий для события
+        /// "Закрытие формы"
         /// </summary>
         internal event EventHandler CloseForm;
 
         /// <summary>
+        /// Список фигур
+        /// </summary>
+        private readonly BindingList<FiguresAreaBase> _figuresListCopy;
+
+        /// <summary>
         /// Конструктор класса
         /// </summary>
-        public AddForm()
+        public AddForm(BindingList<FiguresAreaBase> list)
         {
+            _figuresListCopy = list;
             InitializeComponent();
             #if !DEBUG
             CreateRandomData.Visible = false;
@@ -44,6 +60,21 @@ namespace ViewFormWindowsForms
         private void AddFormClosing(object sender, FormClosingEventArgs e)
         {
             CloseForm?.Invoke(sender, e);
+        }
+
+        private void AddFigureOKClick(object sender, EventArgs e)
+        {
+            try
+            {
+                FigureParam();
+                ClicOK?.Invoke(sender, e);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         /// <summary>
@@ -97,13 +128,13 @@ namespace ViewFormWindowsForms
         private void DataGridViewAddCellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             dataGridViewAdd.AutoResizeColumns();
-            if (dataGridViewAdd.CurrentCell.Value != null && 
+            if (dataGridViewAdd.CurrentCell.Value != null &&
                 !double.TryParse(dataGridViewAdd.CurrentCell.Value.ToString(), out double _))
             {
-                MessageBox.Show("Неправильный ввод данных", "Ошибка",
-                                MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Неправильный ввод данных в столбце: " +
+                    $"\"{dataGridViewAdd.Columns[dataGridViewAdd.CurrentCell.ColumnIndex].HeaderText}\"",
+                                                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 AddFigureOK.Enabled = false;
-                dataGridViewAdd.CurrentCell.Value = null;
                 return;
             }
 
@@ -138,18 +169,33 @@ namespace ViewFormWindowsForms
         /// Запись параметров фигуры
         /// </summary>
         /// <returns>Параметры фигуры</returns>
-        public double[] FigureParam()
+        public BindingList<FiguresAreaBase> FigureParam()
         {
-            double[] arrayParametrs = new double[dataGridViewAdd.Columns.Count];
-            for (int i = 0; i < arrayParametrs.Length; i++)
+            for (int i = 0; i < 1; i++)
             {
-                arrayParametrs[i] = 
-                    Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i].Value);
+                switch (dataGridViewAdd.Columns.Count)
+                {
+                    case 1:
+                        _figuresListCopy.Add(new Circle(
+                            Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i].Value)));
+                        break;
+                    case 2:
+                        _figuresListCopy.Add(new Rectangle(
+                            Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i].Value),
+                            Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i + 1].Value)));
+                        break;
+                    case 3:
+                        _figuresListCopy.Add(new Triangle(
+                            Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i].Value),
+                            Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i + 1].Value),
+                            Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i + 2].Value)));
+                        break;
+                }
             }
-            return arrayParametrs;
+            return _figuresListCopy;
         }
 
-        #if DEBUG
+#if DEBUG
         /// <summary>
         /// Заполнение DataGridViewAdd случайными значениями
         /// </summary>
@@ -181,10 +227,10 @@ namespace ViewFormWindowsForms
         /// <returns>Параметры фигуры</returns>
         private static double GetRandomData(Random random)
         {
-            double doubleNamber = random.NextDouble();
-            double param = random.Next(1, 100) * doubleNamber;
+            double doubleNumber = random.NextDouble();
+            double param = random.Next(1, 100) * doubleNumber;
             return Math.Round(param, 7);
         }
-        #endif
+#endif
     }
 }
