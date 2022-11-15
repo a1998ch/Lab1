@@ -63,7 +63,6 @@ namespace ViewFormWindowsForms
 
         private void AddFormClicOK(object sender, EventArgs e)
         {
-            dataGridViewMain.DataSource = _figuresList;
             RemoveFigure.Enabled = true;
             SearchFigure.Enabled = true;
             SaveFile.Enabled = true;

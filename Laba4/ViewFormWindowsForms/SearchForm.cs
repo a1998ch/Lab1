@@ -52,16 +52,14 @@ namespace ViewFormWindowsForms
         {
             CloseForm?.Invoke(sender, e);
         }
-        
+
         /// <summary>
         /// Информация о фигуре
         /// </summary>
         /// <param name="i">Индекс фигуры</param>
         /// <returns>Название фигуры и её площадь</returns>
-        private string Info(int i)
-        {
-            return _figuresListCopy[i].FigureArea.ToString() + " " + _figuresListCopy[i].Type;
-        }
+        private string Info(int i) => $"{_figuresListCopy[i].FigureArea} " +
+                                      $"{_figuresListCopy[i].Type}";
 
         /// <summary>
         /// Поиск данных

@@ -169,30 +169,32 @@ namespace ViewFormWindowsForms
         /// Запись параметров фигуры
         /// </summary>
         /// <returns>Параметры фигуры</returns>
-        public BindingList<FiguresAreaBase> FigureParam()
+        private BindingList<FiguresAreaBase> FigureParam()
         {
-            for (int i = 0; i < 1; i++)
+            const int numberOfCircleParam = 1;
+            const int numberOfRectangleParam = 2;
+            const int numberOfTriangleParam = 3;
+            for (int i = 0; ; i++)
             {
                 switch (dataGridViewAdd.Columns.Count)
                 {
-                    case 1:
+                    case numberOfCircleParam:
                         _figuresListCopy.Add(new Circle(
                             Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i].Value)));
-                        break;
-                    case 2:
+                        return _figuresListCopy;
+                    case numberOfRectangleParam:
                         _figuresListCopy.Add(new Rectangle(
-                            Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i].Value),
+                            Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i].Value), 
                             Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i + 1].Value)));
-                        break;
-                    case 3:
+                        return _figuresListCopy;
+                    case numberOfTriangleParam:
                         _figuresListCopy.Add(new Triangle(
                             Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i].Value),
                             Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i + 1].Value),
                             Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i + 2].Value)));
-                        break;
+                        return _figuresListCopy;
                 }
             }
-            return _figuresListCopy;
         }
 
 #if DEBUG
