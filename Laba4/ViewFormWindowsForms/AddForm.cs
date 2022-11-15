@@ -2,6 +2,8 @@
 using System.Windows.Forms;
 using System.ComponentModel;
 using ModelLaba4WindowsForms;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ViewFormWindowsForms
 {
@@ -174,6 +176,7 @@ namespace ViewFormWindowsForms
             const int numberOfCircleParam = 1;
             const int numberOfRectangleParam = 2;
             const int numberOfTriangleParam = 3;
+
             for (int i = 0; ; i++)
             {
                 switch (dataGridViewAdd.Columns.Count)
