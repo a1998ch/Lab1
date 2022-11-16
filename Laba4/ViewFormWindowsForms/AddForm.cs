@@ -38,9 +38,6 @@ namespace ViewFormWindowsForms
         {
             _figuresListCopy = list;
             InitializeComponent();
-            #if !DEBUG
-            CreateRandomData.Visible = false;
-            #endif
         }
 
         /// <summary>
@@ -65,6 +62,11 @@ namespace ViewFormWindowsForms
         }
 
         //TODO: XML
+        /// <summary>
+        /// Действия при нажатие на кнопку "ОК"
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event</param>
         private void AddFigureOKClick(object sender, EventArgs e)
         {
             try
@@ -131,13 +133,16 @@ namespace ViewFormWindowsForms
         private void DataGridViewAddCellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             dataGridViewAdd.AutoResizeColumns();
+            var nameHeader = dataGridViewAdd.Columns[
+                dataGridViewAdd.CurrentCell.ColumnIndex].HeaderText;
+
             if (dataGridViewAdd.CurrentCell.Value != null &&
                 !double.TryParse(dataGridViewAdd.CurrentCell.Value.ToString(), out double _))
             {
                 //TODO: RSDN
                 MessageBox.Show($"Неправильный ввод данных в столбце: " +
-                    $"\"{dataGridViewAdd.Columns[dataGridViewAdd.CurrentCell.ColumnIndex].HeaderText}\"",
-                                                    "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    $"\"{nameHeader}\"", "Ошибка", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 AddFigureOK.Enabled = false;
                 return;
             }

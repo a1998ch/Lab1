@@ -61,6 +61,11 @@ namespace ViewFormWindowsForms
         }
 
         //TODO: XML
+        /// <summary>
+        /// Действия при нажатии на кнопу "ОК" в AddForm
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">Event</param>
         private void AddFormClicOK(object sender, EventArgs e)
         {
             RemoveFigure.Enabled = true;

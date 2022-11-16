@@ -39,7 +39,7 @@
             this.ComboBoxChoiceFigure = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dataGridViewAdd = new System.Windows.Forms.DataGridView();
-#if !Debug
+#if DEBUG
             this.CreateRandomData = new System.Windows.Forms.Button();
 #endif
             this.contextMenuStrip1.SuspendLayout();
@@ -157,7 +157,7 @@
             this.dataGridViewAdd.Size = new System.Drawing.Size(309, 78);
             this.dataGridViewAdd.TabIndex = 4;
             this.dataGridViewAdd.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridViewAddCellValueChanged);
-#if !Debug
+#if DEBUG
             // 
             // CreateRandomData
             // 
@@ -184,7 +184,7 @@
             this.ClientSize = new System.Drawing.Size(523, 170);
             this.Controls.Add(this.dataGridViewAdd);
             this.Controls.Add(this.groupBox1);
-#if !Debug
+#if DEBUG
             this.Controls.Add(this.CreateRandomData);
 #endif
             this.Controls.Add(this.Exit);
@@ -215,7 +215,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView dataGridViewAdd;
         private System.Windows.Forms.Button AddFigureOK;
-#if !Debug
+#if DEBUG
         private System.Windows.Forms.Button CreateRandomData;
 #endif
     }
