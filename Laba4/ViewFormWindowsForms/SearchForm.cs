@@ -82,7 +82,6 @@ namespace ViewFormWindowsForms
                     dataGridViewSearch.CurrentCell = null;
                 }
             }
-            //TODO Выполнить поиск в листе
         }
     }
 }

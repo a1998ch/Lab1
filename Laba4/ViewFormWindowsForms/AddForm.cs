@@ -64,6 +64,7 @@ namespace ViewFormWindowsForms
             CloseForm?.Invoke(sender, e);
         }
 
+        //TODO: XML
         private void AddFigureOKClick(object sender, EventArgs e)
         {
             try
@@ -133,6 +134,7 @@ namespace ViewFormWindowsForms
             if (dataGridViewAdd.CurrentCell.Value != null &&
                 !double.TryParse(dataGridViewAdd.CurrentCell.Value.ToString(), out double _))
             {
+                //TODO: RSDN
                 MessageBox.Show($"Неправильный ввод данных в столбце: " +
                     $"\"{dataGridViewAdd.Columns[dataGridViewAdd.CurrentCell.ColumnIndex].HeaderText}\"",
                                                     "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);

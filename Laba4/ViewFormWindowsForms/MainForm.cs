@@ -58,9 +58,9 @@ namespace ViewFormWindowsForms
             addForm.CloseForm += AddSearchFormsClose;
             addForm.ClicOK += AddFormClicOK;
             addForm.ShowDialog();
-            //TODO: создать переменную параметров 1 раз
         }
 
+        //TODO: XML
         private void AddFormClicOK(object sender, EventArgs e)
         {
             RemoveFigure.Enabled = true;
