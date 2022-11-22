@@ -4,6 +4,7 @@ using System.ComponentModel;
 using ModelLaba4WindowsForms;
 using System.Collections.Generic;
 using System.Linq;
+using System.Drawing;
 
 namespace ViewFormWindowsForms
 {
@@ -17,7 +18,7 @@ namespace ViewFormWindowsForms
         /// который представляет метод обработчика событий для события
         /// нажатия на кнопку "OK"
         /// </summary>
-        internal event EventHandler ClicOK;
+        internal event EventHandler<BindingList<FiguresAreaBase>> ClicOK;
 
         /// <summary>
         /// Предопределенный делегат, 
@@ -29,14 +30,14 @@ namespace ViewFormWindowsForms
         /// <summary>
         /// Список фигур
         /// </summary>
-        private readonly BindingList<FiguresAreaBase> _figuresListCopy;
+        private BindingList<FiguresAreaBase> _figuresListAdd = 
+            new BindingList<FiguresAreaBase>();
 
         /// <summary>
         /// Конструктор класса
         /// </summary>
-        public AddForm(BindingList<FiguresAreaBase> list)
+        public AddForm()
         {
-            _figuresListCopy = list;
             InitializeComponent();
         }
 
@@ -47,6 +48,7 @@ namespace ViewFormWindowsForms
         /// <param name="e">Event</param>
         private void AddFormLoad(object sender, EventArgs e)
         {
+            //dataGridViewAdd.DataSource = _figuresListAdd;
             ComboBoxChoiceFigure.DropDownStyle = ComboBoxStyle.DropDownList;
             AddFigureOK.Enabled = false;
         }
@@ -71,7 +73,7 @@ namespace ViewFormWindowsForms
             try
             {
                 FigureParam();
-                ClicOK?.Invoke(sender, e);
+                ClicOK?.Invoke(sender, _figuresListAdd);
                 this.Close();
             }
             catch (Exception ex)
@@ -132,23 +134,33 @@ namespace ViewFormWindowsForms
         private void DataGridViewAddCellValueChanged(object sender, DataGridViewCellEventArgs e)
         {
             dataGridViewAdd.AutoResizeColumns();
+
+            int cellIndex = dataGridViewAdd.CurrentCell.ColumnIndex;
+            int rowIndex = dataGridViewAdd.CurrentRow.Index;
             var nameHeader = dataGridViewAdd.Columns[
                 dataGridViewAdd.CurrentCell.ColumnIndex].HeaderText;
 
-            if (dataGridViewAdd.CurrentCell.Value != null &&
-                !double.TryParse(dataGridViewAdd.CurrentCell.Value.ToString(), out double _))
+            for(int i = 0; i < dataGridViewAdd.Columns.Count; i++)
             {
-                MessageBox.Show($"Неправильный ввод данных в столбце: " +
-                    $"\"{nameHeader}\"", "Ошибка", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                AddFigureOK.Enabled = false;
-                return;
+                if (dataGridViewAdd.CurrentCell.Value != null &&
+                    !double.TryParse(dataGridViewAdd.CurrentCell.Value.ToString(), out double _))
+                {
+                    dataGridViewAdd.Rows[rowIndex].Cells[cellIndex].Style.BackColor = Color.Red;
+                    dataGridViewAdd.Rows[rowIndex].Cells[cellIndex].ToolTipText = 
+                        $"Неправильный ввод данных в столбце: \"{nameHeader}\"";
+                    AddFigureOK.Enabled = false;
+                }
+                else
+                {
+                    dataGridViewAdd.Rows[rowIndex].Cells[cellIndex].Style.BackColor = Color.White;
+                }
             }
 
             for (int i = 0, j = 0; i < dataGridViewAdd.Columns.Count; i++)
             {
                 if (dataGridViewAdd[i, 0].Value != null &&
-                    dataGridViewAdd[i, 0].Value.ToString() != "")
+                    dataGridViewAdd.Rows[rowIndex].
+                    Cells[i].Style.BackColor != Color.Red)
                 {
                     j++;
                 }
@@ -187,20 +199,20 @@ namespace ViewFormWindowsForms
                 switch (dataGridViewAdd.Columns.Count)
                 {
                     case numberOfCircleParam:
-                        _figuresListCopy.Add(new Circle(
+                        _figuresListAdd.Add(new Circle(
                             Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i].Value)));
-                        return _figuresListCopy;
+                        return _figuresListAdd;
                     case numberOfRectangleParam:
-                        _figuresListCopy.Add(new Rectangle(
+                        _figuresListAdd.Add(new ModelLaba4WindowsForms.Rectangle(
                             Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i].Value), 
                             Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i + 1].Value)));
-                        return _figuresListCopy;
+                        return _figuresListAdd;
                     case numberOfTriangleParam:
-                        _figuresListCopy.Add(new Triangle(
+                        _figuresListAdd.Add(new Triangle(
                             Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i].Value),
                             Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i + 1].Value),
                             Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i + 2].Value)));
-                        return _figuresListCopy;
+                        return _figuresListAdd;
                 }
             }
         }
