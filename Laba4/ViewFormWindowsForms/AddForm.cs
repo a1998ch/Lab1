@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using System.ComponentModel;
 using ModelLaba4WindowsForms;
 using System.Drawing;
+using static System.Windows.Forms.LinkLabel;
 
 namespace ViewFormWindowsForms
 {
@@ -16,7 +17,7 @@ namespace ViewFormWindowsForms
         /// который представляет метод обработчика событий для события
         /// нажатия на кнопку "OK"
         /// </summary>
-        internal event EventHandler<BindingList<FiguresAreaBase>> ClicOK;
+        internal event EventHandler<FiguresAreaBase> ClicOK;
 
         /// <summary>
         /// Предопределенный делегат, 
@@ -24,12 +25,6 @@ namespace ViewFormWindowsForms
         /// "Закрытие формы"
         /// </summary>
         internal event EventHandler CloseForm;
-
-        /// <summary>
-        /// Список фигур
-        /// </summary>
-        private BindingList<FiguresAreaBase> _figuresListAdd = 
-            new BindingList<FiguresAreaBase>();
 
         /// <summary>
         /// Конструктор класса
@@ -69,8 +64,7 @@ namespace ViewFormWindowsForms
         {
             try
             {
-                FigureParam();
-                ClicOK?.Invoke(this, _figuresListAdd);
+                AddFigure();
                 this.Close();
             }
             catch (Exception ex)
@@ -185,32 +179,33 @@ namespace ViewFormWindowsForms
         /// Запись параметров фигуры
         /// </summary>
         /// <returns>Параметры фигуры</returns>
-        private BindingList<FiguresAreaBase> FigureParam()
+        private void AddFigure()
         {
             const int numberOfCircleParam = 1;
             const int numberOfRectangleParam = 2;
             const int numberOfTriangleParam = 3;
 
-            for (int i = 0; ; i++)
+            for (int i = 0; ;)
             {
                 switch (dataGridViewAdd.Columns.Count)
                 {
                     case numberOfCircleParam:
-                        _figuresListAdd.Add(new Circle(
-                            Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i].Value)));
-                        return _figuresListAdd;
+                        ClicOK?.Invoke(this, (new Circle(
+                            Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i].Value))));
+                        break;
                     case numberOfRectangleParam:
-                        _figuresListAdd.Add(new ModelLaba4WindowsForms.Rectangle(
+                        ClicOK?.Invoke(this, (new ModelLaba4WindowsForms.Rectangle(
                             Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i].Value), 
-                            Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i + 1].Value)));
-                        return _figuresListAdd;
+                            Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i + 1].Value))));
+                        break;
                     case numberOfTriangleParam:
-                        _figuresListAdd.Add(new Triangle(
+                        ClicOK?.Invoke(this, (new Triangle(
                             Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i].Value),
                             Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i + 1].Value),
-                            Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i + 2].Value)));
-                        return _figuresListAdd;
+                            Convert.ToDouble(dataGridViewAdd.Rows[0].Cells[i + 2].Value))));
+                        break;
                 }
+                break;
             }
         }
 

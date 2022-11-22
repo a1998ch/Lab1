@@ -58,7 +58,7 @@ namespace ViewFormWindowsForms
             addForm.CloseForm += AddSearchFormsClose;
             addForm.ClicOK += (o, args) =>
             {
-                foreach (var figure in args) { _figuresList.Add(figure); }
+                _figuresList.Add(args);
                 RemoveFigure.Enabled = true;
                 SearchFigure.Enabled = true;
                 SaveFile.Enabled = true;
