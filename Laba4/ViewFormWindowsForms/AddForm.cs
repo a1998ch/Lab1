@@ -2,8 +2,6 @@
 using System.Windows.Forms;
 using System.ComponentModel;
 using ModelLaba4WindowsForms;
-using System.Collections.Generic;
-using System.Linq;
 using System.Drawing;
 
 namespace ViewFormWindowsForms
@@ -48,7 +46,6 @@ namespace ViewFormWindowsForms
         /// <param name="e">Event</param>
         private void AddFormLoad(object sender, EventArgs e)
         {
-            //dataGridViewAdd.DataSource = _figuresListAdd;
             ComboBoxChoiceFigure.DropDownStyle = ComboBoxStyle.DropDownList;
             AddFigureOK.Enabled = false;
         }
@@ -73,7 +70,7 @@ namespace ViewFormWindowsForms
             try
             {
                 FigureParam();
-                ClicOK?.Invoke(sender, _figuresListAdd);
+                ClicOK?.Invoke(this, _figuresListAdd);
                 this.Close();
             }
             catch (Exception ex)

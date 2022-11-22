@@ -2,7 +2,6 @@
 using System;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 
@@ -57,21 +56,14 @@ namespace ViewFormWindowsForms
             this.Hide();
             AddForm addForm = new AddForm();
             addForm.CloseForm += AddSearchFormsClose;
-            addForm.ClicOK += AddFormClicOK; ;
+            addForm.ClicOK += (o, args) =>
+            {
+                foreach (var figure in args) { _figuresList.Add(figure); }
+                RemoveFigure.Enabled = true;
+                SearchFigure.Enabled = true;
+                SaveFile.Enabled = true;
+            };
             addForm.ShowDialog();
-        }
-
-        /// <summary>
-        /// Действия при нажатии на кнопу "ОК" в AddForm
-        /// </summary>
-        /// <param name="sender">Sender</param>
-        /// <param name="e">Event</param>
-        private void AddFormClicOK(object sender, BindingList<FiguresAreaBase> e)
-        {
-            foreach (var figure in e) { _figuresList.Add(figure); }
-            RemoveFigure.Enabled = true;
-            SearchFigure.Enabled = true;
-            SaveFile.Enabled = true;
         }
 
         /// <summary>
