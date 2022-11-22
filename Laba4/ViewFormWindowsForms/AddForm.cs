@@ -60,8 +60,7 @@ namespace ViewFormWindowsForms
         {
             CloseForm?.Invoke(sender, e);
         }
-
-        //TODO: XML
+        
         /// <summary>
         /// Действия при нажатие на кнопку "ОК"
         /// </summary>
@@ -139,7 +138,6 @@ namespace ViewFormWindowsForms
             if (dataGridViewAdd.CurrentCell.Value != null &&
                 !double.TryParse(dataGridViewAdd.CurrentCell.Value.ToString(), out double _))
             {
-                //TODO: RSDN
                 MessageBox.Show($"Неправильный ввод данных в столбце: " +
                     $"\"{nameHeader}\"", "Ошибка", 
                     MessageBoxButtons.OK, MessageBoxIcon.Error);

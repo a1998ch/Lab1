@@ -59,8 +59,7 @@ namespace ViewFormWindowsForms
             addForm.ClicOK += AddFormClicOK;
             addForm.ShowDialog();
         }
-
-        //TODO: XML
+        
         /// <summary>
         /// Действия при нажатии на кнопу "ОК" в AddForm
         /// </summary>
